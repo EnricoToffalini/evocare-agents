@@ -1,0 +1,165 @@
+---
+title: "Appendice"
+subtitle: "per chi vuole partire (o per le domande)"
+date: "2026-11-04"
+date-format: "D MMMM YYYY"
+lang: it
+title-slide-attributes:
+  data-background-gradient: "radial-gradient(1000px 700px at 10% 0%, rgba(255,90,31,0.32), transparent 65%), radial-gradient(1100px 800px at 95% 100%, rgba(124,58,237,0.42), transparent 65%), radial-gradient(700px 500px at 60% 40%, rgba(230,35,126,0.14), transparent 70%), linear-gradient(#0d1017, #0d1017)"
+format:
+  revealjs:
+    theme: default
+    css: styles.css
+    width: 1600
+    height: 900
+    margin: 0.06
+    slide-number: c/t
+    hash: true
+    transition: fade
+    transition-speed: fast
+    controls: true
+    link-external-newwindow: true
+    code-overflow: wrap
+footer: "Appendice · Lab meeting · 4 novembre 2026"
+---
+
+## cosa c'è qui
+
+<div class="small">
+
+- installare
+- modello e ragionamento: `/model`, effort
+- quanto mi resta: `/usage`, `/status`
+- permessi e modalità
+- app desktop
+- ChatGPT Edu: ragionamento, connettori, attività pianificate
+- skill: dove metterle
+
+<p class="muted">Le guide complete sono nel <a href="https://enricotoffalini.github.io/blog/posts/agenti-cli/">post sugli agenti</a>.</p>
+
+<p><a href="index.html">← torna alle slide</a></p>
+
+</div>
+
+## installare
+
+:::: {.columns}
+::: {.column width="50%"}
+### Claude Code
+
+```bash
+# Windows (PowerShell)
+irm https://claude.ai/install.ps1 | iex
+# macOS / Linux
+curl -fsSL https://claude.ai/install.sh | bash
+```
+:::
+::: {.column width="50%"}
+### Codex
+
+```bash
+# Windows (PowerShell)
+powershell -ExecutionPolicy ByPass -c "irm https://chatgpt.com/codex/install.ps1 | iex"
+# macOS / Linux
+curl -fsSL https://chatgpt.com/codex/install.sh | sh
+# oppure, con Node.js
+npm install -g @openai/codex
+```
+:::
+::::
+
+<div class="small">
+
+Chiudete e riaprite il terminale; `claude --version` / `codex --version` per controllare.
+
+Poi: tasto destro sulla cartella → *Apri nel terminale* → `claude` o `codex`. Da lì, italiano.
+
+</div>
+
+## modello e ragionamento
+
+:::: {.columns}
+::: {.column width="50%"}
+<img class="shot" src="figures/claude-03-model.png" style="max-height: 520px;">
+<p class="cap">Claude Code, <code>/model</code>: ↑↓ modello, ←→ effort</p>
+:::
+::: {.column width="50%"}
+<img class="shot" src="figures/codex-05-effort.png" style="max-height: 520px;">
+<p class="cap">Codex: da <i>Low</i> a <i>Extra high</i>, più <i>Max</i> e <i>Ultra</i></p>
+:::
+::::
+
+## quanto mi resta?
+
+:::: {.columns}
+::: {.column width="50%"}
+<img class="shot" src="figures/claude-04-usage.png" style="max-height: 520px;">
+<p class="cap">Claude Code, <code>/usage</code>: 5 ore e settimana</p>
+:::
+::: {.column width="50%"}
+<img class="shot" src="figures/codex-06-status.png" style="max-height: 520px;">
+<p class="cap">Codex, <code>/status</code>: account, contesto usato, limiti</p>
+:::
+::::
+
+## permessi e modalità
+
+<img class="shot" src="figures/claude-05-modalita.png" style="max-height: 150px;">
+<p class="cap">Claude Code: Shift+Tab per cambiare modalità</p>
+
+<img class="shot" src="figures/codex-07-permissions.png" style="max-height: 470px; margin-top: 0.5em;">
+<p class="cap">Codex, <code>/permissions</code>: i quattro livelli</p>
+
+## niente terminale? app desktop
+
+<img class="shot" src="figures/app-claude-08-pannelli.png" style="max-height: 600px;">
+<p class="cap">app Claude, scheda <i>Code</i>: chat, modifiche, file e terminale insieme</p>
+
+## ChatGPT Edu: quanto ragionare
+
+:::: {.columns}
+::: {.column width="50%"}
+<img class="shot" src="figures/03-chat-medium.png" style="max-height: 220px;">
+<p class="cap"><i>Medium</i> (default)</p>
+:::
+::: {.column width="50%"}
+<img class="shot" src="figures/04-chat-pro.png" style="max-height: 220px;">
+<p class="cap"><i>Pro</i></p>
+:::
+::::
+
+<div class="small">
+
+| Livello | Quando |
+|---|---|
+| **Instant** | riformulazioni, traduzioni semplici |
+| **Medium** | la maggior parte delle richieste |
+| **High** | statistica, codice, revisione critica: nel dubbio, questo |
+| **Pro** | problemi davvero difficili; lento e contingentato |
+
+</div>
+
+## ChatGPT Edu: connettori e attività pianificate
+
+<img class="shot" src="figures/07-connettori.png" style="max-height: 300px;">
+<p class="cap">digitando <b>@</b> compaiono skill e connettori</p>
+
+<img class="shot" src="figures/13-scheduled.png" style="max-height: 340px; margin-top: 0.4em;">
+<p class="cap">attività pianificate: la stessa richiesta, a intervalli regolari</p>
+
+## skill: dove metterle
+
+<div class="small">
+
+| Dove | Come |
+|---|---|
+| **Claude** (chat) | *Personalizzazione* → *Competenze* → *Aggiungi* |
+| **ChatGPT** (chat) | pagina *Skills*; richiamabili con <b>@</b> |
+| **Claude Code** | `~/.claude/skills/` (tutti i progetti) o `.claude/skills/` (un progetto) |
+| **Codex** | `~/.codex/skills/` |
+
+</div>
+
+<img class="shot" src="figures/02-claude-skills.png" style="max-height: 360px; margin-top: 0.4em;">
+
+<p class="center small"><a href="index.html">← torna alle slide</a></p>

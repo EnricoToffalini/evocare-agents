@@ -1,0 +1,2229 @@
+<!DOCTYPE html>
+<html lang="it"><head>
+<script src="index_files/libs/clipboard/clipboard.min.js"></script>
+<script src="index_files/libs/quarto-html/tabby.min.js"></script>
+<script src="index_files/libs/quarto-html/popper.min.js"></script>
+<script src="index_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="index_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="index_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="index_files/libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.7.32">
+
+  <title>Evocare gli agents</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="index_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="index_files/libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="index_files/libs/revealjs/dist/theme/quarto-ee9ab3830bbe7759b42dda8416faf5cd.css">
+  <link rel="stylesheet" href="styles.css">
+  <link href="index_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="index_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="index_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="index_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" data-background-gradient="radial-gradient(1320px 924px at 10% 0%, rgba(255,90,31,0.32), transparent 65%), radial-gradient(1452px 1056px at 95% 100%, rgba(124,58,237,0.42), transparent 65%), radial-gradient(700px 500px at 60% 40%, rgba(230,35,126,0.14), transparent 70%), linear-gradient(#0d1017, #0d1017)" class="quarto-title-block center">
+  <h1 class="title"><span class="title-logos" aria-label="Le quattro casate e Psicostat"><img src="figures/badge-grifondoro.svg" alt="Grifondoro"><img src="figures/badge-serpeverde.svg" alt="Serpeverde"><img class="psicostat-logo" src="figures/psicostat.svg" alt="Psicostat"><img src="figures/badge-tassorosso.svg" alt="Tassorosso"><img src="figures/badge-corvonero.svg" alt="Corvonero"></span> Evocare gli agents</h1>
+  <p class="subtitle">l’AI che fa magie nel vostro computer, <br>poi qualcosa su gptEdu e sulle skills</p>
+
+<div class="quarto-title-authors">
+</div>
+
+  <p class="date">4 novembre 2026</p>
+</section>
+<section id="section" class="slide level2 dark" data-background-gradient="radial-gradient(1320px 924px at 10% 0%, rgba(255,90,31,0.32), transparent 65%), radial-gradient(1452px 1056px at 95% 100%, rgba(124,58,237,0.42), transparent 65%), radial-gradient(700px 500px at 60% 40%, rgba(230,35,126,0.14), transparent 70%), linear-gradient(#0d1017, #0d1017)">
+<h2></h2>
+<p><span class="magic-mark" aria-hidden="true">🪄</span></p>
+<div class="columns">
+<div class="column" style="width:68%;">
+<blockquote>
+<p><em>Guarda questa cartella e fai un controllo di coerenza, correttezza e stile. Il codice fa quello che dice il paper? I numeri, le tabelle e le figure nel testo corrispondono agli output? Segnalami errori, incongruenze e punti deboli</em></p>
+</blockquote>
+<div class="term fragment" data-fragment-index="1" style="font-size: 0.5em;"><span class="t">● codex</span>  Controllo la corrispondenza tra paper, script e output
+         salvati, inclusi i supplementi. <span class="d">Non modifico nulla, non
+         rilancio le simulazioni; distinguo gli errori verificabili
+         dai punti che richiedono una nuova esecuzione.</span>
+<span class="t">● exec</span>   rg --files   <span class="d">~400 file in 11 cartelle</span>
+<span class="t">● exec</span>   Get-Content AGENTS.md README.md paper/paper-v2.qmd
+<span class="t">● exec</span>   Get-Content scripts/03a-simulation-forced-choice.R
+<span class="t">● exec</span>   Get-Content scripts/03b-… 03c-…
+<span class="t">● exec</span>   Get-Content tables/simulation-summary-*.csv
+<span class="d">  … </span></div>
+</div><div class="column" style="width:30%;">
+<p><img alt="cartella LINK FUNCTION" class="shot fragment" data-fragment-index="0" src="figures/repo-link-function.png" style="max-height: 640px; margin: 0;"></p>
+</div></div>
+<aside class="notes">
+<p>Esecuzione reale: codex exec in sola lettura sulla repo LINK FUNCTION, 2 novembre 2026, interrotta dopo circa 40 secondi per non consumare token. Righe abbreviate, comandi veri. Il punto non è il risultato ma la portata: l’agente legge da solo paper, script e tabelle di una repo con centinaia di file e li mette a confronto.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="section-1" class="slide level2 dark" data-background-gradient="radial-gradient(1320px 924px at 10% 0%, rgba(255,90,31,0.32), transparent 65%), radial-gradient(1452px 1056px at 95% 100%, rgba(124,58,237,0.42), transparent 65%), radial-gradient(700px 500px at 60% 40%, rgba(230,35,126,0.14), transparent 70%), linear-gradient(#0d1017, #0d1017)">
+<h2></h2>
+<p><span class="magic-mark" aria-hidden="true">🪄</span></p>
+<div class="columns">
+<div class="column" style="width:66%;">
+<div style="font-size: 0.8em;">
+<blockquote>
+<p><em>In questa cartella ci sono depositi dati/codice pubblici di articoli DPG, in zip. Per ognuno: estrailo in una copia, trova lo script di analisi principale e fallo girare così com’è. Se si blocca, correggi il minimo indispensabile nella copia, mai negli originali. Alla fine fammi una tabella in esiti.csv: gira sì/no, cosa hai dovuto cambiare, cosa resta bloccato.</em></p>
+</blockquote>
+</div>
+<div class="term fragment" data-fragment-index="1" style="font-size: 0.45em;"><span class="t">● Bash</span>  unzip 14 depositi → copie/   <span class="d">4 contengono altri zip</span>
+<span class="t">● Bash</span>  find *.R *.Rmd *.qmd   <span class="d">02, 06, 11: anche Stata, MATLAB, jamovi</span>
+<span class="t">● Bash</span>  5 pacchetti mancanti → rlib/, la vostra libreria R non la tocco
+<span class="t">● Bash</span>  Rscript copie/09/…   <span class="e">cannot open file 'C:/Users/PC/…'</span>
+<span class="t">● Edit</span>  copia 09   percorsi assoluti → relativi
+<span class="t">● Bash</span>  Rscript copie/12/…   <span class="e">Error: RStudio not running</span>
+<span class="t">● Edit</span>  copia 12   percorso fisso al posto di rstudioapi
+<span class="t">● Bash</span>  Rscript copie/13/…   <span class="e">Error in summarise(): `Sex` must be size 1</span>
+<span class="t">● Edit</span>  copia 13   summarise( → reframe(
+<span class="d">  … altri depositi …</span>
+<span class="t">● Write</span> esiti.csv
+<span class="ok">Quasi tutti girano, molti dopo ritocchi minimi (percorsi, pacchetti,
+versioni). Bloccati: 04 (oggetti mai definiti; serve VOSviewer) e la
+power analysis di 13 (FamilyRank non c'è per R 4.5). Originali intatti.</span></div>
+</div><div class="column" style="width:30%;">
+<p><img alt="cartella FAIR-test-DPG2025" class="shot fragment" data-fragment-index="0" src="figures/repo-fair-test.png" style="max-height: 640px; margin: 0;"></p>
+</div></div>
+</section>
+<section id="come-si-procede" class="slide level2">
+<h2>come si procede?</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<h3 id="in-chat">in chat</h3>
+<div class="chat-line" style="justify-content: flex-start;">
+<p><span class="step you">prompt</span>→<span class="step you">alleghi file</span>→<span class="step">chat risponde</span>→<span class="step you">incolli in RStudio</span>→<span class="step">R esegue</span>→<span class="step">errore</span>→<span class="step you">copi l’errore in chat</span>→<span class="step">…</span>→<span class="step you">rialleghi file aggiornati</span>→<span class="step">chat risponde</span>→<span class="step">…</span></p>
+</div>
+<p class="small muted" style="margin-top: 1em;">
+il copia-incolla lo fate voi, ci dovete stare dietro a ogni intoppo
+</p>
+</div><div class="column fragment" style="width:50%;">
+<h3 id="con-un-agente">con un agente</h3>
+<div class="chat-line" style="justify-content: flex-start;">
+<p><span class="step you">prompt</span>→<span class="step">legge</span>→<span class="step">scrive</span>→<span class="step">esegue</span>→<span class="step">sbaglia</span>→<span class="step">corregge</span>→<span class="step">…</span>→<span class="step you">verifichi</span></p>
+</div>
+<p class="small muted" style="margin-top: 1em;">
+voi entrate all’inizio e alla fine, intanto vi fate un tè
+</p>
+</div></div>
+<div class="principio fragment" style="margin-top: 1.5em;">
+C'è lo stesso LLM della chat. Cambia che <b>lavora sui vostri file</b>, tutti, con i <b>vostri software locali</b>, ed <b>esegue direttamente</b>: lancia comandi, guarda l'errore, corregge, rilancia comandi, e lascia i risultati su disco (il risultato può essere un report, ma anche un intero sito, un'intera app, ecc.)
+</div>
+</section>
+<section id="la-cartella-locale-come-centro-di-comando" class="slide level2">
+<h2>la cartella locale come centro di comando</h2>
+<div class="columns">
+<div class="column" style="width:55%;">
+<div class="small">
+<p>Un “progetto” di solito è sparso in:</p>
+<ul>
+<li>tanti <strong>file</strong> sul vostro computer</li>
+<li>le <strong>decisioni</strong> sono testimoniate nelle email</li>
+<li>varie versioni condivise su <strong>Drive</strong></li>
+<li>le <strong>scadenze</strong> stanno nel calendario</li>
+</ul>
+<p><strong>Il collante, finora, era la nostra memoria.</strong></p>
+</div>
+</div><div class="column" style="width:45%;">
+<div class="small">
+<p>Con i <strong>connettori</strong> l’agente vede tutto insieme: cartella + posta + calendario + Drive (+ il browser, con <em>Claude in Chrome</em>).</p>
+<p class="muted">
+Mail, eventi e condivisioni partono solo col vostro clic.
+</p>
+</div>
+</div></div>
+<div class="trucco">Un documento locale <b><code>AGENTS.md</code></b> può mappare quello che sta fuori: quale cartella di Drive, quale calendario, cosa cercare nelle mail, chi sono i collaboratori...</div>
+<!-- ---- cose fatte ---- -->
+</section>
+<section id="delegare-agli-agents-catalogo-open-science-dpg" class="slide level2">
+<h2>delegare agli agents: Catalogo Open Science DPG</h2>
+<p class="cap" style="font-size:20px;">
+<a href="https://opensciencedpg.github.io/OS-promotion/" target="_blank" rel="noopener noreferrer">https://opensciencedpg.github.io/OS-promotion/</a>
+</p>
+<iframe src="https://opensciencedpg.github.io/OS-promotion/" style="width: 100%; height: 640px; border: 1px solid #ddd; border-radius: 8px;">
+</iframe>
+</section>
+<section id="progetto-riproducibilità-fairness-paper-dpg" class="slide level2">
+<h2>progetto riproducibilità &amp; FAIRness paper DPG</h2>
+<!--<p class="cap">report completo: <a href="demo/report-riproducibilita.html" target="_blank" rel="noopener noreferrer">apri in una nuova scheda</a></p>-->
+<!-- online: versione anonimizzata (demo/, da R/report-anonimo.R); in locale: versione completa (local/, non su git) -->
+<iframe id="report-ripr" src="demo/report-riproducibilita.html" style="width: 100%; height: 680px; border: 1px solid #ddd; border-radius: 8px;">
+</iframe>
+<script>
+if (location.protocol === "file:" || ["localhost", "127.0.0.1"].includes(location.hostname))
+  document.getElementById("report-ripr").src = "local/report-riproducibilita.html";
+</script>
+</section>
+<section id="un-videogioco" class="slide level2">
+<h2>un videogioco</h2>
+<iframe src="https://drive.google.com/file/d/1073IkTNHvEg_nCDm4ND4jXph7lDyvB-e/preview" style="width: 100%; height: 600px; border: 0; border-radius: 8px;" allow="autoplay; fullscreen" allowfullscreen="">
+</iframe>
+<p class="cap">
+<a href="https://github.com/EnricoToffalini/mahabharata-game" target="_blank" rel="noopener noreferrer">mahabharata-game</a> • <a href="https://godotengine.org/" target="_blank" rel="noopener noreferrer" title="Apri approfondimento in una nuova scheda">Godot</a>
+</p>
+</section>
+<section id="section-2" class="slide level2 dark" data-background-gradient="radial-gradient(1320px 924px at 10% 0%, rgba(255,90,31,0.32), transparent 65%), radial-gradient(1452px 1056px at 95% 100%, rgba(124,58,237,0.42), transparent 65%), radial-gradient(700px 500px at 60% 40%, rgba(230,35,126,0.14), transparent 70%), linear-gradient(#0d1017, #0d1017)">
+<h2></h2>
+<p><span class="magic-mark" aria-hidden="true">🪄</span></p>
+<div class="inchiostro incanto">
+Accio quiz!
+</div>
+<a href="https://enricotoffalini.github.io/blog/posts/agenti-cli/#pu%C3%B2-agire-anche-fuori-dal-computer-tramite-connettori" target="_blank" rel="noopener noreferrer" class="media-link" title="Apri la sezione pertinente della guida in una nuova scheda"><img alt="moodle agente" class="shot" src="figures/moodle-agente.gif" style="max-height: 540px;"></a>
+<p class="cap">
+Claude in Chrome sul corso Moodle: la freccia la muove lui
+</p>
+<aside class="notes">
+<p>Clip registrata il 31 ottobre 2026 con Claude in Chrome, sola lettura: corso → quiz → elenco domande. Uso reale: far rivedere l’intero corso, forum e quiz compresi, segnalando incoerenze. Con l’account Edu, Codex non può usare il browser (disattivato dall’ateneo).</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="altro-dove-gli-agents-aiutano" class="slide level2">
+<h2>altro dove gli agents aiutano</h2>
+<div class="examples-grid">
+<div class="card">
+<h4>
+ricerca
+</h4>
+<ul class="link-list">
+<li>
+<a href="https://enricotoffalini.github.io/Most_interactions_are_wrong/" target="_blank" rel="noopener noreferrer">Most interactions are wrong</a>
+</li>
+<li>
+<a href="https://enricotoffalini.github.io/Taxometrics-Neurodevelopmental-Disorders/" target="_blank" rel="noopener noreferrer">Taxometrics in neurodevelopmental disorders</a>
+</li>
+</ul>
+</div>
+<div class="card">
+<h4>
+didattica
+</h4>
+<ul class="link-list">
+<li>
+<a href="https://enricotoffalini.github.io/psicologia-intelligenza/" target="_blank" rel="noopener noreferrer">Psicologia dell’intelligenza</a>
+</li>
+<li>
+<a href="https://enricotoffalini.github.io/slides/" target="_blank" rel="noopener noreferrer">Raccolta di slide</a>
+</li>
+<li>
+<a href="https://enricotoffalini-dimensioni-diagnosi.share.connect.posit.cloud/" target="_blank" rel="noopener noreferrer">Dimensioni vs diagnosi</a>
+</li>
+</ul>
+</div>
+<div class="card">
+<h4>
+edizioni e documenti
+</h4>
+<ul class="link-list">
+<li>
+<a href="https://enricotoffalini.github.io/Epitteto-Diatribe/" target="_blank" rel="noopener noreferrer">Diatribe di Epitteto</a>
+</li>
+<li>
+<a href="https://enricotoffalini.github.io/IDS-2-estensioni/" target="_blank" rel="noopener noreferrer">Indici IDS-2</a>
+</li>
+<li>
+<a href="https://enricotoffalini.github.io/trasparenza-dati-normativi/" target="_blank" rel="noopener noreferrer">Trasparenza e dati normativi</a>
+</li>
+</ul>
+</div>
+<div class="card">
+<h4>
+personali
+</h4>
+<ul class="link-list">
+<li>
+<a href="https://enricotoffalini.github.io/" target="_blank" rel="noopener noreferrer">Homepage personale</a>
+</li>
+<li>
+<a href="https://enricotoffalini.github.io/blog/" target="_blank" rel="noopener noreferrer">Blog</a>
+</li>
+<li>
+<a href="https://enricotoffalini.github.io/cv/" target="_blank" rel="noopener noreferrer">CV online</a>
+</li>
+<li>
+<a href="https://github.com/EnricoToffalini/ai-skills" target="_blank" rel="noopener noreferrer">Skill AI personali</a>
+</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="tre-cose-sullai" class="slide level2">
+<h2>TRE COSE SULL’AI</h2>
+<p class="center small" style="margin-top: 1.2em;">
+<a href="https://enricotoffalini.github.io/blog/posts/serie-ai/" target="_blank" rel="noopener noreferrer">enricotoffalini.github.io/blog/posts/serie-ai</a>
+</p>
+<br>
+<p class="muted small" style="margin-top: -0.3em;">
+cose minime da imparare per usare l’AI nel nostro lavoro (secondo me)
+</p>
+<div class="columns">
+<div class="column" style="width:33%;">
+<a class="panel-link card" href="https://enricotoffalini.github.io/blog/posts/agenti-cli/" target="_blank" rel="noopener noreferrer" title="Apri la guida in una nuova scheda">
+<h4>1 · agenti in locale</h4>
+Claude Code e Codex lavorano <b>sui file del vostro computer</b>. Da terminale o da app.<br><br>
+<span class="muted">la vera 💣</span>
+</a>
+</div><div class="column" style="width:33%;">
+<a class="panel-link card" href="https://enricotoffalini.github.io/blog/posts/gpt-edu/" target="_blank" rel="noopener noreferrer" title="Apri la guida in una nuova scheda">
+<h4>2 · ChatGPT Edu</h4>
+Quello che l'ateneo già vi dà: come usarlo <b>bene</b> e senza sprecarlo.<br><br>
+<span class="muted">~8.6 € l'anno, su fondi</span>
+</a>
+</div><div class="column" style="width:33%;">
+<a class="panel-link card" href="https://enricotoffalini.github.io/blog/posts/skills/" target="_blank" rel="noopener noreferrer" title="Apri la guida in una nuova scheda">
+<h4>3 · skill</h4>
+Le vostre convenzioni (e la vostra expertise) scritte <b>una volta</b>, applicate sempre.<br><br>
+<span class="muted">valgono sia in locale che su chat</span>
+</a>
+</div></div>
+<!-- ============================ PARTE 1 ============================ -->
+</section>
+<section>
+<section id="section-3" class="title-slide slide level1 dark center" data-background-gradient="radial-gradient(1320px 924px at 10% 0%, rgba(255,90,31,0.32), transparent 65%), radial-gradient(1452px 1056px at 95% 100%, rgba(124,58,237,0.42), transparent 65%), radial-gradient(700px 500px at 60% 40%, rgba(230,35,126,0.14), transparent 70%), linear-gradient(#0d1017, #0d1017)">
+<h1></h1>
+<div class="act-num">
+Parte 1
+</div>
+<div class="big">
+agenti in locale
+</div>
+<p class="muted">
+Claude Code e Codex: stessa richiesta, due agenti, terminale o app
+</p>
+</section>
+<section id="tasto-destro-apri-nel-terminale-claude" class="slide level2">
+<h2>tasto destro → apri nel terminale → <code>claude</code></h2>
+<a href="https://enricotoffalini.github.io/blog/posts/agenti-cli/claude-code.html#primo-avvio" target="_blank" rel="noopener noreferrer" class="media-link" title="Apri la sezione pertinente della guida in una nuova scheda"><img alt="claude 01 avvio" class="shot" src="figures/claude-01-avvio.png" style="max-height: 560px;"></a>
+<p class="cap">
+in alto: modello, effort, piano e <b>cartella di lavoro</b>. Da qui in poi si scrive in italiano
+</p>
+<div class="trucco">L'agente vede per prima la cartella in cui lo lanciate (e le sottocartelle). <b>Lanciatelo nel posto giusto.</b></div>
+</section>
+<section id="la-richiesta" class="slide level2">
+<h2>la richiesta</h2>
+<div class="prompt" style="font-size: 0.85em;">
+In questa cartella c’è bii_campione.csv, il campione simulato di una batteria d’intelligenza inventata. Dai un’occhiata ai dati, poi scrivi uno script R chiamato analisi.R che descrive come crescono con l’età i punteggi grezzi dei quattro subtest, eseguilo e spiegami i risultati in poche righe.
+</div>
+<p class="small muted">
+dati simulati della <b>BII</b>, una batteria inventata per la didattica (1.600 casi, 6-22 anni)
+</p>
+<div class="fragment">
+<ul>
+<li>legge i CSV e il <code>LEGGIMI.md</code>, <strong>sceglie il metodo</strong></li>
+<li><strong>scrive</strong> <code>analisi.R</code></li>
+<li>lo <strong>esegue</strong> con il vostro R</li>
+<li>vi spiega i risultati</li>
+</ul>
+</div>
+</section>
+<section id="claude-code-52-secondi" class="slide level2">
+<h2>Claude Code: 52 secondi</h2>
+<p><a href="https://enricotoffalini.github.io/blog/posts/agenti-cli/claude-code.html#la-prima-richiesta" target="_blank" rel="noopener noreferrer" class="media-link" title="Apri la sezione pertinente della guida in una nuova scheda"><img alt="claude 02 analisi" class="shot" src="figures/claude-02-analisi.png" style="max-height: 620px;"></a></p>
+<aside class="notes">
+<p>Da notare: ha scelto da solo un GAM per curve non lineari, ha controllato pavimento e soffitto, e ha aggiunto osservazioni non richieste (RR, Gf, si stabilizza prima dei subtest verbali; per norme per età servono fasce strette nell’infanzia).</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="codex-2-minuti-stesse-stime" class="slide level2">
+<h2>Codex: 2 minuti, stesse stime</h2>
+<p><a href="https://enricotoffalini.github.io/blog/posts/agenti-cli/codex.html#la-prima-richiesta" target="_blank" rel="noopener noreferrer" class="media-link" title="Apri la sezione pertinente della guida in una nuova scheda"><img alt="codex 03 analisi" class="shot" src="figures/codex-03-analisi.png" style="max-height: 620px;"></a></p>
+<p class="cap">
+si vede tutto: <code>Ran Rscript analisi.R</code>, l’output, <code>Viewed image punteggi_eta.png</code> (ha guardato il grafico che ha prodotto)
+</p>
+</section>
+<section id="e-poi-fammene-un-report-quarto" class="slide level2">
+<h2>e poi: “fammene un report Quarto”</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<a href="https://enricotoffalini.github.io/blog/posts/agenti-cli/#un-esempio-concreto-stesso-compito-due-agenti" target="_blank" rel="noopener noreferrer" class="media-link" title="Apri la sezione pertinente della guida in una nuova scheda"><img alt="report claude" class="shot" src="figures/report-claude.png" style="max-height: 600px;"></a>
+<p class="cap">
+Claude Code
+</p>
+</div><div class="column" style="width:50%;">
+<a href="https://enricotoffalini.github.io/blog/posts/agenti-cli/#un-esempio-concreto-stesso-compito-due-agenti" target="_blank" rel="noopener noreferrer" class="media-link" title="Apri la sezione pertinente della guida in una nuova scheda"><img alt="report codex" class="shot" src="figures/report-codex.png" style="max-height: 600px;"></a>
+<p class="cap">
+Codex
+</p>
+</div></div>
+</section>
+<section id="installazione" class="slide level2">
+<h2>installazione</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<h3 id="claude-code"><a href="https://enricotoffalini.github.io/blog/posts/agenti-cli/claude-code.html#installazione" target="_blank" rel="noopener noreferrer">Claude Code</a></h3>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href=""></a><span class="co"># Windows (PowerShell)</span></span>
+<span id="cb1-2"><a href=""></a><span class="ex">irm</span> https://claude.ai/install.ps1 <span class="kw">|</span> <span class="ex">iex</span></span>
+<span id="cb1-3"><a href=""></a></span>
+<span id="cb1-4"><a href=""></a><span class="co"># macOS / Linux</span></span>
+<span id="cb1-5"><a href=""></a><span class="ex">curl</span> <span class="at">-fsSL</span> https://claude.ai/install.sh <span class="kw">|</span> <span class="fu">bash</span></span>
+<span id="cb1-6"><a href=""></a></span>
+<span id="cb1-7"><a href=""></a><span class="co"># alternativa: npm (tutti i sistemi)</span></span>
+<span id="cb1-8"><a href=""></a><span class="ex">npm</span> install <span class="at">-g</span> @anthropic-ai/claude-code</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p class="small muted">
+serve almeno Claude <b>Pro</b>
+</p>
+</div><div class="column" style="width:50%;">
+<h3 id="codex"><a href="https://enricotoffalini.github.io/blog/posts/agenti-cli/codex.html#installazione" target="_blank" rel="noopener noreferrer">Codex</a></h3>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href=""></a><span class="co"># Windows (PowerShell)</span></span>
+<span id="cb2-2"><a href=""></a><span class="ex">powershell</span> <span class="at">-ExecutionPolicy</span> ByPass <span class="at">-c</span> <span class="kw">`</span></span>
+<span id="cb2-3"><a href=""></a>  <span class="st">"irm https://chatgpt.com/codex/install.ps1 | iex"</span></span>
+<span id="cb2-4"><a href=""></a>  </span>
+<span id="cb2-5"><a href=""></a><span class="co"># macOS / Linux</span></span>
+<span id="cb2-6"><a href=""></a><span class="ex">curl</span> <span class="at">-fsSL</span> https://chatgpt.com/codex/install.sh <span class="kw">|</span> <span class="fu">sh</span></span>
+<span id="cb2-7"><a href=""></a></span>
+<span id="cb2-8"><a href=""></a><span class="co"># alternativa: npm (tutti i sistemi)</span></span>
+<span id="cb2-9"><a href=""></a><span class="ex">npm</span> install <span class="at">-g</span> @openai/codex</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p class="small muted">
+incluso in ChatGPT <b>Edu</b> e Plus
+</p>
+</div></div>
+<p class="small muted">
+Per l’opzione npm: installate prima <a href="https://nodejs.org/" target="_blank" rel="noopener noreferrer">Node.js LTS</a> (include npm).
+</p>
+<aside class="notes">
+<p>Opzioni npm verificate nella documentazione ufficiale: https://code.claude.com/docs/en/setup#install-with-npm e https://developers.openai.com/cookbook/examples/codex/using_goals_in_codex . I comandi npm sono alternativi agli installer sopra: basta scegliere un metodo per ciascun agente.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<div class="trucco">Chiudete e riaprite il terminale, poi <code>claude --version</code> / <code>codex --version</code>. Se non va: <code>claude doctor</code>.</div>
+</section>
+<section id="non-piace-il-terminale-stessa-cosa-dallapp" class="slide level2">
+<h2>non piace il terminale? stessa cosa dall’app</h2>
+<div class="columns">
+<div class="column" style="width:45%;">
+<a href="https://enricotoffalini.github.io/blog/posts/agenti-cli/app-desktop.html#la-prima-richiesta" target="_blank" rel="noopener noreferrer" class="media-link" title="Apri la sezione pertinente della guida in una nuova scheda"><img alt="app claude 02 richiesta" class="shot" src="figures/app-claude-02-richiesta.png" style="max-height: 600px;"></a>
+<p class="cap">
+app Claude, scheda <b>Code</b>: cartella, modalità, modello sotto la casella
+</p>
+</div><div class="column" style="width:55%;">
+<a href="https://enricotoffalini.github.io/blog/posts/agenti-cli/app-desktop.html#la-prima-richiesta-1" target="_blank" rel="noopener noreferrer" class="media-link" title="Apri la sezione pertinente della guida in una nuova scheda"><img alt="app codex 02 risultato" class="shot" src="figures/app-codex-02-risultato.png" style="max-height: 420px;"></a>
+<p class="cap">
+app ChatGPT, sezione <b>Codex</b>: stessa richiesta, stesso risultato
+</p>
+<div class="small" style="margin-top: 0.6em;">
+<ul>
+<li>stesso lavoro <strong>in locale</strong>, stesse skill</li>
+<li>ogni volta si sceglie la cartella (in Codex: un <em>progetto</em>)</li>
+</ul>
+</div>
+</div></div>
+</section>
+<section id="lapp-ha-un-browser-in-cui-controlla-quello-che-fa" class="slide level2">
+<h2>L’app ha un browser in cui controlla quello che fa</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<a href="https://enricotoffalini.github.io/blog/posts/agenti-cli/app-desktop.html#i-pannelli-dove-lapp-d%C3%A0-qualcosa-in-pi%C3%B9" target="_blank" rel="noopener noreferrer" class="media-link" title="Apri la sezione pertinente della guida in una nuova scheda"><img alt="app claude 10 fine" class="shot" src="figures/app-claude-10-fine.png" style="max-height: 480px;"></a>
+<p class="cap">
+Claude: report controllato nel browser integrato, anche a larghezza da cellulare; il commit si approva con un clic
+</p>
+</div><div class="column" style="width:50%;">
+<a href="https://enricotoffalini.github.io/blog/posts/agenti-cli/app-desktop.html#pannelli-e-browser-integrato" target="_blank" rel="noopener noreferrer" class="media-link" title="Apri la sezione pertinente della guida in una nuova scheda"><img alt="app codex 10 browser" class="shot" src="figures/app-codex-10-browser.png" style="max-height: 480px;"></a>
+<p class="cap">
+Codex: il report accanto alla chat
+</p>
+</div></div>
+<p class="small muted center">
+Io preferisco il terminale: non apro l’AI chiedendomi “cosa facciamo oggi?”, la chiamo al bisogno <b>dentro la cartella in cui sto già lavorando</b>
+</p>
+<!-- ---- trucchi ---- -->
+</section>
+<section id="trucco-n.-1-prima-il-plan" class="slide level2">
+<h2>trucco n.&nbsp;1: prima il <code>/plan</code></h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<a href="https://enricotoffalini.github.io/blog/posts/agenti-cli/claude-code.html#le-modalit%C3%A0-di-lavoro" target="_blank" rel="noopener noreferrer" class="media-link" title="Apri la sezione pertinente della guida in una nuova scheda"><img alt="claude 06 plan" class="shot" src="figures/claude-06-plan.png" style="max-height: 470px;"></a>
+<p class="cap">
+Claude Code, modalità <i>plan</i> (<code>Shift+Tab</code>)
+</p>
+</div><div class="column" style="width:50%;">
+<a href="https://enricotoffalini.github.io/blog/posts/agenti-cli/codex.html#plan-mode" target="_blank" rel="noopener noreferrer" class="media-link" title="Apri la sezione pertinente della guida in una nuova scheda"><img alt="codex 08 plan domande" class="shot" src="figures/codex-08-plan-domande.png" style="max-height: 470px;"></a>
+<p class="cap">
+Codex, <code>/plan</code> o (<code>Shift+Tab</code>): prima di decidere <b>fa domande</b>
+</p>
+</div></div>
+<div class="trucco">Per qualsiasi compito non banale: <i>"Non toccare niente: proponimi solo un piano."</i> Legge, esplora, non modifica nulla. Approvate, correggete, o ripartite.</div>
+</section>
+<section id="stesso-trucco-su-un-progetto-vero" class="slide level2">
+<h2>stesso trucco, su un progetto vero</h2>
+<div class="prompt">
+Vorrei un breve report Quarto in HTML su quanti articoli del catalogo hanno dati e codice aperti, anno per anno. Non scrivere ancora niente: proponimi solo un piano.
+</div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="term">Propongo questo piano:
+1. Perimetro: record con final_decision: keep,
+   stato ready o published, anche prima del 2025.
+2. Per anno: totale, dati aperti, codice aperto,
+   entrambi; i valori sconosciuti distinti dai false.
+3. Report breve: metodo, un grafico, una tabella;
+   segnalare cosa viene dalla modalità rapida.
+4. Render e controlli, senza toccare record e sito.</div>
+<p class="cap">
+Codex, 18 secondi ? <a href="https://opensciencedpg.github.io/OS-promotion/" target="_blank" rel="noopener noreferrer" title="Apri approfondimento in una nuova scheda">catalogo Open Science DPG ?</a>
+</p>
+</div><div class="column" style="width:50%;">
+<div class="term">Fonte: i record, non data/: data/ ha solo
+gli articoli visibili sul sito (dal 2025).
+<span class="d">  …</span>
+Un file autonomo in analysis/, così il render
+non finisce in docs/ e non tocca il sito.
+
+<span class="p">Domande prima di partire</span>
+1. Quali anni? Consiglio tutti.
+2. Quali stati? Consiglio solo ready/published.
+3. Rapida contro verificata: basta una nota?
+4. Va bene che resti fuori dal sito?</div>
+<p class="cap">
+Claude Code, 25 secondi
+</p>
+</div></div>
+<p class="small center">
+Gli equivoci saltano fuori quando correggerli costa zero.
+</p>
+<aside class="notes">
+<p>Prove del 1 novembre 2026, su copie della repo del catalogo, in sola lettura. Trascrizioni accorciate.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="trucco-n.-2-prima-di-fare-spiegami" class="slide level2">
+<h2>trucco n.&nbsp;2: prima di “fare”, “spiegami”</h2>
+<div class="columns">
+<div class="column" style="width:40%;">
+<div class="prompt" style="font-size: 0.68em;">
+Questa è la repo di un videogioco che non conosci. Senza modificare nulla, spiegami com’è fatto e quali file dovrei toccare per aggiungere un nuovo luogo da esplorare.
+</div>
+<p class="muted small">
+35 secondi · solo lettura
+</p>
+<div class="trucco">Il modo più economico per entrare in un progetto, vostro o altrui: la tesi di uno studente, il codice di un collega, un deposito OSF.</div>
+</div><div class="column" style="width:60%;">
+<div class="term"><span class="t">● Glob</span>  game/src/**/*.gd · docs/**/*.md
+<span class="t">● Read</span>  main.gd · CURRENT_PROJECT_STATE.md · project.godot
+<span class="t">● Read</span>  forest_party_prototype.gd · .tscn
+<span class="d">  …</span>
+<span class="ok">Motore: Godot 4, GDScript. Tutto il gioco sta in game/:
+scene quasi vuote, logica in src/, episodi in JSON in content/.
+
+Non c'è un mondo unico: "modalità" separate, scelte con
+--mode= in main.gd:32. I luoghi sono costruiti via codice.
+
+Per un nuovo luogo:
+1. nuovo_luogo.gd + .tscn, sul modello della foresta
+2. main.gd: preload, un caso nel match, la modalità (riga 55)
+3. nemici? CombatRules.reset(), come chiede AGENTS.md
+4. testi? un JSON in content/
+5. poi smoke test headless: godot --headless -- --mode=…</span></div>
+<p class="cap">
+Claude Code, trascrizione accorciata ? <a href="https://github.com/EnricoToffalini/mahabharata-game" target="_blank" rel="noopener noreferrer" title="Apri approfondimento in una nuova scheda">repository del videogioco ?</a>
+</p>
+</div></div>
+<aside class="notes">
+<p>Prova del 1 novembre 2026 su una copia dei soli file di testo della repo (codice, scene, documentazione), mai sull’originale. Strumenti consentiti: solo Read, Glob, Grep.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="trucco-n.-3-decidete-voi-quanta-autonomia" class="slide level2">
+<h2>trucco n.&nbsp;3: decidete voi quanta autonomia</h2>
+<a href="https://enricotoffalini.github.io/blog/posts/agenti-cli/claude-code.html#le-modalit%C3%A0-di-lavoro" target="_blank" rel="noopener noreferrer" class="media-link" title="Apri la sezione pertinente della guida in una nuova scheda"><img alt="claude 05 modalita" class="shot" src="figures/claude-05-modalita.png" style="max-height: 120px;"></a>
+<p class="cap">
+Claude Code, <code>Shift+Tab</code>: <i>auto</i> · <i>manual</i> · <i>accept edits</i> · <i>plan</i>
+</p>
+<div class="columns">
+<div class="column" style="width:55%;">
+<a href="https://enricotoffalini.github.io/blog/posts/agenti-cli/codex.html#permessi" target="_blank" rel="noopener noreferrer" class="media-link" title="Apri la sezione pertinente della guida in una nuova scheda"><img alt="codex 07 permissions" class="shot" src="figures/codex-07-permissions.png" style="max-height: 420px;"></a>
+<p class="cap">
+Codex, <code>/permissions</code>: <i>Read Only</i> → <i>Full Access</i>
+</p>
+</div><div class="column" style="width:45%;">
+<div class="small" style="margin-top: 0.5em;">
+<ul>
+<li>all’inizio: chiede ogni approvazione prima di agire</li>
+<li>poi <em>auto</em> / <em>Approve for me</em>: chiede solo per le azioni rischiose</li>
+<li><em>Full Access</em>: con cautela</li>
+</ul>
+</div>
+<div class="trucco"><code>Esc</code> interrompe l'agente in qualsiasi momento.</div>
+</div></div>
+</section>
+<section id="leggete-il-riepilogo-finale" class="slide level2">
+<h2>leggete il riepilogo finale</h2>
+<a href="https://enricotoffalini.github.io/blog/posts/agenti-cli/codex.html#plan-mode" target="_blank" rel="noopener noreferrer" class="media-link" title="Apri la sezione pertinente della guida in una nuova scheda"><img alt="codex 10 verifica" class="shot" src="figures/codex-10-verifica.png" style="max-height: 520px;"></a>
+<p class="cap">
+Codex: render riuscito, valori verificati, ma <i>“la verifica visiva resta incompleta”</i> (browser non disponibile). E infatti nel report è rimasto <code>et&lt;U+00E0&gt;</code>
+</p>
+<div class="trucco">L'agente dice <b>cosa ha controllato o completato e cosa no</b>. Quello che non ha fatto o deciso, fatelo o decidetelo voi (es. Codex via gptEdu da terminale non ha accesso al browser, potreste dover controllare voi visivamente).</div>
+</section>
+<section id="trucco-n.-4-alzate-il-ragionamento-quando-serve" class="slide level2">
+<h2>trucco n.&nbsp;4: alzate il ragionamento quando serve</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<a href="https://enricotoffalini.github.io/blog/posts/agenti-cli/claude-code.html#scegliere-modello-ed-effort" target="_blank" rel="noopener noreferrer" class="media-link" title="Apri la sezione pertinente della guida in una nuova scheda"><img alt="claude 03 model" class="shot" src="figures/claude-03-model.png" style="max-height: 470px;"></a>
+<p class="cap">
+Claude Code, <code>/model</code>: ↑↓ modello, ←→ effort
+</p>
+</div><div class="column" style="width:50%;">
+<a href="https://enricotoffalini.github.io/blog/posts/agenti-cli/codex.html#scegliere-modello-e-livello-di-ragionamento" target="_blank" rel="noopener noreferrer" class="media-link" title="Apri la sezione pertinente della guida in una nuova scheda"><img alt="codex 05 effort" class="shot" src="figures/codex-05-effort.png" style="max-height: 470px;"></a>
+<p class="cap">
+Codex: da <i>Low</i> a <i>Extra high</i>, più <i>Max</i> e <i>Ultra</i>
+</p>
+</div></div>
+<div class="trucco">
+  Partite dal default (effort <i>medium</i>).
+  Compito difficile, o l'agente sbaglia?
+  Alzate il modello/ragionamento.
+  Lavoro ripetitivo e semplice? Modello più leggero.
+
+  <ul>
+    <li>Codex: <code>/model</code></li>
+    <li>Claude: <code>/model</code> ed <code>/effort</code></li>
+  </ul>
+
+</div>
+</section>
+<section id="modelli-effort" class="slide level2">
+<h2>modelli ed effort: due scelte diverse</h2>
+<p class="tiny muted">
+Aggiornato al 2 novembre 2026 · Modelli e livelli disponibili dipendono da piano, versione e amministratore. Fonti: <a href="https://learn.chatgpt.com/docs/models" target="_blank" rel="noopener noreferrer">OpenAI</a> · <a href="https://code.claude.com/docs/en/model-config" target="_blank" rel="noopener noreferrer">Anthropic</a>.
+</p>
+<div class="small">
+<table class="caption-top">
+<colgroup>
+<col style="width: 19%">
+<col style="width: 19%">
+<col style="width: 61%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Claude Code</th>
+<th style="text-align: left;">Codex</th>
+<th style="text-align: left;">In poche parole</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Fable 5.1</strong></td>
+<td style="text-align: left;"><strong>GPT-6 Astra</strong></td>
+<td style="text-align: left;">Modelli di punta</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Opus 5.5</strong></td>
+<td style="text-align: left;"><strong>GPT-6.1 Sol</strong></td>
+<td style="text-align: left;">Vicini a modelli di punta, ragionamento anche molto complesso; <u>raccomandati come base per uso agentico quotidiano che vada oltre domanda-risposta o compiti “meccanici”</u></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Sonnet 5.5</strong></td>
+<td style="text-align: left;"><strong>GPT-6.1 Terra</strong></td>
+<td style="text-align: left;">Versatili e rapidi per compiti non troppo complessi</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Haiku 5.5</strong></td>
+<td style="text-align: left;"><strong>GPT-6 Luna</strong></td>
+<td style="text-align: left;">Leggeri ed economici: compiti semplici, modifiche mirate</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Effort</strong>, in tutti i casi: <strong>Low &lt; Medium &lt; High &lt; Extra high / xhigh &lt; Max</strong>.</p>
+</blockquote>
+<ul>
+<li><strong>Medium</strong> è l’effort che raccomando sempre di base.</li>
+<li>Nell’app Codex <strong>Low</strong> può chiamarsi <strong>Light</strong>.</li>
+</ul>
+<p><strong>Sottoagenti:</strong> Claude li lancia già da <em>Medium</em>; Codex su richiesta o a livello <em>Ultra</em>. In Claude, <em>Ultracode</em> pianifica workflow con sottoagenti su larga scala.</p>
+</div>
+<aside class="notes">
+<p>I sottoagenti non richiedono Ultra o Ultracode. Riferimenti: <a href="https://learn.chatgpt.com/docs/agent-configuration/subagents">Codex: sottoagenti</a>, <a href="https://code.claude.com/docs/en/sub-agents#understand-automatic-delegation">Claude Code: delega automatica</a>, <a href="https://code.claude.com/docs/en/workflows#let-claude-decide-with-ultracode">Claude Code: Ultracode e workflow</a>.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="trucco-n.-5-guardate-quanto-vi-resta" class="slide level2">
+<h2>trucco n.&nbsp;5: guardate quanto vi resta</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<a href="https://enricotoffalini.github.io/blog/posts/agenti-cli/claude-code.html#controllare-lutilizzo-residuo" target="_blank" rel="noopener noreferrer" class="media-link" title="Apri la sezione pertinente della guida in una nuova scheda"><img alt="claude 04 usage" class="shot" src="figures/claude-04-usage.png" style="max-height: 480px;"></a>
+<p class="cap">
+Claude Code, <code>/usage</code>: finestra di 5 ore e settimana
+</p>
+</div><div class="column" style="width:50%;">
+<a href="https://enricotoffalini.github.io/blog/posts/agenti-cli/codex.html#controllare-lutilizzo-residuo" target="_blank" rel="noopener noreferrer" class="media-link" title="Apri la sezione pertinente della guida in una nuova scheda"><img alt="codex 06 status" class="shot" src="figures/codex-06-status.png" style="max-height: 480px;"></a>
+<p class="cap">
+Codex, <code>/status</code>: account, contesto usato, limiti
+</p>
+</div></div>
+<div class="trucco"><b>Consumo</b> riflette <b>modello, effort, mole di lavoro agentico e ampiezza contesto</b>, non numero di messaggi (es. semplici domande-risposte) né solo tempo (es. potrebbe lanciare codice algoritmico). 
+<br><br> 
+<u>Una sessione per compito, please</u>. Cambio argomento? <code>/clear</code> (Claude) o <code>/new</code> (Codex).</div>
+</section>
+<section id="il-prontuario" class="slide level2">
+<h2>il prontuario</h2>
+<div class="cmd">
+<table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>Claude Code</th>
+<th>Codex</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>interrompere</td>
+<td><code>Esc</code></td>
+<td><code>Esc</code></td>
+</tr>
+<tr class="even">
+<td>piano prima di agire</td>
+<td><code>Shift+Tab</code> → <em>plan</em></td>
+<td><code>Shift+Tab</code> o <code>/plan</code></td>
+</tr>
+<tr class="odd">
+<td>modello e ragionamento</td>
+<td><code>/model</code>, <code>/effort high</code></td>
+<td><code>/model</code></td>
+</tr>
+<tr class="even">
+<td>quanto mi resta</td>
+<td><code>/usage</code></td>
+<td><code>/status</code></td>
+</tr>
+<tr class="odd">
+<td>nuova conversazione</td>
+<td><code>/clear</code></td>
+<td><code>/new</code></td>
+</tr>
+<tr class="even">
+<td>riassumere e liberare contesto</td>
+<td><code>/compact</code></td>
+<td><code>/compact</code></td>
+</tr>
+<tr class="odd">
+<td>riprendere dopo un limite o una chiusura</td>
+<td><code>claude -c</code></td>
+<td><code>codex resume --last</code></td>
+</tr>
+<tr class="even">
+<td>tornare indietro, anche nel codice</td>
+<td><code>/rewind</code></td>
+<td>(Git)</td>
+</tr>
+<tr class="odd">
+<td>file di istruzioni del progetto</td>
+<td><code>/init</code> → <code>CLAUDE.md</code></td>
+<td><code>/init</code> → <code>AGENTS.md</code></td>
+</tr>
+<tr class="even">
+<td>un comando del terminale al volo</td>
+<td><code>!git status</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="small muted center">
+Digitando <code>/</code> compare l’elenco completo. Nelle app: gli stessi comandi, o i menu sotto la casella.
+</p>
+</section>
+<section id="trucco-n.-6-un-agents.md-sintetico-nella-cartella" class="slide level2">
+<h2>trucco n.&nbsp;6: un <code>AGENTS.md</code> sintetico nella cartella</h2>
+<div class="columns">
+<div class="column" style="width:52%;">
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href=""></a><span class="fu"># AGENTS.md</span></span>
+<span id="cb3-2"><a href=""></a></span>
+<span id="cb3-3"><a href=""></a><span class="fu">## Progetto</span></span>
+<span id="cb3-4"><a href=""></a>Articolo su interazioni e potenza statistica.</span>
+<span id="cb3-5"><a href=""></a>Analisi in R/, manoscritto in paper/main.qmd.</span>
+<span id="cb3-6"><a href=""></a></span>
+<span id="cb3-7"><a href=""></a><span class="fu">## Fuori dalla cartella</span></span>
+<span id="cb3-8"><a href=""></a><span class="ss">- </span>Mail: etichetta "Interazioni-2026"</span>
+<span id="cb3-9"><a href=""></a><span class="ss">- </span>Drive: cartella "Interazioni - condivisa"</span>
+<span id="cb3-10"><a href=""></a></span>
+<span id="cb3-11"><a href=""></a><span class="fu">## Regole</span></span>
+<span id="cb3-12"><a href=""></a><span class="ss">- </span>Non modificare data/raw/.</span>
+<span id="cb3-13"><a href=""></a><span class="ss">- </span>Render: quarto render paper/main.qmd</span>
+<span id="cb3-14"><a href=""></a><span class="ss">- </span>Stato del lavoro: vedi NOTES.md</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p class="cap">
+esempio illustrativo
+</p>
+</div><div class="column" style="width:48%;">
+<div class="small">
+<ul>
+<li>oppure <code>CLAUDE.md</code> se esclusivamente per Claude</li>
+<li>istruzioni di contesto, convenzioni da seguire</li>
+<li>letto sempre <strong>all’avvio</strong> (⚠️ occupa contesto)</li>
+<li>lo <strong>stato del lavoro</strong> può essere aggiornato qui</li>
+<li>nuova sessione = memoria azzerata: <code>AGENTS.md</code> è l’unico elemento di contesto alla partenza</li>
+</ul>
+</div>
+<a href="https://enricotoffalini.github.io/blog/posts/agenti-cli/codex.html#altri-comandi-utili" target="_blank" rel="noopener noreferrer" title="Apri la sezione pertinente in una nuova scheda" class="panel-link trucco"><code>/init</code> ve ne scrive una prima bozza. Poi la correggete voi.</a>
+</div></div>
+<a href="https://enricotoffalini.github.io/blog/posts/agenti-cli/#il-contesto-%C3%A8-ricco-e-non-va-aggiornato-a-mano" target="_blank" rel="noopener noreferrer" title="Apri la sezione pertinente in una nuova scheda" class="panel-link trucco">Ricordate l'uso di <b><code>AGENTS.md</code></b> come mappa (quale cartella di Drive, quale calendario, cosa cercare nelle mail, chi sono i collaboratori...)</a>
+</section>
+<section id="trucco-n.-7-formati-aperti" class="slide level2">
+<h2>trucco n.&nbsp;7: formati aperti</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="card">
+<h4><code>.qmd</code> · <code>.R</code> · <code>.csv</code> · <code>.bib</code></h4>
+legge → cambia una riga → fatto<br>
+<span class="muted">con Git si vede e si annulla</span>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="card" style="border-top-color: #a1a1aa;">
+<h4><code>.docx</code> · <code>.xlsx</code> · <code>.pptx</code> · <code>.sav</code></h4>
+estrai → modifica → ricomponi → controlla<br>
+<span class="muted">più tempo, più consumo, più errori</span>
+</div>
+</div></div>
+<p class="center" style="margin-top: 1em;">
+FAIR per gli umani, FAIR per l’AI.
+</p>
+<div class="trucco">E <b>Git</b>: ogni modifica dell'agente si vede e si annulla. I comandi non servono a memoria: <i>"fai un commit di queste modifiche"</i>, <i>"torna alla versione di ieri"</i>.</div>
+<!-- ============================ PARTE 2 ============================ -->
+</section></section>
+<section>
+<section id="section-4" class="title-slide slide level1 dark center" data-background-gradient="radial-gradient(1320px 924px at 10% 0%, rgba(255,90,31,0.32), transparent 65%), radial-gradient(1452px 1056px at 95% 100%, rgba(124,58,237,0.42), transparent 65%), radial-gradient(700px 500px at 60% 40%, rgba(230,35,126,0.14), transparent 70%), linear-gradient(#0d1017, #0d1017)">
+<h1></h1>
+<div class="act-num">
+Parte 2
+</div>
+<div class="big">
+ChatGPT Edu
+</div>
+<p class="muted">
+istruzioni per l’uso (e per non sprecarlo)
+</p>
+<aside class="notes">
+<p>UniPD: 7 € al mese + IVA, circa 100 € l’anno, pagabili su fondi di ricerca. Molti lo usano solo per riformulare email. Condizioni negoziate dall’ateneo, ottobre 2026: altrove possono essere diverse.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="chat-o-work-di-default-chat" class="slide level2">
+<h2>Chat o Work? di default, Chat</h2>
+<a href="https://enricotoffalini.github.io/blog/posts/gpt-edu/#chat-o-work-di-default-chat" target="_blank" rel="noopener noreferrer" class="media-link" title="Apri la sezione pertinente della guida in una nuova scheda"><img alt="01 work" class="shot" src="figures/01-work.png" style="max-height: 520px;"></a>
+<p class="cap">
+il selettore Chat / Work in alto; qui la modalità Work
+</p>
+<div class="trucco"><b>Work = Codex in cloud</b>, con gli <b>stessi limiti</b> di Codex. Tutto ciò che si chiude in una Chat (anche con file caricati e scaricati) fatelo in Chat. Il credito Work tenetelo per Codex in locale.</div>
+</section>
+<section id="la-cosa-più-importante-il-livello-di-ragionamento" class="slide level2">
+<h2>la cosa più importante: il livello di ragionamento</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<a href="https://enricotoffalini.github.io/blog/posts/gpt-edu/#modelli-e-livelli-di-ragionamento-la-cosa-pi%C3%B9-importante" target="_blank" rel="noopener noreferrer" class="media-link" title="Apri la sezione pertinente della guida in una nuova scheda"><img alt="03 chat medium" class="shot" src="figures/03-chat-medium.png" style="max-height: 200px;"></a>
+<p class="cap">
+<i>Medium</i>: il default
+</p>
+</div><div class="column" style="width:50%;">
+<a href="https://enricotoffalini.github.io/blog/posts/gpt-edu/#modelli-e-livelli-di-ragionamento-la-cosa-pi%C3%B9-importante" target="_blank" rel="noopener noreferrer" class="media-link" title="Apri la sezione pertinente della guida in una nuova scheda"><img alt="04 chat pro" class="shot" src="figures/04-chat-pro.png" style="max-height: 200px;"></a>
+<p class="cap">
+<i>Pro</i>: all’estremo destro
+</p>
+</div></div>
+<table class="caption-top">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Livello</th>
+<th>Quando</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Instant</strong></td>
+<td>riformulazioni, traduzioni semplici</td>
+</tr>
+<tr class="even">
+<td><strong>Medium</strong></td>
+<td>la maggior parte delle richieste</td>
+</tr>
+<tr class="odd">
+<td><strong>High</strong></td>
+<td>statistica, codice, revisione critica: <strong>nel dubbio, questo</strong></td>
+</tr>
+<tr class="even">
+<td><strong>Pro</strong></td>
+<td>problemi davvero difficili; lento e contingentato</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="in-chat-high-senza-scrupoli" class="slide level2">
+<h2>in Chat, High senza scrupoli</h2>
+<div class="big grad" style="font-size: 1.5em; margin-top: 0.5em;">
+moltissimi prompt a <i>High</i> → mai un limite
+</div>
+<p class="muted small">
+nella mia esperienza con ChatGPT Edu
+</p>
+<div class="small" style="margin-top: 1em;">
+<ul>
+<li>i limiti si sentono in <strong>Work</strong> (sono quelli di Codex: 5 ore e settimana)</li>
+<li>e soprattutto con <strong>Pro</strong> (in un periodo: 16 richieste al mese)</li>
+</ul>
+</div>
+<div class="trucco">È la cosa che quasi nessuno tocca. Spostate il cursore su <b>High</b> e lasciatelo lì.</div>
+</section>
+<section id="il-ricerca-web-e-deep-research" class="slide level2">
+<h2>il <strong>+</strong>: ricerca web e Deep research</h2>
+<p><a href="https://enricotoffalini.github.io/blog/posts/gpt-edu/#strumenti-ricerca-web-e-deep-research" target="_blank" rel="noopener noreferrer" class="media-link" title="Apri la sezione pertinente della guida in una nuova scheda"><img alt="06 strumenti" class="shot" src="figures/06-strumenti.png" style="max-height: 480px;"></a></p>
+<div class="small">
+<ul>
+<li><strong>Web search</strong>: fonti aggiornate, con link</li>
+<li><strong>Deep research</strong>: lavora per minuti, consulta decine di fonti, restituisce un <strong>report con citazioni</strong></li>
+</ul>
+</div>
+<div class="trucco">Deep research prima fa domande: rispondete con cura, il risultato dipende da lì. E le fonti scientifiche controllatele <b>una per una</b>.</div>
+</section>
+<section id="scrivete-i-connettori" class="slide level2">
+<h2>scrivete @: i connettori</h2>
+<a href="https://enricotoffalini.github.io/blog/posts/gpt-edu/#connettori-gmail-calendar-github-drive" target="_blank" rel="noopener noreferrer" class="media-link" title="Apri la sezione pertinente della guida in una nuova scheda"><img alt="07 connettori" class="shot" src="figures/07-connettori.png" style="max-height: 300px;"></a>
+<p class="cap">
+digitando <b>@</b> compaiono skill e plugin collegati (qui filtrati con “g”)
+</p>
+<div class="prompt">
+<span class="citation" data-cites="Gmail">@Gmail</span> riassumimi le mail della settimana che richiedono una mia risposta, in ordine di urgenza.
+</div>
+<div class="prompt">
+<span class="citation" data-cites="Gmail">@Gmail</span> trova le mail sul progetto X degli ultimi tre mesi e ricostruiscimi cosa abbiamo deciso.
+</div>
+<div class="prompt">
+<span class="citation" data-cites="Google">@Google</span> Calendar quando ho due ore libere la prossima settimana per una riunione?
+</div>
+<div class="prompt">
+<span class="citation" data-cites="GitHub">@GitHub</span> cosa è cambiato nella repository Y nell’ultimo mese?
+</div>
+</section>
+<section id="dove-si-attivano-la-pagina-plugins" class="slide level2">
+<h2>dove si attivano: la pagina Plugins</h2>
+<a href="https://enricotoffalini.github.io/blog/posts/gpt-edu/#connettori-gmail-calendar-github-drive" target="_blank" rel="noopener noreferrer" class="media-link" title="Apri la sezione pertinente della guida in una nuova scheda"><img alt="11 plugins" class="shot" src="figures/11-plugins.png" style="max-height: 560px;"></a>
+<p class="cap">
+a sinistra quelli installati, a destra il catalogo
+</p>
+<div class="trucco">Controllate sempre prima che invii o modifichi qualcosa. Quello che legge passa dai server di OpenAI: attenzione ai dati sensibili.</div>
+</section>
+<section id="progetti-contesti-delimitati-con-fonti-e-istruzioni" class="slide level2">
+<h2>progetti: contesti delimitati con fonti e istruzioni</h2>
+<div class="columns">
+<div class="column" style="width:40%;">
+<a href="https://enricotoffalini.github.io/blog/posts/gpt-edu/#progetti-contesto-e-fonti-che-restano" target="_blank" rel="noopener noreferrer" class="media-link" title="Apri la sezione pertinente della guida in una nuova scheda"><img alt="08 progetto" class="shot" src="figures/08-progetto.png" style="max-height: 440px;"></a>
+<p class="cap">
+fonti ancora vuote: un’occasione sprecata
+</p>
+</div><div class="column" style="width:30%;">
+<a href="https://enricotoffalini.github.io/blog/posts/gpt-edu/#progetti-contesto-e-fonti-che-restano" target="_blank" rel="noopener noreferrer" class="media-link" title="Apri la sezione pertinente della guida in una nuova scheda"><img alt="10 fonti" class="shot" src="figures/10-fonti.png" style="max-height: 340px;"></a>
+<p class="cap">
+<i>Add sources</i>: file, testo, Drive
+</p>
+</div><div class="column" style="width:30%;">
+<a href="https://enricotoffalini.github.io/blog/posts/gpt-edu/#progetti-contesto-e-fonti-che-restano" target="_blank" rel="noopener noreferrer" class="media-link" title="Apri la sezione pertinente della guida in una nuova scheda"><img alt="09 progetto impostazioni" class="shot" src="figures/09-progetto-impostazioni.png" style="max-height: 340px;"></a>
+<p class="cap">
+<i>Project settings</i>: istruzioni e memoria separata
+</p>
+</div></div>
+<div class="trucco">Non solo cartelle per le chat. Es.: <b>revisione di un articolo</b> (manoscritto + linee guida come fonti) · <b>studenti di tesi</b> (regolamento e scadenze) · <b>un corso</b> (programma, slide, domande d'esame).</div>
+</section>
+<section id="per-andare-oltre" class="slide level2">
+<h2>per andare oltre</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<a href="https://enricotoffalini.github.io/blog/posts/gpt-edu/#per-andare-oltre-skill-attivit%C3%A0-pianificate-agenti" target="_blank" rel="noopener noreferrer" class="media-link" title="Apri la sezione pertinente della guida in una nuova scheda"><img alt="13 scheduled" class="shot" src="figures/13-scheduled.png" style="max-height: 300px;"></a>
+<p class="cap">
+<b>attività pianificate</b>: la stessa richiesta a intervalli regolari
+</p>
+<div class="prompt" style="font-size: 0.55em;">
+ogni mattina: <span class="citation" data-cites="Gmail">@Gmail</span> guarda le mail arrivate da ieri e dimmi cosa richiede una mia risposta o contiene una scadenza
+</div>
+</div><div class="column" style="width:50%;">
+<a href="https://github.com/EnricoToffalini/ai-skills" target="_blank" rel="noopener noreferrer" class="media-link" title="Apri le mie skill su GitHub in una nuova scheda"><img alt="12 skills" class="shot" src="figures/12-skills.png" style="max-height: 300px;"></a>
+<p class="cap">
+<b>skill</b>: le stesse di Codex e Claude (→ parte 3)
+</p>
+<a href="https://enricotoffalini.github.io/blog/posts/gpt-edu/#per-andare-oltre-skill-attivit%C3%A0-pianificate-agenti" target="_blank" rel="noopener noreferrer" class="media-link" title="Apri la sezione pertinente della guida in una nuova scheda"><img alt="14 agents" class="shot" src="figures/14-agents.png" style="max-height: 150px; margin-top: 0.4em;"></a>
+<p class="cap">
+<b>agenti</b> condivisibili nella directory di ateneo
+</p>
+</div></div>
+</section>
+<section id="e-soprattutto-edu-include-codex" class="slide level2">
+<h2>e soprattutto: Edu include Codex</h2>
+<div class="big grad" style="font-size: 1.6em; margin-top: 0.4em;">
+Chat per ordinaria amministrazione.<br>Codex per sviluppare progetti.
+</div>
+<div class="small" style="margin-top: 1em;">
+<ul>
+<li>stesso login di ChatGPT Edu: <code>codex</code> → <em>Sign in with ChatGPT</em></li>
+<li>tutto quello della parte 1, con il vostro account di ateneo</li>
+<li>il browser per Codex, con Edu, è disattivato dall’ateneo</li>
+</ul>
+</div>
+<div class="trucco">Il credito Work/Codex è quello che finisce: <b>non sprecatelo in Work</b> per cose che una Chat a <i>High</i> risolve.</div>
+<!-- ============================ PARTE 3 ============================ -->
+</section></section>
+<section>
+<section id="section-5" class="title-slide slide level1 dark center" data-background-gradient="radial-gradient(1320px 924px at 10% 0%, rgba(255,90,31,0.32), transparent 65%), radial-gradient(1452px 1056px at 95% 100%, rgba(124,58,237,0.42), transparent 65%), radial-gradient(700px 500px at 60% 40%, rgba(230,35,126,0.14), transparent 70%), linear-gradient(#0d1017, #0d1017)">
+<h1></h1>
+<div class="act-num">
+Parte 3
+</div>
+<div class="big">
+skill
+</div>
+<p class="muted">
+come smettere di correggere sempre le stesse cose
+</p>
+</section>
+<section id="vi-suona-familiare" class="slide level2">
+<h2>vi suona familiare?</h2>
+<div class="prompt">
+quota di articoli con dati aperti, anno per anno
+</div>
+<div class="r-stack">
+<div class="fragment fade-out" data-fragment-index="1">
+<p class="small muted">
+senza skill: otto pacchetti tidyverse, anche se voi non li usate e manco vi piacciono (eccetto ggplot2 ❤️)
+</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href=""></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb4-2"><a href=""></a></span>
+<span id="cb4-3"><a href=""></a>pubs <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/publications.csv"</span>)</span>
+<span id="cb4-4"><a href=""></a></span>
+<span id="cb4-5"><a href=""></a>pubs <span class="sc">%&gt;%</span></span>
+<span id="cb4-6"><a href=""></a>  <span class="fu">mutate</span>(<span class="at">open_data =</span> <span class="fu">str_detect</span>(practices, <span class="st">"open_data"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb4-7"><a href=""></a>  <span class="fu">group_by</span>(year) <span class="sc">%&gt;%</span></span>
+<span id="cb4-8"><a href=""></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>(), <span class="at">quota =</span> <span class="fu">mean</span>(open_data)) <span class="sc">%&gt;%</span></span>
+<span id="cb4-9"><a href=""></a>  <span class="fu">ungroup</span>()</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="fragment" data-fragment-index="1">
+<p class="small muted">
+con la mia <a href="https://github.com/EnricoToffalini/ai-skills" target="_blank" rel="noopener noreferrer" title="Apri approfondimento in una nuova scheda">skill sul codice “<code>coding-style-enrico</code>”</a>
+</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a>pubs <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">"data/publications.csv"</span>)</span>
+<span id="cb5-2"><a href=""></a>pubs<span class="sc">$</span>open_data <span class="ot">=</span> <span class="fu">grepl</span>(<span class="st">"open_data"</span>, pubs<span class="sc">$</span>practices)</span>
+<span id="cb5-3"><a href=""></a><span class="fu">aggregate</span>(open_data <span class="sc">~</span> year, <span class="at">data =</span> pubs, <span class="at">FUN =</span> mean)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<p class="cap">
+esempio illustrativo · lo stesso vale per i report (Quarto!), le email (niente tre righe di convenevoli)…
+</p>
+</section>
+<section id="il-modello-non-sbaglia-vi-dà-la-risposta-media" class="slide level2">
+<h2>il modello non sbaglia: vi dà la risposta media</h2>
+<div class="small">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th></th>
+<th>senza skill</th>
+<th>con una skill</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><a href="https://github.com/EnricoToffalini/ai-skills" target="_blank" rel="noopener noreferrer"><strong>codice</strong></a></td>
+<td>tidyverse, funzioni ovunque</td>
+<td>R base, dall’alto in basso</td>
+</tr>
+<tr class="even">
+<td><a href="https://github.com/EnricoToffalini/ai-skills" target="_blank" rel="noopener noreferrer"><strong>report</strong></a></td>
+<td>un HTML bellissimo, sorgente chissà</td>
+<td>Quarto forever</td>
+</tr>
+<tr class="odd">
+<td><a href="https://github.com/EnricoToffalini/ai-skills" target="_blank" rel="noopener noreferrer"><strong>email</strong></a></td>
+<td>tre righe di convenevoli</td>
+<td>il punto, subito</td>
+</tr>
+<tr class="even">
+<td><a href="https://github.com/EnricoToffalini/ai-skills" target="_blank" rel="noopener noreferrer"><strong>calendario</strong></a></td>
+<td>“ho creato un evento”</td>
+<td>il calendario giusto col nome giusto</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="trucco">Correggete lo stesso output AI per la <b>terza volta</b>? Fatevi una skill!</div>
+</section>
+<section id="cosè-una-skill" class="slide level2">
+<h2>cos’è una skill</h2>
+<div class="columns">
+<div class="column" style="width:58%;">
+<p><a href="https://github.com/EnricoToffalini/ai-skills" target="_blank" rel="noopener noreferrer" class="media-link" title="Apri le mie skill su GitHub in una nuova scheda"><img alt="01 skill md" class="shot" src="figures/01-skill-md.png" style="max-height: 540px;"></a></p>
+</div><div class="column" style="width:42%;">
+<div class="small">
+<ul>
+<li>una <strong>cartella</strong> con un <code>SKILL.md</code></li>
+<li>in testa: <strong>nome</strong> e <strong>descrizione</strong> (quando usarla)</li>
+<li>sotto: regole, in testo libero</li>
+<li>accanto: riferimenti, modelli, script</li>
+<li><a href="https://agentskills.io" target="_blank" rel="noopener noreferrer"><strong>standard aperto</strong></a>: Claude e ChatGPT/Codex, chat e agenti</li>
+</ul>
+</div>
+</div></div>
+</section>
+<section id="perché-se-ne-possono-avere-tante" class="slide level2">
+<h2>perché se ne possono avere tante</h2>
+<p>Cosa finisce caricato nel contesto</p>
+<div class="tier t1"><b>1 · nome e descrizione</b> di tutte le skill <span class="tok">sempre, poche righe</span></div>
+<div class="tier t2 fragment"><b>2 · <code>SKILL.md</code></b> completo <span class="tok">solo se la richiesta corrisponde</span></div>
+<div class="tier t3 fragment"><b>3 · i file in <code>references/</code></b>, <b><code>scripts/</code></b>, ecc. <span class="tok">se servono</span></div>
+<a href="https://enricotoffalini.github.io/blog/posts/skills/#cos%C3%A8-una-skill" target="_blank" rel="noopener noreferrer" title="Apri la sezione pertinente in una nuova scheda" class="panel-link trucco fragment">La <b>descrizione</b> è la parte più importante: decide se la skill verrà usata. Dite <b>cosa</b> fa e <b>quando</b>, con le parole che usereste nelle richieste.</a>
+</section>
+<section id="skill-istruzioni-memoria-cosa-cambia" class="slide level2">
+<h2>skill, istruzioni, memoria: cosa cambia</h2>
+<div class="small">
+<table class="caption-top">
+<colgroup>
+<col style="width: 36%">
+<col style="width: 27%">
+<col style="width: 36%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>vale per</th>
+<th>limite</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>istruzioni personalizzate</strong></td>
+<td>tutte le conversazioni</td>
+<td>brevi e generiche; sempre attive</td>
+</tr>
+<tr class="even">
+<td><strong>memoria</strong> automatica</td>
+<td>tutte le conversazioni</td>
+<td>decide l’AI cosa ricordare</td>
+</tr>
+<tr class="odd">
+<td><strong>istruzioni di progetto</strong> (progetti su chat, <code>AGENTS.md</code> per agents)</td>
+<td>un progetto</td>
+<td>da scrivere per ogni progetto</td>
+</tr>
+<tr class="even">
+<td><strong>skill</strong></td>
+<td>un <strong>tipo di compito</strong></td>
+<td>da scrivere con cura una volta sola</td>
+</tr>
+</tbody>
+</table>
+</div>
+<a href="https://github.com/EnricoToffalini/ai-skills" target="_blank" rel="noopener noreferrer" title="Apri approfondimento in una nuova scheda" class="panel-link principio">Una skill è legata a <b>che tipo di compito</b> state chiedendo, non a <b>dove</b>: quella sul codice R si attiva quando si scrive codice R, in qualsiasi progetto e con qualsiasi strumento.</a>
+</section>
+<section id="section-6" class="slide level2 dark" data-background-gradient="radial-gradient(1320px 924px at 10% 0%, rgba(255,90,31,0.32), transparent 65%), radial-gradient(1452px 1056px at 95% 100%, rgba(124,58,237,0.42), transparent 65%), radial-gradient(700px 500px at 60% 40%, rgba(230,35,126,0.14), transparent 70%), linear-gradient(#0d1017, #0d1017)">
+<h2></h2>
+<p><span class="magic-mark" aria-hidden="true">🪄</span></p>
+<p>
+Avevo chiesto solo <i>“un breve report Quarto”</i>. Codex si va a leggere <b>da solo</b> la mia skill sui report.
+</p>
+<a href="https://github.com/EnricoToffalini/ai-skills" target="_blank" rel="noopener noreferrer" class="media-link" title="Apri le mie skill su GitHub in una nuova scheda"><img alt="04 codex skill crop" class="shot" src="figures/04-codex-skill-crop.png" style="max-height: 400px;"></a>
+<p class="cap">
+da terminale: <code>Ran Get-Content … reporting-style-enrico/SKILL.md</code>
+</p>
+</section>
+<section id="lo-stesso-dallapp" class="slide level2">
+<h2>lo stesso, dall’app</h2>
+<a href="https://github.com/EnricoToffalini/ai-skills" target="_blank" rel="noopener noreferrer" class="media-link" title="Apri le mie skill su GitHub in una nuova scheda"><img alt="app codex 08 domanda" class="shot" src="figures/app-codex-08-domanda.png" style="max-height: 620px;"></a>
+<p class="cap">
+prima la skill (riga <i>Ran Get-Content … SKILL.md</i>), poi direttamente il piano: stavolta nessuna domanda
+</p>
+</section>
+<section id="dove-si-mettono" class="slide level2">
+<h2>dove si mettono</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<a href="https://enricotoffalini.github.io/blog/posts/skills/#dove-si-usano-chat-e-agenti" target="_blank" rel="noopener noreferrer" class="media-link" title="Apri la sezione pertinente della guida in una nuova scheda"><img alt="02 claude skills" class="shot" src="figures/02-claude-skills.png" style="max-height: 330px;"></a>
+<p class="cap">
+Claude, <i>Personalizzazione → Competenze</i>
+</p>
+</div><div class="column" style="width:50%;">
+<a href="https://enricotoffalini.github.io/blog/posts/skills/#dove-si-usano-chat-e-agenti" target="_blank" rel="noopener noreferrer" class="media-link" title="Apri la sezione pertinente della guida in una nuova scheda"><img alt="03 chatgpt skills" class="shot" src="figures/03-chatgpt-skills.png" style="max-height: 330px;"></a>
+<p class="cap">
+ChatGPT Edu, pagina <i>Skills</i>, poi <b>@</b>
+</p>
+</div></div>
+<div class="small">
+<table class="caption-top">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>strumento</th>
+<th>cartella delle skill</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Claude Code</strong></td>
+<td><code>~/.claude/skills/</code> (tutti i progetti) · <code>.claude/skills/</code> (un progetto)</td>
+</tr>
+<tr class="even">
+<td><strong>Codex</strong></td>
+<td><code>~/.codex/skills/</code> · vale anche per l’app</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="trucco">Non serve richiamarle: si attivano da sole. Se una conta davvero, chiamatela per nome: <code>/nome-skill</code> o <b>@</b>.</div>
+</section>
+<section id="oltre-lo-stile-condensare-unexpertise" class="slide level2">
+<h2>oltre lo stile: condensare un’expertise</h2>
+<div class="columns">
+<div class="column" style="width:55%;">
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb6-1"><a href=""></a><span class="co">---</span></span>
+<span id="cb6-2"><a href=""></a><span class="an">name:</span><span class="co"> cfa-lavaan</span></span>
+<span id="cb6-3"><a href=""></a><span class="an">description:</span><span class="co"> Run and report CFA and measurement</span></span>
+<span id="cb6-4"><a href=""></a><span class="co">  invariance in R with lavaan. Use when the user</span></span>
+<span id="cb6-5"><a href=""></a><span class="co">  asks to fit or report CFA models, test</span></span>
+<span id="cb6-6"><a href=""></a><span class="co">  invariance across groups, or check the factor</span></span>
+<span id="cb6-7"><a href=""></a><span class="co">  structure of a questionnaire.</span></span>
+<span id="cb6-8"><a href=""></a><span class="co">---</span></span>
+<span id="cb6-9"><a href=""></a></span>
+<span id="cb6-10"><a href=""></a><span class="ss">- </span>Ordinal items (&lt; 5 categories): WLSMV,</span>
+<span id="cb6-11"><a href=""></a>  ordered = TRUE. Otherwise MLR + FIML.</span>
+<span id="cb6-12"><a href=""></a><span class="ss">- </span>Report chi-square, CFI, TLI, RMSEA (90% CI), SRMR.</span>
+<span id="cb6-13"><a href=""></a><span class="ss">- </span>Never add residual covariances only to</span>
+<span id="cb6-14"><a href=""></a>  improve fit without a justification.</span>
+<span id="cb6-15"><a href=""></a>For reporting tables, read references/reporting.md.</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p class="cap">
+<a href="https://enricotoffalini.github.io/blog/posts/skills/#oltre-lo-stile-condensare-unexpertise" target="_blank" rel="noopener noreferrer" title="Apri la sezione pertinente in una nuova scheda">scheletro semplificato e altri esempi</a>
+</p>
+</div><div class="column" style="width:45%;">
+<div class="small">
+<p>Altre idee per il lab:</p>
+<ul>
+<li><strong>potenza</strong> via simulazione, secondo uno schema</li>
+<li><strong>scoring</strong> di uno strumento, con le norme</li>
+<li><strong>meta-analisi</strong>, dalla codifica al forest plot</li>
+<li><strong>revisione</strong> di manoscritti con una checklist</li>
+<li><strong>quiz</strong> importabili su Moodle</li>
+<li>procedure di <strong>tesi e tirocini</strong></li>
+</ul>
+</div>
+<a href="https://github.com/EnricoToffalini/ai-skills" target="_blank" rel="noopener noreferrer" title="Apri approfondimento in una nuova scheda" class="panel-link principio">Una repository comune di skill: un <b>manuale di laboratorio</b> che l'AI applica.</a>
+</div></div>
+</section>
+<section id="scriverne-una-sei-trucchi" class="slide level2">
+<h2>scriverne una: sei trucchi</h2>
+<div class="small">
+<ol type="1">
+<li><strong>partite da una frustrazione</strong>, non da un documento completo</li>
+<li><strong>curate la descrizione</strong>: cosa fa e <strong>quando</strong> usarla</li>
+<li><strong>concreti</strong>: “usa <code>=</code> per l’assegnazione”, non “scrivi codice chiaro”</li>
+<li>dite anche cosa <strong>non</strong> fare (“non cancellare mai eventi”)</li>
+<li><code>SKILL.md</code> <strong>corto</strong>; i dettagli in file a parte</li>
+<li><strong>fatevi aiutare</strong>: <a href="https://github.com/anthropics/skills/blob/main/skills/skill-creator/SKILL.md" target="_blank" rel="noopener noreferrer"><em>skill-creator</em></a>, oppure date all’agente il vostro codice o le vostre email e chiedete di ricavarne le convenzioni, o di <strong>intervistarvi</strong></li>
+</ol>
+</div>
+<a href="https://github.com/EnricoToffalini/ai-skills" target="_blank" rel="noopener noreferrer" title="Apri approfondimento in una nuova scheda" class="panel-link trucco">Poi usatele e rivedetele: ogni volta che l'AI sbaglia nonostante la skill, la regola mancava o era scritta male. Tenetele sotto Git.</a>
+</section>
+<section id="le-mie-da-cui-partire" class="slide level2">
+<h2>le mie, da cui partire</h2>
+<a href="https://github.com/EnricoToffalini/ai-skills" target="_blank" rel="noopener noreferrer" class="media-link" title="Apri le mie skill su GitHub in una nuova scheda"><img alt="12 skills" class="shot" src="figures/12-skills.png" style="max-height: 480px;"></a>
+<p class="cap">
+<a href="https://github.com/EnricoToffalini/ai-skills" target="_blank" rel="noopener noreferrer">github.com/EnricoToffalini/ai-skills</a> · codice, report, scrittura, calendario, FAIR check
+</p>
+<a href="https://github.com/EnricoToffalini/ai-skills" target="_blank" rel="noopener noreferrer" title="Apri approfondimento in una nuova scheda" class="panel-link trucco">Personali (alcune personalissime: gli ID dei miei calendari). Non copiatele così come sono: usatele come modello. E le skill altrui <b>leggetele prima</b>: girano con i vostri permessi.</a>
+<!-- ============================ CHIUSURA ============================ -->
+</section></section>
+<section>
+<section id="ultime-cose" class="title-slide slide level1 dark center" data-background-gradient="radial-gradient(1320px 924px at 10% 0%, rgba(255,90,31,0.32), transparent 65%), radial-gradient(1452px 1056px at 95% 100%, rgba(124,58,237,0.42), transparent 65%), radial-gradient(700px 500px at 60% 40%, rgba(230,35,126,0.14), transparent 70%), linear-gradient(#0d1017, #0d1017)">
+<h1></h1>
+<div class="act-num">
+Extra
+</div>
+<div class="big">
+ultime cose
+</div>
+<p class="muted">
+costi, precauzioni e da dove partire
+</p>
+</section>
+<section id="quanto-costa" class="slide level2">
+<h2>quanto costa</h2>
+<div class="columns">
+<div class="column" style="width:55%;">
+<div class="small">
+<ul>
+<li><a href="https://enricotoffalini.github.io/blog/posts/gpt-edu/" target="_blank" rel="noopener noreferrer"><strong>ChatGPT Edu</strong></a> (UniPD): ~8.6 € al mese, Codex incluso</li>
+<li><a href="https://chatgpt.com/pricing/" target="_blank" rel="noopener noreferrer"><strong>ChatGPT Plus</strong></a>: ~20 $ + IVA al mese, Codex incluso</li>
+<li><a href="https://claude.com/pricing" target="_blank" rel="noopener noreferrer"><strong>Claude Pro</strong></a>: ~22 € al mese, Claude Code incluso</li>
+<li>limiti su <strong>5 ore</strong> e sulla <strong>settimana</strong>; poi l’agente si ferma</li>
+<li>per me una finestra di 5 ore basta per parecchi compiti</li>
+</ul>
+<p class="muted">
+ottobre 2026; cambia spesso
+</p>
+</div>
+</div><div class="column" style="width:45%;">
+<p><a href="https://enricotoffalini.github.io/blog/posts/agenti-cli/claude-code.html#controllare-lutilizzo-residuo" target="_blank" rel="noopener noreferrer" class="media-link" title="Apri la sezione pertinente della guida in una nuova scheda"><img alt="claude 04 usage" class="shot" src="figures/claude-04-usage.png" style="max-height: 420px;"></a></p>
+</div></div>
+<div class="trucco">
+<ul>
+<li> Se potete, fatevi dare licenza <b>GPT Edu</b>! e iniziate con <b>Codex</b>.</li> 
+<li> Volete (anche) pagare di tasca vostra? Secondo me, <b>Claude Pro</b>.</li>
+</ul>
+</div>
+</section>
+<section id="precauzioni" class="slide level2">
+<h2>precauzioni</h2>
+<div>
+<ul>
+<li><a href="https://enricotoffalini.github.io/blog/posts/tutorial-git-quarto/" target="_blank" rel="noopener noreferrer"><strong>Git</strong></a>, o almeno una copia: l’agente può cancellare file</li>
+<li><strong>dati sensibili</strong>: quello che legge va sui server del fornitore (piani per aziende tipo GPT Edu danno garanzie)</li>
+<li><strong>autonomia graduale</strong>: prima piano e approvazione, poi il resto</li>
+<li><a href="https://enricotoffalini.github.io/blog/posts/skills/#precauzioni" target="_blank" rel="noopener noreferrer"><strong>skill e connettori altrui</strong></a>: leggerli prima (girano con i vostri permessi)</li>
+<li><strong>responsabilità</strong>: codice che gira ≠ numeri giusti</li>
+</ul>
+</div>
+<div class="fragment inchiostro">
+Mai fidarsi di qualcosa che pensa da solo, se non vedi dove tiene il cervello.
+</div>
+</section>
+<section id="domani-mattina" class="slide level2">
+<h2>domani mattina</h2>
+<div>
+<ol type="1">
+<li>terminale <strong>in una cartella di progetto</strong> (meglio se con Git), poi <code>codex</code> o <code>claude</code></li>
+<li>prima un <strong>piano</strong>; poi leggete cosa fa</li>
+<li>un <code>AGENTS.md</code> di tre righe: cosa c’è, cosa non toccare, come si fa il render</li>
+<li>ChatGPT Edu: <strong>Chat a High</strong>, <b>@</b> per i connettori, progetti con fonti</li>
+<li>terza volta che correggete la stessa cosa? <strong>skill</strong></li>
+</ol>
+</div>
+</section>
+<section id="per-saperne-di-più" class="slide level2">
+<h2>per saperne di più</h2>
+<div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.5em; margin-top: 0.8em;">
+<div class="qr">
+<a href="https://enricotoffalini.github.io/blog/posts/serie-ai/" target="_blank" rel="noopener noreferrer" class="media-link" title="Apri la guida e i materiali in una nuova scheda"><img alt="qr serie" src="figures/qr-serie.svg"></a><br><a href="https://enricotoffalini.github.io/blog/posts/serie-ai/" target="_blank" rel="noopener noreferrer">la serie</a>
+</div>
+<div class="qr">
+<a href="https://enricotoffalini.github.io/blog/posts/agenti-cli/" target="_blank" rel="noopener noreferrer" class="media-link" title="Apri la guida e i materiali in una nuova scheda"><img alt="qr agenti" src="figures/qr-agenti.svg"></a><br><a href="https://enricotoffalini.github.io/blog/posts/agenti-cli/" target="_blank" rel="noopener noreferrer">1 · agenti in locale</a>
+</div>
+<div class="qr">
+<a href="https://enricotoffalini.github.io/blog/posts/gpt-edu/" target="_blank" rel="noopener noreferrer" class="media-link" title="Apri la guida e i materiali in una nuova scheda"><img alt="qr gptedu" src="figures/qr-gptedu.svg"></a><br><a href="https://enricotoffalini.github.io/blog/posts/gpt-edu/" target="_blank" rel="noopener noreferrer">2 · ChatGPT Edu</a>
+</div>
+<div class="qr">
+<a href="https://enricotoffalini.github.io/blog/posts/skills/" target="_blank" rel="noopener noreferrer" class="media-link" title="Apri la guida e i materiali in una nuova scheda"><img alt="qr skills" src="figures/qr-skills.svg"></a><br><a href="https://enricotoffalini.github.io/blog/posts/skills/" target="_blank" rel="noopener noreferrer">3 · skill</a>
+</div>
+<div class="qr">
+<a href="https://github.com/EnricoToffalini/ai-skills" target="_blank" rel="noopener noreferrer" class="media-link" title="Apri le mie skill su GitHub in una nuova scheda"><img alt="qr aiskills" src="figures/qr-aiskills.svg"></a><br><a href="https://github.com/EnricoToffalini/ai-skills" target="_blank" rel="noopener noreferrer">le mie skill</a>
+</div>
+</div>
+<p class="center small" style="margin-top: 1em;">
+<a href="https://opensciencedpg.github.io/OS-promotion/" target="_blank" rel="noopener noreferrer">Open Science DPG</a> · guide passo-passo a <a href="https://enricotoffalini.github.io/blog/posts/agenti-cli/claude-code.html" target="_blank" rel="noopener noreferrer">Claude Code</a>, <a href="https://enricotoffalini.github.io/blog/posts/agenti-cli/codex.html" target="_blank" rel="noopener noreferrer">Codex</a> e <a href="https://enricotoffalini.github.io/blog/posts/agenti-cli/app-desktop.html" target="_blank" rel="noopener noreferrer">app desktop</a>
+</p>
+
+</section></section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+<p>Memory &amp; Learning · Lab meeting · 4 novembre 2026</p>
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="index_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="index_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="index_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="index_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="index_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="index_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="index_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="index_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="index_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="index_files/libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': false,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: true,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'fade',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'fast',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1600,
+
+        height: 900,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 6.0e-2,
+
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <!-- Alone discreto che segue il mouse: schiarente sulle slide scure, ombra leggera sulle chiare -->
+    <div id="alone-mouse" aria-hidden="true"></div>
+    <script>
+    (function () {
+      var el = document.getElementById('alone-mouse');
+      if (!el || window.matchMedia('(pointer: coarse)').matches) return;
+      var x = -9999, y = -9999, pending = false;
+      function aggiornaTono() {
+        var s = window.Reveal && Reveal.getCurrentSlide && Reveal.getCurrentSlide();
+        var scura = !!s && (s.classList.contains('dark') || s.id === 'title-slide');
+        el.classList.toggle('scura', scura);
+      }
+      document.addEventListener('mousemove', function (e) {
+        x = e.clientX; y = e.clientY;
+        el.classList.add('attivo');
+        if (!pending) {
+          pending = true;
+          requestAnimationFrame(function () {
+            var bounds = el.getBoundingClientRect();
+            el.style.setProperty('--ax', (x - bounds.left) + 'px');
+            el.style.setProperty('--ay', (y - bounds.top) + 'px');
+            pending = false;
+          });
+        }
+      }, { passive: true });
+      document.documentElement.addEventListener('mouseleave', function () { el.classList.remove('attivo'); });
+      function aggancia() {
+        if (!window.Reveal || !Reveal.on) return setTimeout(aggancia, 100);
+        function preparaSfondo() {
+          var sfondi = document.querySelector('.reveal .backgrounds');
+          if (sfondi) sfondi.appendChild(el);
+          aggiornaTono();
+        }
+        Reveal.on('ready', preparaSfondo);
+        Reveal.on('slidechanged', aggiornaTono);
+        preparaSfondo();
+      }
+      aggancia();
+    })();
+    </script>
+    <!-- Magia al click: a ogni click succede qualcosa di piccolo, strano e imprevedibile -->
+    <style>
+    #magia-click { position: fixed; inset: 0; pointer-events: none; z-index: 2147483000; overflow: hidden; }
+    #magia-click > * { position: absolute; left: 0; top: 0; pointer-events: none; will-change: transform, opacity; }
+    #magia-click .scintilla { width: 12px; height: 12px; margin: -6px 0 0 -6px; border-radius: 50%; }
+    #magia-click .stella { font-size: 28px; line-height: 1; margin: -14px 0 0 -14px; }
+    #magia-click .emoji { font-size: 64px; line-height: 1; margin: -32px 0 0 -32px; }
+    #magia-click .incantesimo {
+      font: italic 700 42px/1 Georgia, "Times New Roman", serif; white-space: nowrap; letter-spacing: 0.04em;
+      background: linear-gradient(90deg, #ff5a1f, #e6237e 55%, #7c3aed); -webkit-background-clip: text; background-clip: text; color: transparent;
+      filter: drop-shadow(0 0 6px rgba(255,255,255,0.9)) drop-shadow(0 0 14px rgba(255,170,90,0.55));
+    }
+    #magia-click .anello { width: 20px; height: 20px; margin: -10px 0 0 -10px; border-radius: 50%; border: 3px solid #e6237e; box-shadow: 0 0 18px rgba(230,35,126,0.6), inset 0 0 12px rgba(124,58,237,0.5); }
+    #magia-click .fumo { width: 60px; height: 60px; margin: -30px 0 0 -30px; border-radius: 50%; background: radial-gradient(circle, rgba(200,190,220,0.75), rgba(200,190,220,0) 70%); filter: blur(4px); }
+    #magia-click .volatile { font-size: 76px; line-height: 1; }
+    @media print { #magia-click { display: none; } }
+    </style>
+    <div id="magia-click" aria-hidden="true"></div>
+    <script>
+    (function () {
+      var strato = document.getElementById('magia-click');
+      if (!strato || !Element.prototype.animate) return;
+      var colori = ['#ff5a1f', '#e6237e', '#7c3aed', '#ffd166', '#0d9488', '#ffffff'];
+      var stelle = ['✦', '✧', '★', '✨', '⋆'];
+      var creature = ['🦉', '🦇', '🐈‍⬛', '🐉', '🐌', '🦋', '🕷️'];
+      var oggetti = ['🪄', '🔮', '🧹', '⚡', '🕯️', '📜', '🗝️', '🌙', '💫', '🫖'];
+      var formule = ['Lumos!', 'Accio CSV!', 'Wingardium Leviosa!', 'Riproducibilis!', 'Expecto Agentum!',
+        'Alohomora!', 'Evoca Codex!', 'Finite p-hacking!', 'Rscriptus Maxima!', 'Obliviate cache!',
+        'Reparo codice!', 'Revelio errori!', 'Prior Incantato!', 'Accio skill!', 'Nox!'];
+      var rnd = function (a, b) { return a + Math.random() * (b - a); };
+      var DURATA = 0.6; // fattore di durata degli effetti: più basso = svaniscono prima
+      var pick = function (v) { return v[Math.floor(Math.random() * v.length)]; };
+
+      function crea(cls, x, y, testo) {
+        var el = document.createElement('div');
+        el.className = cls;
+        if (testo) el.textContent = testo;
+        el.style.transform = 'translate(' + x + 'px,' + y + 'px)';
+        strato.appendChild(el);
+        return el;
+      }
+      function anima(el, frames, opt) {
+        opt.duration *= DURATA; if (opt.delay) opt.delay *= DURATA;
+        var a = el.animate(frames, opt);
+        a.onfinish = function () { el.remove(); };
+        return a;
+      }
+      function T(x, y, extra) { return 'translate(' + x + 'px,' + y + 'px) ' + (extra || ''); }
+
+      // 1. Esplosione di scintille colorate
+      function scintille(x, y, n) {
+        n = n || 26;
+        for (var i = 0; i < n; i++) {
+          var el = crea('scintilla', x, y), ang = rnd(0, 2 * Math.PI), d = rnd(60, 190), c = pick(colori);
+          el.style.background = c; el.style.boxShadow = '0 0 10px ' + c;
+          anima(el, [
+            { transform: T(x, y, 'scale(1)'), opacity: 1 },
+            { transform: T(x + Math.cos(ang) * d, y + Math.sin(ang) * d + 40, 'scale(0.2)'), opacity: 0 }
+          ], { duration: rnd(600, 1100), easing: 'cubic-bezier(.15,.7,.3,1)' });
+        }
+      }
+      // 2. Pioggia di stelline che cadono
+      function stelline(x, y) {
+        for (var i = 0; i < 14; i++) {
+          var el = crea('stella', x, y, pick(stelle)), dx = rnd(-160, 160);
+          el.style.color = pick(colori);
+          anima(el, [
+            { transform: T(x, y, 'rotate(0) scale(0.3)'), opacity: 0 },
+            { transform: T(x + dx * 0.5, y - rnd(40, 110), 'rotate(180deg) scale(1.1)'), opacity: 1, offset: 0.35 },
+            { transform: T(x + dx, y + rnd(120, 260), 'rotate(' + rnd(360, 720) + 'deg) scale(0.5)'), opacity: 0 }
+          ], { duration: rnd(1200, 1800), easing: 'ease-in-out', delay: i * 25 });
+        }
+      }
+      // 3. Un oggetto magico che sale fluttuando
+      function oggetto(x, y) {
+        var el = crea('emoji', x, y, pick(oggetti)), dx = rnd(-60, 60);
+        anima(el, [
+          { transform: T(x, y, 'scale(0.2) rotate(-30deg)'), opacity: 0 },
+          { transform: T(x, y - 30, 'scale(1.3) rotate(10deg)'), opacity: 1, offset: 0.2 },
+          { transform: T(x + dx, y - 140, 'scale(1) rotate(-8deg)'), opacity: 1, offset: 0.7 },
+          { transform: T(x + dx * 1.5, y - 220, 'scale(0.6) rotate(20deg)'), opacity: 0 }
+        ], { duration: 1800, easing: 'ease-out' });
+        scintille(x, y, 10);
+      }
+      // 4. Una formula magica scritta nell'aria
+      function incantesimo(x, y) {
+        var el = crea('incantesimo', x, y, pick(formule));
+        var w = el.offsetWidth, x0 = Math.min(Math.max(x - w / 2, 10), innerWidth - w - 10);
+        anima(el, [
+          { transform: T(x0, y - 20, 'scale(0.6)'), opacity: 0, filter: 'blur(6px)' },
+          { transform: T(x0, y - 60, 'scale(1.05)'), opacity: 1, filter: 'blur(0)', offset: 0.2 },
+          { transform: T(x0, y - 80, 'scale(1)'), opacity: 1, offset: 0.75 },
+          { transform: T(x0, y - 130, 'scale(1.1)'), opacity: 0, filter: 'blur(4px)' }
+        ], { duration: 2200, easing: 'ease-out' });
+        scintille(x, y, 12);
+      }
+      // 5. Onde concentriche
+      function onde(x, y) {
+        for (var i = 0; i < 3; i++) {
+          var el = crea('anello', x, y);
+          el.style.borderColor = colori[i];
+          anima(el, [
+            { transform: T(x, y, 'scale(0.3)'), opacity: 0.9 },
+            { transform: T(x, y, 'scale(' + (9 + i * 3) + ')'), opacity: 0 }
+          ], { duration: 1100, delay: i * 140, easing: 'cubic-bezier(.2,.6,.3,1)' });
+        }
+      }
+      // 6. Una creatura attraversa lo schermo
+      function creatura(x, y) {
+        var el = crea('volatile', 0, 0, pick(creature)), sx = Math.random() < 0.5;
+        var x0 = sx ? -80 : innerWidth + 80, x1 = sx ? innerWidth + 80 : -80, flip = sx ? 'scaleX(-1)' : '';
+        var yy = Math.max(60, Math.min(innerHeight - 60, y + rnd(-80, 80)));
+        anima(el, [
+          { transform: T(x0, yy, flip) },
+          { transform: T((x0 + x1) * 0.25, yy - 60, flip + ' rotate(-6deg)') },
+          { transform: T((x0 + x1) * 0.5, yy + 20, flip + ' rotate(6deg)') },
+          { transform: T((x0 + x1) * 0.75, yy - 50, flip + ' rotate(-6deg)') },
+          { transform: T(x1, yy, flip) }
+        ], { duration: rnd(2200, 3200), easing: 'linear' });
+        scintille(x, y, 8);
+      }
+      // 7. Sbuffo di fumo: qualcosa è stato evocato... e svanisce
+      function fumo(x, y) {
+        for (var i = 0; i < 9; i++) {
+          var el = crea('fumo', x, y), dx = rnd(-70, 70), dy = rnd(-90, 10);
+          anima(el, [
+            { transform: T(x, y, 'scale(0.3)'), opacity: 0.9 },
+            { transform: T(x + dx, y + dy, 'scale(' + rnd(1.8, 3) + ')'), opacity: 0 }
+          ], { duration: rnd(900, 1500), easing: 'ease-out' });
+        }
+        var e = crea('emoji', x, y, pick(creature.concat(oggetti)));
+        anima(e, [
+          { transform: T(x, y, 'scale(0)'), opacity: 0 },
+          { transform: T(x, y - 10, 'scale(1.2)'), opacity: 1, offset: 0.3 },
+          { transform: T(x, y - 10, 'scale(1)'), opacity: 1, offset: 0.7 },
+          { transform: T(x, y - 10, 'scale(0)'), opacity: 0 }
+        ], { duration: 1400, easing: 'ease-in-out' });
+      }
+      // 8. Qualche elemento della slide trema, come scosso da un incantesimo
+      function tremito(x, y) {
+        var v = elementiSlide().sort(function () { return Math.random() - 0.5; }).slice(0, 2 + Math.floor(Math.random() * 3));
+        v.forEach(function (s) { s.animate([
+          { translate: '0 0', rotate: '0deg' }, { translate: '-6px 2px', rotate: '-0.4deg' },
+          { translate: '5px -2px', rotate: '0.4deg' }, { translate: '-3px 1px', rotate: '-0.2deg' },
+          { translate: '0 0', rotate: '0deg' }
+        ], { duration: 450, easing: 'ease-in-out' }); });
+        stelline(x, y);
+      }
+      // 9. I colori impazziscono per un attimo
+      function arcobaleno(x, y) {
+        var r = document.querySelector('.reveal');
+        if (r) r.animate([
+          { filter: 'hue-rotate(0deg) saturate(1)' }, { filter: 'hue-rotate(180deg) saturate(1.6)', offset: 0.4 },
+          { filter: 'hue-rotate(360deg) saturate(1)' }
+        ], { duration: 1000 * DURATA, easing: 'ease-in-out' });
+        onde(x, y);
+      }
+      // 10. Levitazione: l'elemento cliccato si solleva e torna giù
+      function levita(x, y, target) {
+        var t = target && target.closest && target.closest('.reveal .slides section img, .reveal .slides section h2, .reveal .slides section li, .reveal .slides section p, .reveal .slides section .term, .reveal .slides section blockquote');
+        if (!t || t.closest('pre, code')) return incantesimo(x, y);
+        t.animate([
+          { translate: '0 0', rotate: '0deg' }, { translate: '0 -28px', rotate: '-1.5deg', offset: 0.4 },
+          { translate: '0 -22px', rotate: '1.5deg', offset: 0.7 }, { translate: '0 0', rotate: '0deg' }
+        ], { duration: 1500 * DURATA, easing: 'ease-in-out' });
+        var el = crea('incantesimo', x, y, 'Wingardium Leviosa!'), w = el.offsetWidth;
+        var x0 = Math.min(Math.max(x - w / 2, 10), innerWidth - w - 10);
+        anima(el, [
+          { transform: T(x0, y - 40), opacity: 0 }, { transform: T(x0, y - 80), opacity: 1, offset: 0.25 },
+          { transform: T(x0, y - 120), opacity: 0 }
+        ], { duration: 1600, easing: 'ease-out' });
+      }
+      // Elementi visibili della slide corrente (per gli effetti che li muovono)
+      function elementiSlide() {
+        var s = window.Reveal && Reveal.getCurrentSlide && Reveal.getCurrentSlide();
+        if (!s) return [];
+        return Array.prototype.filter.call(s.querySelectorAll('h2, p, li, img, .term, blockquote, .prompt, table'), function (el) {
+          return !el.closest('.fragment:not(.visible), pre, aside') && el.offsetWidth > 0;
+        }).slice(0, 14);
+      }
+      // 11. Gli elementi della slide fanno un saltello, uno dopo l'altro
+      function danza(x, y) {
+        var v = elementiSlide();
+        if (!v.length) return onde(x, y);
+        v.forEach(function (el, i) {
+          el.animate([
+            { translate: '0 0', rotate: '0deg' }, { translate: '0 -16px', rotate: (i % 2 ? 1.5 : -1.5) + 'deg', offset: 0.45 },
+            { translate: '0 0', rotate: '0deg' }
+          ], { duration: 420, delay: i * 55, easing: 'ease-in-out' });
+        });
+        scintille(x, y, 8);
+      }
+      // 12. Lampo di colori: tre scatti rapidi di tinta
+      function lampo(x, y) {
+        var r = document.querySelector('.reveal');
+        if (r) r.animate([
+          { filter: 'none' }, { filter: 'hue-rotate(110deg) saturate(2)', offset: 0.2 },
+          { filter: 'hue-rotate(240deg) saturate(2.2)', offset: 0.45 }, { filter: 'hue-rotate(320deg) saturate(1.6) brightness(1.15)', offset: 0.7 },
+          { filter: 'none' }
+        ], { duration: 520, easing: 'steps(1, end)' });
+        scintille(x, y, 10);
+      }
+      // 13. La slide respira: un piccolo pulsare con una leggera torsione
+      function respiro(x, y) {
+        var s = document.querySelector('.reveal .slides');
+        if (s) s.animate([
+          { scale: '1', rotate: '0deg' }, { scale: '1.035', rotate: '-0.6deg', offset: 0.35 },
+          { scale: '0.99', rotate: '0.3deg', offset: 0.7 }, { scale: '1', rotate: '0deg' }
+        ], { duration: 650, easing: 'ease-in-out' });
+        onde(x, y);
+      }
+      // Rarissimo: tutto insieme
+      function jackpot(x, y) {
+        scintille(x, y, 60); onde(x, y); stelline(x, y);
+        setTimeout(function () { incantesimo(x, y); creatura(x, y); }, 250 * DURATA);
+      }
+
+      // arcobaleno e lampo compaiono due volte: escono più spesso
+      var magie = [scintille, stelline, oggetto, incantesimo, onde, creatura, fumo, tremito, arcobaleno, arcobaleno, levita, danza, lampo, lampo, respiro];
+      var ultima = null;
+      document.addEventListener('click', function (e) {
+        if (e.button !== 0 || !e.isTrusted) return;
+        var t = e.target;
+        if (t.closest && t.closest('.controls, .slide-menu, input, textarea, select, [contenteditable="true"]')) return;
+        if (Math.random() < 0.04) return jackpot(e.clientX, e.clientY);
+        var i;
+        do { i = Math.floor(Math.random() * magie.length); } while (magie[i] === ultima);
+        ultima = magie[i];
+        magie[i](e.clientX, e.clientY, t);
+      }, true);
+    })();
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copiato!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copiato!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+            const codeEl = trigger.previousElementSibling.cloneNode(true);
+            for (const childEl of codeEl.children) {
+              if (isCodeAnnotation(childEl)) {
+                childEl.remove();
+              }
+            }
+            return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp('/' + window.location.host + '/');
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+                // target, if specified
+                link.setAttribute("target", "_blank");
+                if (link.getAttribute("rel") === null) {
+                  link.setAttribute("rel", "noopener");
+                }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    
+
+</body></html>

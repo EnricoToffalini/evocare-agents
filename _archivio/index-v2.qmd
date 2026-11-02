@@ -1,0 +1,631 @@
+---
+title: "Fuori dalla chat"
+subtitle: "aka l'AI che lavora nelle vostre cartelle"
+date: "2026-11-04"
+date-format: "D MMMM YYYY"
+lang: it
+title-slide-attributes:
+  data-background-gradient: "radial-gradient(1000px 700px at 10% 0%, rgba(255,90,31,0.32), transparent 65%), radial-gradient(1100px 800px at 95% 100%, rgba(124,58,237,0.42), transparent 65%), radial-gradient(700px 500px at 60% 40%, rgba(230,35,126,0.14), transparent 70%), linear-gradient(#0d1017, #0d1017)"
+format:
+  revealjs:
+    theme: default
+    css: styles.css
+    width: 1600
+    height: 900
+    margin: 0.06
+    slide-number: c/t
+    hash: true
+    transition: fade
+    transition-speed: fast
+    controls: true
+    preview-links: false
+    link-external-newwindow: true
+    code-overflow: wrap
+footer: "Lab meeting · 4 novembre 2026"
+---
+
+<!--
+Struttura (target ~45 min), un solo deck (ex index + ex extra, archiviati in _archivio/):
+  Apertura   demo sul deposito DPG                      ~5 min
+  Atto 1     cose fatte: Open Science e altro, con backstage           ~15 min
+  Atto 2     come si lavora: installare, piano, permessi, modelli      ~12 min
+  Atto 3     skill e connettori, in pratica                             ~8 min
+  Chiusura   costi, precauzioni, domani mattina                         ~5 min
+Teoria ridotta al minimo: un solo cenno al ciclo, contesto = file.
+-->
+
+## {.dark background-gradient="radial-gradient(1000px 700px at 10% 0%, rgba(255,90,31,0.32), transparent 65%), radial-gradient(1100px 800px at 95% 100%, rgba(124,58,237,0.42), transparent 65%), radial-gradient(700px 500px at 60% 40%, rgba(230,35,126,0.14), transparent 70%), linear-gradient(#0d1017, #0d1017)"}
+
+<span class="magic-mark" aria-hidden="true">🪄</span>
+
+> *In questa cartella ci sono 14 depositi pubblici di articoli DPG, in zip. Per ognuno: estrailo in una copia, trova lo script R principale e fallo girare così com'è. Se si blocca, correggi il minimo indispensabile nella copia, mai negli originali. Alla fine fammi una tabella in esiti.csv: gira sì/no, cosa hai dovuto cambiare, cosa resta bloccato.*
+
+```{=html}
+<div class="term fragment"><span class="t">● Bash</span>  unzip 14 depositi → copie/   <span class="d">4 contengono altri zip: estraggo anche quelli</span>
+<span class="t">● Bash</span>  find *.R *.Rmd *.qmd   <span class="d">02, 06, 11: anche o solo Stata, MATLAB, jamovi</span>
+<span class="t">● Bash</span>  5 pacchetti mancanti → li installo in rlib/, la vostra libreria R non la tocco
+<span class="t">● Bash</span>  Rscript copie/09/…   <span class="e">cannot open file 'C:/Users/PC/Downloads/…'</span>
+<span class="t">● Edit</span>  copia 09   percorsi assoluti → relativi
+<span class="t">● Bash</span>  Rscript copie/12/…   <span class="e">Error: RStudio not running</span>
+<span class="t">● Edit</span>  copia 12   percorso fisso al posto di rstudioapi
+<span class="t">● Bash</span>  Rscript copie/13/…   <span class="e">Error in summarise(): `Sex` must be size 1, not 6.</span>
+<span class="t">● Edit</span>  copia 13   summarise( → reframe(
+<span class="d">  … altri depositi …</span>
+<span class="t">● Write</span> esiti.csv
+<span class="ok">Quasi tutti girano, molti solo dopo ritocchi minimi (percorsi, install.packages, versioni).
+Restano bloccati: 04 (oggetti mai definiti; le reti richiedono VOSviewer) e la power analysis
+di 13 (FamilyRank non disponibile per R 4.5). Dettagli in esiti.csv; originali intatti.</span></div>
+```
+
+::: notes
+Trascrizione ricomposta, non un'unica esecuzione. I primi passi (zip annidati, script non in R, 5 pacchetti installati in una libreria separata) vengono da una prova con claude -p del 1 novembre 2026 sui 14 zip di FAIR-test-DPG2025, interrotta per non consumare troppi token. Gli errori sono quelli emersi davvero nelle sessioni precedenti: report-fair-check-calderan.md (09 percorsi assoluti, 13 dplyr e FamilyRank) e Report-riproducibilita/data/problemi-codice.csv (12 rstudioapi, 04 oggetti non definiti e VOSviewer). Il bilancio finale è verosimile, non contato. Il punto da far passare: 14 cartelle, il vostro R, i vostri pacchetti, e alla fine un file. In chat non si fa. Non nominare gli articoli.
+:::
+
+## cosa è successo?
+
+:::: {.columns}
+::: {.column width="50%"}
+### in chat
+
+<div class="chat-line" style="justify-content: flex-start;">
+<span class="step">chiedi</span>→<span class="step">copi</span>→<span class="step you">incolli in RStudio</span>→<span class="step">errore</span>→<span class="step you">incolli l'errore</span>→<span class="step">…</span>
+</div>
+
+<p class="small muted" style="margin-top: 1em;">il copia-incolla lo fate voi</p>
+:::
+
+::: {.column width="50%" .fragment}
+### con un agente
+
+<div class="chat-line" style="justify-content: flex-start;">
+<span class="step you">chiedi</span>→<span class="step">legge</span>→<span class="step">scrive</span>→<span class="step">esegue</span>→<span class="step">sbaglia</span>→<span class="step">corregge</span>→<span class="step">…</span>→<span class="step you">verifichi</span>
+</div>
+
+<p class="small muted" style="margin-top: 1em;">voi entrate all'inizio e alla fine</p>
+:::
+::::
+
+<div class="principio fragment" style="margin-top: 1.5em;">
+Stesso modello della chat. Cambia che <b>lavora sui vostri file</b>, tutti, con il <b>vostro R</b>, ed <b>esegue</b>: non indovina i numeri, li calcola, guarda l'errore, corregge, e lascia il risultato su disco.
+</div>
+
+::: notes
+Unico momento "teorico". Non insistere: le slide seguenti lo mostrano.
+:::
+
+# {.dark background-gradient="radial-gradient(1000px 700px at 10% 0%, rgba(255,90,31,0.32), transparent 65%), radial-gradient(1100px 800px at 95% 100%, rgba(124,58,237,0.42), transparent 65%), radial-gradient(700px 500px at 60% 40%, rgba(230,35,126,0.14), transparent 70%), linear-gradient(#0d1017, #0d1017)"}
+
+<div class="act-num">Atto 1</div>
+<div class="big">cose fatte</div>
+<p class="muted">terza missione e Open Science al DPG, con un po' di backstage</p>
+
+## catalogo Open Science del DPG
+
+<iframe src="https://opensciencedpg.github.io/OS-promotion/" style="width: 100%; height: 640px; border: 1px solid #ddd; border-radius: 8px;"></iframe>
+<p class="cap"><a href="https://opensciencedpg.github.io/OS-promotion/" target="_blank" rel="noopener noreferrer">opensciencedpg.github.io/OS-promotion</a> · pratiche Open Science nelle pubblicazioni DPG, con sintesi divulgative</p>
+
+## backstage: il catalogo
+
+:::: {.columns}
+::: {.column width="50%"}
+<div class="small">
+
+Io metto i PDF in `inbox/` e scrivo:
+
+> *process inbox*
+
+L'agente, seguendo l'`AGENTS.md` della cartella:
+
+1. screening automatico in R (`pdftools`)
+2. legge **solo** i casi dubbi
+3. scrive un record YAML con **le evidenze** (dove, cosa)
+4. valida, rigenera il sito Quarto
+
+</div>
+:::
+::: {.column width="50%"}
+```yaml
+# records/<doi>/record.yml (schema semplificato)
+screening:
+  decision: include
+  review_mode: ordinary   # o "rapid"
+practices: [open-data, open-code]
+evidence:
+  - practice: open-data
+    where: "Data availability"
+    verification: verified
+summary_it: "…"
+```
+:::
+::::
+
+<div class="principio fragment">
+La memoria del progetto sta <b>su file</b> (record, registro, <code>AGENTS.md</code>), non nella chat: qualsiasi sessione, di qualsiasi agente, riparte da lì.
+</div>
+
+::: notes
+117 record al 1 novembre 2026. PDF mai caricati su servizi esterni; dopo la finalizzazione vengono cancellati da inbox. "Modalità rapida": accetta le dichiarazioni con link senza aprirli, e lo registra (verification: unverified). Controllare lo schema YAML mostrato contro un record reale prima del talk.
+:::
+
+## riproducibilità: 38 paper DPG
+
+<iframe src="demo/report-riproducibilita.html" style="width: 100%; height: 680px; border: 1px solid #ddd; border-radius: 8px;"></iframe>
+<p class="cap">report completo: <a href="demo/report-riproducibilita.html" target="_blank" rel="noopener noreferrer">apri in una nuova scheda</a></p>
+
+## {.dark background-gradient="radial-gradient(1000px 700px at 10% 0%, rgba(255,90,31,0.32), transparent 65%), radial-gradient(1100px 800px at 95% 100%, rgba(124,58,237,0.42), transparent 65%), radial-gradient(700px 500px at 60% 40%, rgba(230,35,126,0.14), transparent 70%), linear-gradient(#0d1017, #0d1017)"}
+
+<span class="magic-mark" aria-hidden="true">🪄</span>
+
+<div class="inchiostro incanto">Accio quiz!</div>
+
+<img class="shot" src="figures/moodle-agente.gif" style="max-height: 540px;">
+<p class="cap">Claude in Chrome sul corso Moodle: la freccia la muove lui</p>
+
+::: notes
+Clip registrata il 31 ottobre 2026 con Claude in Chrome, sola lettura: corso → quiz → elenco domande.
+:::
+
+## e anche un videogioco
+
+<video src="figures/mahabharata-game-trailer_40s.mp4" controls muted style="max-height: 620px; width: 100%;"></video>
+<p class="cap"><a href="https://github.com/EnricoToffalini/mahabharata-game" target="_blank" rel="noopener noreferrer">mahabharata-game</a>, in Godot</p>
+
+## orientarsi in una repo che non si conosce
+
+:::: {.columns}
+::: {.column width="40%"}
+<div class="small">
+
+> *Questa è la repo di un videogioco che non conosci. Senza modificare nulla, spiegami com'è fatto e quali file dovrei toccare per aggiungere un nuovo luogo da esplorare.*
+
+<p class="muted">35 secondi · solo lettura</p>
+
+<div class="principio fragment">Prima di chiedere di <b>fare</b>, chiedete di <b>spiegare</b>: è il modo più economico per entrare in un progetto, vostro o altrui.</div>
+
+</div>
+:::
+::: {.column width="60%"}
+```{=html}
+<div class="term"><span class="t">● Glob</span>  game/src/**/*.gd · docs/**/*.md
+<span class="t">● Read</span>  main.gd · CURRENT_PROJECT_STATE.md · project.godot
+<span class="t">● Read</span>  forest_party_prototype.gd · .tscn
+<span class="d">  …</span>
+<span class="ok">Motore: Godot 4, GDScript. Tutto il gioco sta in game/:
+scene quasi vuote, logica in src/, episodi in JSON in content/.
+
+Non c'è un mondo unico: "modalità" separate, scelte con
+--mode= in main.gd:32. I luoghi sono costruiti via codice.
+
+Per un nuovo luogo:
+1. nuovo_luogo.gd + .tscn, sul modello della foresta
+2. main.gd: preload, un caso nel match, la modalità (riga 55)
+3. nemici? CombatRules.reset(), come chiede AGENTS.md
+4. testi? un JSON in content/
+5. poi smoke test headless: godot --headless -- --mode=…</span></div>
+```
+<p class="cap">Claude Code, trascrizione accorciata</p>
+:::
+::::
+
+::: notes
+Prova del 1 novembre 2026 su una copia dei soli file di testo della repo (codice, scene, documentazione), mai sull'originale, che ha modifiche non committate. Strumenti consentiti: solo Read, Glob, Grep.
+:::
+
+## altre cose fatte così
+
+:::: {.columns}
+::: {.column width="33%"}
+<div class="card">
+<h4>ricerca</h4>
+<a href="https://enricotoffalini.github.io/Most_interactions_are_wrong/" target="_blank" rel="noopener noreferrer">Most interactions are wrong</a><br>
+<a href="https://github.com/EnricoToffalini/Taxometrics-Neurodevelopmental-Disorders" target="_blank" rel="noopener noreferrer">Taxometrics in neurodevelopmental disorders</a>
+</div>
+:::
+::: {.column width="33%"}
+<div class="card">
+<h4>didattica e app</h4>
+<a href="https://enricotoffalini.github.io/psicologia-intelligenza/" target="_blank" rel="noopener noreferrer">Psicologia dell'intelligenza</a><br>
+<a href="https://github.com/EnricoToffalini/Dimensioni-Diagnosi-App" target="_blank" rel="noopener noreferrer">Dimensioni vs diagnosi</a>
+</div>
+:::
+::: {.column width="33%"}
+<div class="card">
+<h4>edizioni e documenti</h4>
+<a href="https://enricotoffalini.github.io/Epitteto-Diatribe/" target="_blank" rel="noopener noreferrer">Diatribe di Epitteto</a><br>
+<a href="https://enricotoffalini.github.io/IDS-2-estensioni/" target="_blank" rel="noopener noreferrer">Indici IDS-2</a><br>
+<a href="https://enricotoffalini.github.io/trasparenza-dati-normativi/" target="_blank" rel="noopener noreferrer">Trasparenza e dati normativi</a>
+</div>
+:::
+::::
+
+<div class="principio fragment" style="margin-top: 1em;">
+La domanda passa da <i>"come si fa?"</i> a <b>"cosa voglio?"</b> e <b>"è giusto?"</b>. Metodo e competenza di dominio contano di più, non di meno.
+</div>
+
+# {.dark background-gradient="radial-gradient(1000px 700px at 10% 0%, rgba(255,90,31,0.32), transparent 65%), radial-gradient(1100px 800px at 95% 100%, rgba(124,58,237,0.42), transparent 65%), radial-gradient(700px 500px at 60% 40%, rgba(230,35,126,0.14), transparent 70%), linear-gradient(#0d1017, #0d1017)"}
+
+<div class="act-num">Atto 2</div>
+<div class="big">come si lavora</div>
+<p class="muted">installare, aprire una cartella, tenere il controllo</p>
+
+## installare (una volta)
+
+:::: {.columns}
+::: {.column width="50%"}
+### Claude Code
+
+```bash
+# Windows (PowerShell)
+irm https://claude.ai/install.ps1 | iex
+# macOS / Linux
+curl -fsSL https://claude.ai/install.sh | bash
+```
+:::
+::: {.column width="50%"}
+### Codex
+
+```bash
+# Windows (PowerShell)
+powershell -ExecutionPolicy ByPass -c "irm https://chatgpt.com/codex/install.ps1 | iex"
+# macOS / Linux
+curl -fsSL https://chatgpt.com/codex/install.sh | sh
+```
+:::
+::::
+
+<div class="small">
+
+Poi, ogni volta: tasto destro sulla cartella → *Apri nel terminale* → `claude` o `codex`. Da lì, italiano.
+
+<p class="muted">Non apro l'AI chiedendomi "cosa facciamo oggi?": lavoro nelle mie cartelle e, quando serve, chiamo l'agente <b>lì</b>.</p>
+
+</div>
+
+## niente terminale? app desktop
+
+<img class="shot" src="figures/app-claude-08-pannelli.png" style="max-height: 600px;">
+<p class="cap">app Claude, scheda <i>Code</i> (o app ChatGPT, sezione <i>Codex</i>): stesso lavoro in locale, con pannelli per modifiche, file e terminale</p>
+
+## un `AGENTS.md` di poche righe
+
+:::: {.columns}
+::: {.column width="52%"}
+```markdown
+# AGENTS.md
+
+## Progetto
+Articolo su interazioni e potenza statistica.
+Analisi in R/, manoscritto in paper/main.qmd.
+
+## Fuori dalla cartella
+- Mail: etichetta "Interazioni-2026"
+- Drive: cartella "Interazioni - condivisa"
+
+## Regole
+- Non modificare data/raw/.
+- Render: quarto render paper/main.qmd
+- Stato del lavoro: vedi NOTES.md
+```
+<p class="cap">esempio illustrativo</p>
+:::
+::: {.column width="48%"}
+<div class="small">
+
+- letto **all'avvio** (`CLAUDE.md` per Claude)
+- cosa c'è, cosa non toccare, come si fa il render
+- lo **stato del lavoro** in un file di note, non in chat
+- nuova sessione = memoria azzerata: quello che non è scritto **non esiste**
+
+<p class="muted">Anche queste slide hanno il loro <code>AGENTS.md</code>: punta al blog e alle cartelle Open Science.</p>
+
+</div>
+:::
+::::
+
+## prima il piano
+
+<p class="small muted" style="margin-top: -0.4em;"><i>"Vorrei un breve report Quarto in HTML su quanti articoli del catalogo hanno dati e codice aperti, anno per anno. Non scrivere ancora niente: proponimi solo un piano."</i></p>
+
+:::: {.columns}
+::: {.column width="50%"}
+```{=html}
+<div class="term">Propongo questo piano:
+1. Perimetro: record con final_decision: keep,
+   stato ready o published, anche prima del 2025.
+2. Per anno: totale, dati aperti, codice aperto,
+   entrambi; i valori sconosciuti distinti dai false.
+3. Report breve: metodo, un grafico, una tabella;
+   segnalare cosa viene dalla modalità rapida.
+4. Render e controlli, senza toccare record e sito.</div>
+```
+<p class="cap">Codex, 18 secondi</p>
+:::
+::: {.column width="50%"}
+```{=html}
+<div class="term">Fonte: i record, non data/: data/ ha solo
+gli articoli visibili sul sito (dal 2025).
+<span class="d">  …</span>
+Un file autonomo in analysis/, così il render
+non finisce in docs/ e non tocca il sito.
+
+<span class="p">Domande prima di partire</span>
+1. Quali anni? Consiglio tutti.
+2. Quali stati? Consiglio solo ready/published.
+3. Rapida contro verificata: basta una nota?
+4. Va bene che resti fuori dal sito?</div>
+```
+<p class="cap">Claude Code, 25 secondi</p>
+:::
+::::
+
+<p class="small center">Gli equivoci saltano fuori quando correggerli costa zero.</p>
+
+::: notes
+Prove del 1 novembre 2026, su copie della repo del catalogo, in sola lettura. Trascrizioni accorciate.
+:::
+
+## quanta autonomia?
+
+<img class="shot" src="figures/claude-05-modalita.png" style="max-height: 130px;">
+<p class="cap">Claude Code, Shift+Tab: <i>auto</i> · <i>manual</i> · <i>accept edits</i> · <i>plan</i></p>
+
+:::: {.columns}
+::: {.column width="55%"}
+<img class="shot" src="figures/codex-07-permissions.png" style="max-height: 420px;">
+<p class="cap">Codex, <code>/permissions</code></p>
+:::
+::: {.column width="45%"}
+<img class="shot" src="figures/codex-10-sandbox.png" style="max-height: 300px;">
+<div class="small" style="margin-top: 0.5em;">
+
+- all'inizio: chiede prima di agire
+- più autonomia quando lo conoscete
+- **sandbox** + **Git**: tutto annullabile
+
+</div>
+:::
+::::
+
+## modello e ragionamento
+
+:::: {.columns}
+::: {.column width="50%"}
+<img class="shot" src="figures/claude-03-model.png" style="max-height: 480px;">
+<p class="cap">Claude Code, <code>/model</code>: ↑↓ modello, ←→ effort</p>
+:::
+::: {.column width="50%"}
+<img class="shot" src="figures/codex-05-effort.png" style="max-height: 480px;">
+<p class="cap">Codex: da <i>Low</i> a <i>Extra high</i>, più <i>Max</i> e <i>Ultra</i></p>
+:::
+::::
+
+<p class="small center">Più ragionamento = più tempo e più consumo, ma molto meglio su statistica, codice e revisione critica.</p>
+
+## quanto mi resta?
+
+:::: {.columns}
+::: {.column width="50%"}
+<img class="shot" src="figures/claude-04-usage.png" style="max-height: 480px;">
+<p class="cap">Claude Code, <code>/usage</code>: finestra di 5 ore e settimana</p>
+:::
+::: {.column width="50%"}
+<img class="shot" src="figures/codex-06-status.png" style="max-height: 480px;">
+<p class="cap">Codex, <code>/status</code>: account, contesto usato, limiti</p>
+:::
+::::
+
+<p class="small center">Il consumo dipende dal lavoro, non dai messaggi. <b>Una sessione per compito</b>: ogni turno si rilegge tutto il precedente.</p>
+
+## formati aperti, un motivo in più
+
+:::: {.columns}
+::: {.column width="50%"}
+<div class="card">
+<h4><code>.qmd</code> · <code>.R</code> · <code>.csv</code> · <code>.bib</code></h4>
+legge → cambia una riga → fatto<br>
+<span class="muted">con Git si vede e si annulla</span>
+</div>
+:::
+::: {.column width="50%"}
+<div class="card" style="border-top-color: #a1a1aa;">
+<h4><code>.docx</code> · <code>.xlsx</code> · <code>.pptx</code> · <code>.sav</code></h4>
+estrai → modifica → ricomponi → controlla<br>
+<span class="muted">più tempo, più consumo, più errori</span>
+</div>
+:::
+::::
+
+<p class="center" style="margin-top: 1em;">FAIR per gli umani, FAIR per l'AI.</p>
+
+# {.dark background-gradient="radial-gradient(1000px 700px at 10% 0%, rgba(255,90,31,0.32), transparent 65%), radial-gradient(1100px 800px at 95% 100%, rgba(124,58,237,0.42), transparent 65%), radial-gradient(700px 500px at 60% 40%, rgba(230,35,126,0.14), transparent 70%), linear-gradient(#0d1017, #0d1017)"}
+
+<div class="act-num">Atto 3</div>
+<div class="big">skill e connettori</div>
+<p class="muted">come smettere di correggere sempre le stesse cose</p>
+
+## cos'è una skill
+
+:::: {.columns}
+::: {.column width="58%"}
+<img class="shot" src="figures/01-skill-md.png" style="max-height: 540px;">
+:::
+::: {.column width="42%"}
+<div class="small">
+
+- una **cartella** con un `SKILL.md`
+- in testa: **nome** e **descrizione** (quando usarla)
+- sotto: regole, in testo libero
+- l'AI la carica **da sola** quando serve
+- va con Claude e con ChatGPT/Codex
+
+</div>
+:::
+::::
+
+## stessa richiesta, con e senza skill
+
+<p class="muted small"><i>"quota di articoli con dati aperti, anno per anno"</i></p>
+
+::: {.r-stack}
+::: {.fragment .fade-out fragment-index=1}
+<p class="small muted">senza skill</p>
+
+```r
+library(tidyverse)
+
+pubs <- read_csv("data/publications.csv")
+
+pubs %>%
+  mutate(open_data = str_detect(practices, "open_data")) %>%
+  group_by(year) %>%
+  summarise(n = n(), quota = mean(open_data)) %>%
+  ungroup()
+```
+:::
+
+::: {.fragment fragment-index=1}
+<p class="small muted">con la mia skill</p>
+
+```r
+pubs = read.csv("data/publications.csv")
+pubs$open_data = grepl("open_data", pubs$practices)
+aggregate(open_data ~ year, data = pubs, FUN = mean)
+```
+:::
+:::
+
+<p class="cap">esempio illustrativo</p>
+
+## {.dark background-gradient="radial-gradient(1000px 700px at 10% 0%, rgba(255,90,31,0.32), transparent 65%), radial-gradient(1100px 800px at 95% 100%, rgba(124,58,237,0.42), transparent 65%), radial-gradient(700px 500px at 60% 40%, rgba(230,35,126,0.14), transparent 70%), linear-gradient(#0d1017, #0d1017)"}
+
+<span class="magic-mark" aria-hidden="true">🪄</span>
+
+<p>Avevo chiesto solo <i>"un breve report Quarto"</i>. Codex si va a leggere <b>da solo</b> la mia skill sui report.</p>
+
+<img class="shot" src="figures/04-codex-skill-crop.png" style="max-height: 400px;">
+
+## scriverne una: istruzioni per l'uso
+
+:::: {.columns}
+::: {.column width="58%"}
+<div class="small">
+
+- **partite da una frustrazione**: terza volta che correggete la stessa cosa? skill
+- **curate la descrizione**: cosa fa e **quando** usarla
+- **concreti**: "usa `=` per l'assegnazione", non "scrivi codice chiaro"
+- dite anche cosa **non** fare
+- `SKILL.md` corto; i dettagli in file a parte
+- fatevi **intervistare** dall'agente, o dategli il vostro codice
+- oltre lo stile: **expertise** (CFA e invarianza, potenza, scoring)
+
+</div>
+:::
+::: {.column width="42%"}
+<div class="small">
+
+| Dove | Come |
+|---|---|
+| **Claude Code** | `~/.claude/skills/` |
+| **Codex** | `~/.codex/skills/` |
+| **chat** | *Competenze* / *Skills*, poi **@** |
+
+</div>
+<img class="shot" src="figures/02-claude-skills.png" style="max-height: 300px; margin-top: 0.4em;">
+:::
+::::
+
+::: notes
+Idea per il lab: una repository comune di skill come "manuale di laboratorio" eseguibile.
+:::
+
+## connettori: fuori dal computer
+
+:::: {.columns}
+::: {.column width="50%"}
+<div class="small">
+
+- un **intero corso Moodle**, forum e quiz compresi
+- la pratica online per il **medico di base**
+- dalle mail al **calendario giusto**, con le mie convenzioni
+- posta, Drive, GitHub, Canva…
+
+<p class="muted">Mail ed eventi partono solo col vostro clic.</p>
+
+</div>
+:::
+::: {.column width="50%"}
+<img class="shot" src="figures/07-connettori.png" style="max-height: 260px;">
+<p class="cap">ChatGPT Edu: con <b>@</b> skill e connettori</p>
+<img class="shot" src="figures/13-scheduled.png" style="max-height: 280px;">
+<p class="cap">attività pianificate: la stessa richiesta, a intervalli regolari</p>
+:::
+::::
+
+## ChatGPT Edu: quanto ragionare
+
+| Livello | Quando |
+|---|---|
+| **Instant** | riformulazioni, traduzioni semplici |
+| **Medium** | la maggior parte delle richieste |
+| **High** | statistica, codice, revisione critica: **nel dubbio, questo** |
+| **Pro** | problemi davvero difficili; lento e contingentato |
+
+<p class="small muted">UniPD: <i>Work</i> = Codex in cloud, con gli <b>stessi limiti</b> della chat: non sprecateli.</p>
+
+## quanto costa
+
+:::: {.columns}
+::: {.column width="55%"}
+<div class="small">
+
+- **ChatGPT Edu** (UniPD): Codex incluso
+- **ChatGPT Plus**: ~20 $ + IVA al mese, Codex incluso
+- **Claude Pro**: ~22 € al mese, Claude Code incluso
+- limiti su **5 ore** e sulla **settimana**; poi l'agente si ferma
+- per me una finestra di 5 ore basta per parecchi compiti
+
+<p class="muted">ottobre 2026; cambia spesso</p>
+
+</div>
+:::
+::: {.column width="45%"}
+<img class="shot" src="figures/claude-04-usage.png" style="max-height: 420px;">
+:::
+::::
+
+## precauzioni
+
+<div>
+
+- **Git**, o almeno una copia: l'agente può cancellare file
+- **dati sensibili**: quello che legge va sui server del fornitore
+- **autonomia graduale**: prima piano e approvazione, poi il resto
+- **skill e connettori altrui**: leggerli prima (girano con i vostri permessi)
+- **responsabilità**: codice che gira ≠ numeri giusti
+
+</div>
+
+<div class="fragment inchiostro">Mai fidarsi di qualcosa che pensa da solo, se non vedi dove tiene il cervello.</div>
+
+## domani mattina
+
+<div>
+
+1. terminale **in una cartella di progetto** (meglio se con Git), poi `codex` o `claude`
+2. prima un **piano**; poi leggete cosa fa
+3. un `AGENTS.md` di tre righe: cosa c'è, cosa non toccare, come si fa il render
+4. terza volta che correggete la stessa cosa? **skill**
+
+</div>
+
+## per saperne di più
+
+<div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.5em; margin-top: 0.8em;">
+<div class="qr"><img src="figures/qr-serie.svg"><br><a href="https://enricotoffalini.github.io/blog/posts/serie-ai/" target="_blank" rel="noopener noreferrer">la serie</a></div>
+<div class="qr"><img src="figures/qr-agenti.svg"><br><a href="https://enricotoffalini.github.io/blog/posts/agenti-cli/" target="_blank" rel="noopener noreferrer">agenti in locale</a></div>
+<div class="qr"><img src="figures/qr-gptedu.svg"><br><a href="https://enricotoffalini.github.io/blog/posts/gpt-edu/" target="_blank" rel="noopener noreferrer">ChatGPT Edu</a></div>
+<div class="qr"><img src="figures/qr-skills.svg"><br><a href="https://enricotoffalini.github.io/blog/posts/skills/" target="_blank" rel="noopener noreferrer">skill</a></div>
+<div class="qr"><img src="figures/qr-aiskills.svg"><br><a href="https://github.com/EnricoToffalini/ai-skills" target="_blank" rel="noopener noreferrer">le mie skill</a></div>
+</div>
+
+<p class="center small" style="margin-top: 1em;"><a href="https://opensciencedpg.github.io/OS-promotion/" target="_blank" rel="noopener noreferrer">Open Science DPG</a> · <a href="https://enricotoffalini.github.io/blog/posts/agenti-cli/" target="_blank" rel="noopener noreferrer">guide complete a Claude Code, Codex e app desktop</a></p>

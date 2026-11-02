@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+  <defs>
+    <filter id="alone" x="-100%" y="-100%" width="300%" height="300%" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="1.6"/>
+    </filter>
+  </defs>
+  <path d="M8 7 L8 32 L14.5 25.5 L20 37 L25 34.5 L19.5 23 L29 23 Z"
+        fill="none" stroke="#ff5a1f" stroke-width="5" stroke-linejoin="round" opacity="0.85" filter="url(#alone)"/>
+  <path d="M8 7 L8 32 L14.5 25.5 L20 37 L25 34.5 L19.5 23 L29 23 Z"
+        fill="#fffaf5" stroke="#ff5a1f" stroke-width="1.6" stroke-linejoin="round"/>
+</svg>

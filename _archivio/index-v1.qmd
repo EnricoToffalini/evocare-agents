@@ -1,0 +1,660 @@
+---
+title: "Fuori dalla chat"
+subtitle: "aka l'AI che lavora nelle vostre cartelle"
+date: "2026-11-04"
+date-format: "D MMMM YYYY"
+lang: it
+title-slide-attributes:
+  data-background-gradient: "radial-gradient(1000px 700px at 10% 0%, rgba(255,90,31,0.32), transparent 65%), radial-gradient(1100px 800px at 95% 100%, rgba(124,58,237,0.42), transparent 65%), radial-gradient(700px 500px at 60% 40%, rgba(230,35,126,0.14), transparent 70%), linear-gradient(#0d1017, #0d1017)"
+format:
+  revealjs:
+    theme: default
+    css: styles.css
+    width: 1600
+    height: 900
+    margin: 0.06
+    slide-number: c/t
+    hash: true
+    transition: fade
+    transition-speed: fast
+    auto-animate-duration: 0.8
+    controls: true
+    preview-links: false
+    link-external-newwindow: true
+footer: "Lab meeting · 4 novembre 2026"
+---
+
+## {.dark background-gradient="radial-gradient(1000px 700px at 10% 0%, rgba(255,90,31,0.32), transparent 65%), radial-gradient(1100px 800px at 95% 100%, rgba(124,58,237,0.42), transparent 65%), radial-gradient(700px 500px at 60% 40%, rgba(230,35,126,0.14), transparent 70%), linear-gradient(#0d1017, #0d1017)"}
+
+<!--
+Struttura (target ~45 min):
+  Atto 1  fuori dalla chat     ~15 min
+  Atto 2  tutto è contesto     ~15 min
+  Atto 3  controllo e costi    ~10 min
+  Chiusura                      ~5 min
+Marcatore ricorrente: [WOW] -> riquadro ".principio" ("sotto il cofano").
+Video registrati: aggiungere per esempio
+  ## {background-video="screenshots/demo-analisi.mp4" background-video-muted="true"}
+Materiali da curare: i riquadri ".todo" tratteggiati.
+-->
+
+<div class="center" style="margin-top: 120px;">
+<div class="huge">23 secondi</div>
+
+<div class="fragment" style="margin-top: 1em; font-size: 0.9em;">
+una richiesta, in italiano.<br>
+<span class="muted">dati → script R → output → spiegazione</span>
+</div>
+</div>
+
+::: notes
+Partire senza preamboli. Poi la richiesta letterale nella slide successiva.
+:::
+
+## {.dark background-gradient="radial-gradient(1000px 700px at 10% 0%, rgba(255,90,31,0.32), transparent 65%), radial-gradient(1100px 800px at 95% 100%, rgba(124,58,237,0.42), transparent 65%), radial-gradient(700px 500px at 60% 40%, rgba(230,35,126,0.14), transparent 70%), linear-gradient(#0d1017, #0d1017)"}
+
+<span class="wow">wow</span>
+
+> *In questa cartella c'è dati_esame.csv. Dai un'occhiata ai dati, poi scrivi uno script R chiamato analisi.R che stima una regressione del voto su ore_studio, ansia e gruppo, eseguilo e spiegami i risultati in poche righe.*
+
+<img class="shot fragment" src="figures/claude-02-analisi.png" style="max-height: 520px;">
+
+::: notes
+Screenshot reale dal post. Qui, o subito dopo, la prima demo registrata (vedi commento in testa al file).
+:::
+
+## cosa è successo?
+
+:::: {.columns}
+::: {.column width="50%"}
+### in chat
+
+<div class="chat-line" style="justify-content: flex-start;">
+<span class="step">chiedi</span>→<span class="step">copi</span>→<span class="step you">incolli in RStudio</span>→<span class="step">errore</span>→<span class="step you">incolli l'errore</span>→<span class="step">…</span>
+</div>
+
+<p class="small muted" style="margin-top: 1em;">il copia-incolla lo fate voi</p>
+:::
+
+::: {.column width="50%" .fragment}
+### con un agente
+
+<div class="chat-line" style="justify-content: flex-start;">
+<span class="step you">chiedi</span>→<span class="step">legge</span>→<span class="step">scrive</span>→<span class="step">esegue</span>→<span class="step">sbaglia</span>→<span class="step">corregge</span>→<span class="step">…</span>→<span class="step you">verifichi</span>
+</div>
+
+<p class="small muted" style="margin-top: 1em;">voi entrate all'inizio e alla fine</p>
+:::
+::::
+
+## il trucco: un ciclo {auto-animate=true}
+
+<div class="loop">
+<div class="node" data-id="n1">richiesta<span class="sub">in italiano</span></div>
+</div>
+
+## il trucco: un ciclo {auto-animate=true}
+
+<div class="loop">
+<div class="node" data-id="n1">richiesta<span class="sub">in italiano</span></div>
+<span class="arrow" data-id="ar1">→</span>
+<div class="node model" data-id="n2">modello<span class="sub">decide cosa fare</span></div>
+</div>
+
+## il trucco: un ciclo {auto-animate=true}
+
+<div class="loop">
+<div class="node" data-id="n1">richiesta<span class="sub">in italiano</span></div>
+<span class="arrow" data-id="ar1">→</span>
+<div class="node model" data-id="n2">modello<span class="sub">decide cosa fare</span></div>
+<span class="arrow" data-id="ar2">→</span>
+<div class="node hot" data-id="n3">strumento<span class="sub">legge · esegue · scrive</span></div>
+</div>
+
+## il trucco: un ciclo {auto-animate=true}
+
+<div class="loop">
+<div class="node" data-id="n1">richiesta<span class="sub">in italiano</span></div>
+<span class="arrow" data-id="ar1">→</span>
+<div class="node model" data-id="n2">modello<span class="sub">decide cosa fare</span></div>
+<span class="arrow" data-id="ar2">→</span>
+<div class="node hot" data-id="n3">strumento<span class="sub">legge · esegue · scrive</span></div>
+<span class="arrow" data-id="ar3">→</span>
+<div class="node" data-id="n4">osservazione<span class="sub">output · errori</span></div>
+</div>
+
+## il trucco: un ciclo {auto-animate=true}
+
+<div class="loop">
+<div class="node" data-id="n1">richiesta<span class="sub">in italiano</span></div>
+<span class="arrow" data-id="ar1">→</span>
+<div class="node model" data-id="n2">modello<span class="sub">decide cosa fare</span></div>
+<span class="arrow" data-id="ar2">→</span>
+<div class="node hot" data-id="n3">strumento<span class="sub">legge · esegue · scrive</span></div>
+<span class="arrow" data-id="ar3">→</span>
+<div class="node" data-id="n4">osservazione<span class="sub">output · errori</span></div>
+</div>
+<div class="back" data-id="back"><span>… finché non ha finito</span></div>
+
+<div class="principio fragment" style="margin-top: 2.2em;">
+Non indovina i numeri: <b>li calcola</b>, guarda cosa succede, corregge. Il modello è lo stesso della chat; cambia quello che ha intorno.
+</div>
+
+::: notes
+Questo è il cuore tecnico. Il modello è lo stesso della chat: cambia l'architettura intorno.
+:::
+
+## quattro parole
+
+<div class="ingr">
+<div><b>modello</b>lo stesso della chat</div>
+<div class="fragment"><b>contesto</b>quello che vede</div>
+<div class="fragment"><b>strumenti</b>quello che può fare</div>
+<div class="fragment"><b>ciclo</b>prova, guarda, corregge</div>
+</div>
+
+<p class="fragment center" style="margin-top: 1.5em;">ogni "wow" di oggi è uno di questi quattro</p>
+
+## {.dark background-gradient="radial-gradient(1000px 700px at 10% 0%, rgba(255,90,31,0.32), transparent 65%), radial-gradient(1100px 800px at 95% 100%, rgba(124,58,237,0.42), transparent 65%), radial-gradient(700px 500px at 60% 40%, rgba(230,35,126,0.14), transparent 70%), linear-gradient(#0d1017, #0d1017)"}
+
+<span class="wow">wow</span>
+
+<div class="big">Stesso compito, due agenti.</div>
+
+<p class="muted">Claude Code e Codex: ~25 secondi a testa, stessi coefficienti. Poi: <i>"fammene un report Quarto"</i>.</p>
+
+## due report, zero ritocchi
+
+:::: {.columns}
+::: {.column width="38%"}
+<img class="shot" src="figures/report-claude.png" style="max-height: 640px;">
+<p class="cap">Claude Code</p>
+:::
+::: {.column width="38%"}
+<img class="shot" src="figures/report-codex.png" style="max-height: 640px;">
+<p class="cap">Codex</p>
+:::
+::: {.column width="24%"}
+<div class="small">
+<div class="fragment">riferimento **opposto**</div>
+<div class="fragment" style="margin-top: 0.5em;">grafico **diverso**</div>
+<div class="fragment" style="margin-top: 0.5em;">β standardizzati **sì / no**</div>
+<div class="fragment" style="margin-top: 0.5em;">Claude nota da solo il **tetto a 30**</div>
+</div>
+:::
+::::
+
+## due report, zero ritocchi
+
+<div class="principio" style="font-size: 0.9em;">
+Il modello <b>campiona</b>: a ogni giro, scelte un po' diverse. E la richiesta lasciava aperte parecchie scelte, tutte legittime.
+</div>
+
+<div class="fragment" style="margin-top: 1em;">
+
+- **generare** costa quasi zero
+- **verificare** costa come prima (ed è roba nostra)
+- richieste precise, o una *skill*, restringono il campo
+
+</div>
+
+::: notes
+Dati e analisi sono un esempio giocattolo inventato da Claude, solo per la demo.
+:::
+
+## cose fatte così
+
+:::: {.columns}
+::: {.column width="33%"}
+<div class="card">
+<h4>ricerca</h4>
+<a href="https://enricotoffalini.github.io/Most_interactions_are_wrong/">Most interactions are wrong</a><br>
+<a href="https://github.com/EnricoToffalini/Taxometrics-Neurodevelopmental-Disorders">Taxometrics in neurodevelopmental disorders</a>
+</div>
+:::
+::: {.column width="33%"}
+<div class="card">
+<h4>didattica e app</h4>
+<a href="https://enricotoffalini.github.io/psicologia-intelligenza/">Psicologia dell'intelligenza</a><br>
+<a href="https://github.com/EnricoToffalini/Dimensioni-Diagnosi-App">Dimensioni vs diagnosi</a><br>
+<a href="https://github.com/EnricoToffalini/mahabharata-game">un videogioco in Godot (!)</a>
+</div>
+:::
+::: {.column width="33%"}
+<div class="card">
+<h4>edizioni e documenti</h4>
+<a href="https://enricotoffalini.github.io/Epitteto-Diatribe/">Diatribe di Epitteto</a><br>
+<a href="https://enricotoffalini.github.io/IDS-2-estensioni/">Indici IDS-2</a><br>
+<a href="https://enricotoffalini.github.io/trasparenza-dati-normativi/">Trasparenza e dati normativi</a>
+</div>
+:::
+::::
+
+<div class="todo" style="min-height: 250px; margin-top: 0.6em;"><div>montaggio di screenshot dei progetti (o una breve carrellata video)</div></div>
+
+## cose fatte così
+
+<div class="principio" style="font-size: 0.95em;">
+Quasi niente di questo richiede di saper fare siti o software. La domanda passa da <i>"come si fa?"</i> a <b>"cosa voglio?"</b> e <b>"è giusto?"</b>.
+</div>
+
+<p class="fragment" style="margin-top: 1em;">Notizia scomoda: metodo e competenza di dominio contano <b>di più</b>, non di meno.</p>
+
+# {.dark background-gradient="radial-gradient(1000px 700px at 10% 0%, rgba(255,90,31,0.32), transparent 65%), radial-gradient(1100px 800px at 95% 100%, rgba(124,58,237,0.42), transparent 65%), radial-gradient(700px 500px at 60% 40%, rgba(230,35,126,0.14), transparent 70%), linear-gradient(#0d1017, #0d1017)"}
+
+<div class="act-num">Atto 2</div>
+<div class="big">tutto è contesto</div>
+<p class="muted">cartella, istruzioni, skill, connettori: finisce tutto nella stessa finestra</p>
+
+## la finestra di contesto {auto-animate=true}
+
+<div class="ctx">
+<div class="c-sys" data-id="sys" style="width: 6%;">sistema</div>
+<div class="c-free" data-id="free" style="width: 94%;">spazio libero</div>
+</div>
+
+<p class="small muted">a inizio sessione: quasi vuota</p>
+
+## la finestra di contesto {auto-animate=true}
+
+<div class="ctx">
+<div class="c-sys" data-id="sys" style="width: 6%;">sistema</div>
+<div class="c-skill" data-id="skill" style="width: 4%;">skill</div>
+<div class="c-proj" data-id="proj" style="width: 9%;">AGENTS.md</div>
+<div class="c-files" data-id="files" style="width: 25%;">file letti</div>
+<div class="c-chat" data-id="chat" style="width: 15%;">conversazione</div>
+<div class="c-free" data-id="free" style="width: 41%;">spazio libero</div>
+</div>
+
+<div class="principio">
+È la <b>memoria di lavoro</b> del modello: grande (centinaia di pagine) ma finita. Quello che non c'è, <b>non esiste</b>. E nuova sessione = <code>rm(list = ls())</code>.
+</div>
+
+::: notes
+Proporzioni puramente indicative. Collegare a working memory: capacità ampia ma finita, e tutto quello che serve deve esserci "adesso".
+:::
+
+## e allora come sa tutto del progetto?
+
+:::: {.columns}
+::: {.column width="52%"}
+```markdown
+# AGENTS.md
+
+## Progetto
+Articolo su interazioni e potenza statistica.
+Analisi in R/, manoscritto in paper/main.qmd.
+
+## Fuori dalla cartella
+- Mail: etichetta "Interazioni-2026"
+- Drive: cartella "Interazioni - condivisa"
+- Coautori: M. R. (simulazioni), L. B. (revisione)
+
+## Regole
+- Non modificare data/raw/.
+- Render: quarto render paper/main.qmd
+- Stato del lavoro: vedi NOTES.md
+```
+<p class="cap">esempio illustrativo</p>
+:::
+::: {.column width="48%"}
+- **legge** cartella, codice, Git
+- **legge** `AGENTS.md` / `CLAUDE.md` all'avvio
+- lo stato del lavoro sta in un file di note
+
+<div class="principio fragment">
+La memoria vera sta <b>su file</b>. Il contesto si ricostruisce ogni volta dalla cartella.
+</div>
+:::
+::::
+
+## la risposta "media"
+
+<div>
+
+- chiedo uno script R → **cinque pacchetti tidyverse**
+- chiedo un report → bellissimo, ma **non in Quarto**
+- chiedo una mail di due righe → **tre righe di convenevoli**
+
+</div>
+
+<p class="fragment">Correggo. La volta dopo, da capo.</p>
+
+<p class="fragment muted small">Non è un errore: è la risposta più probabile <b>in media</b>. Non la mia.</p>
+
+## stessa richiesta, con e senza skill
+
+<p class="muted small"><i>"media del voto per gruppo, con errore standard"</i></p>
+
+::: {.r-stack}
+::: {.fragment .fade-out fragment-index=1}
+<p class="small muted">senza skill</p>
+
+```r
+library(tidyverse)
+
+dati %>%
+  group_by(gruppo) %>%
+  summarise(
+    media = mean(voto, na.rm = TRUE),
+    se = sd(voto, na.rm = TRUE) / sqrt(n())
+  ) %>%
+  ungroup()
+```
+:::
+
+::: {.fragment fragment-index=1}
+<p class="small muted">con la mia skill</p>
+
+```r
+se = function(x) sd(x, na.rm = TRUE) / sqrt(sum(!is.na(x)))
+aggregate(voto ~ gruppo, data = dati, FUN = function(x) c(m = mean(x), se = se(x)))
+```
+:::
+:::
+
+<p class="cap">esempio illustrativo (sostituibile con un confronto reale)</p>
+
+## cos'è una skill
+
+:::: {.columns}
+::: {.column width="58%"}
+<img class="shot" src="figures/01-skill-md.png" style="max-height: 520px;">
+:::
+::: {.column width="42%"}
+<div class="small">
+
+- una **cartella** con un `SKILL.md`
+- in testa: **nome** e **descrizione**
+- sotto: regole, in testo libero
+- accanto: riferimenti, script, esempi
+
+<p class="muted">standard aperto: va con Claude e con ChatGPT/Codex</p>
+
+</div>
+:::
+::::
+
+## caricamento progressivo
+
+<div class="tier t1"><b>sempre</b>: nome + descrizione <span class="tok">~100 token</span></div>
+<div class="tier t2 fragment"><b>se serve</b>: il <code>SKILL.md</code> <span class="tok">migliaia</span></div>
+<div class="tier t3 fragment"><b>se serve davvero</b>: <code>references/</code> <span class="tok">a richiesta</span></div>
+
+<div class="principio fragment">
+<b>Economia del contesto</b>: decine di skill senza intasare la finestra. Ed ecco perché conta tanto la <b>descrizione</b>: è l'unica cosa che il modello vede quando decide.
+</div>
+
+## {.dark background-gradient="radial-gradient(1000px 700px at 10% 0%, rgba(255,90,31,0.32), transparent 65%), radial-gradient(1100px 800px at 95% 100%, rgba(124,58,237,0.42), transparent 65%), radial-gradient(700px 500px at 60% 40%, rgba(230,35,126,0.14), transparent 70%), linear-gradient(#0d1017, #0d1017)"}
+
+<span class="wow">wow</span>
+
+<p>Avevo chiesto solo <i>"fammene un report Quarto"</i>. Codex si va a leggere <b>da solo</b> la mia skill sui report.</p>
+
+<img class="shot" src="figures/04-codex-skill.png" style="max-height: 560px;">
+<p class="cap">riga <i>Ran Get-Content … reporting-style-enrico/SKILL.md</i></p>
+
+## non solo stile: expertise
+
+<div>
+
+Tanta competenza di ricerca è **tacita**. Scritta in una skill, diventa il default:
+
+- CFA e invarianza, con la stima giusta per i dati
+- simulazioni di potenza, sempre con lo stesso schema
+- scoring di un test, norme e mancanti compresi
+- revisione di manoscritti con una checklist
+
+</div>
+
+<div class="principio fragment">
+Una skill <b>non rende esperto</b> il modello: gli passa quello che sapete voi. Una procedura approssimativa verrà applicata in modo approssimativo, ma con grande coerenza.
+</div>
+
+::: notes
+Idea per il lab: una repository comune di skill come "manuale di laboratorio" eseguibile.
+:::
+
+## fuori dal computer: i connettori
+
+<div>
+
+<span class="wow">visti dal vivo</span>
+
+- rivedere **un intero corso Moodle**, forum e quiz compresi
+- la pratica online per il **medico di base**, campi compilati
+- dalle mail al **calendario giusto**, con le mie convenzioni
+
+</div>
+
+<div class="principio fragment">
+Per il modello un connettore è solo <b>un altro strumento</b> (tecnicamente, un server MCP). Il ciclo è lo stesso; cambia cosa c'è nella casella.
+</div>
+
+## {.dark background-gradient="radial-gradient(1000px 700px at 10% 0%, rgba(255,90,31,0.32), transparent 65%), radial-gradient(1100px 800px at 95% 100%, rgba(124,58,237,0.42), transparent 65%), radial-gradient(700px 500px at 60% 40%, rgba(230,35,126,0.14), transparent 70%), linear-gradient(#0d1017, #0d1017)"}
+
+<span class="wow">wow</span>
+
+<div class="inchiostro incanto">Accio quiz!</div>
+
+<img class="shot" src="figures/moodle-agente.gif" style="max-height: 540px;">
+<p class="cap">Claude in Chrome sul corso Moodle: la freccia la muove lui</p>
+
+::: notes
+Clip registrata il 31 ottobre 2026 con Claude in Chrome, sola lettura: corso → quiz → elenco domande.
+:::
+
+## un solo centro di comando
+
+:::: {.columns}
+::: {.column width="45%"}
+<div class="loop" style="flex-direction: column; gap: 0.25em; margin-top: 0;">
+<div class="node" style="width: 520px;">posta · calendario · Drive · Canva · GitHub</div>
+<span class="arrow">↕</span>
+<div class="node model" style="width: 520px;">cartella del progetto<span class="sub">+ AGENTS.md, la mappa di quello che sta fuori</span></div>
+<span class="arrow">↕</span>
+<div class="node" style="width: 520px;">dati · script · .qmd · .bib · Git</div>
+</div>
+:::
+::: {.column width="55%"}
+<div class="small">
+
+Finora il collante tra piattaforme siamo **noi**: allegati, date da ricopiare, *"chi aveva deciso cosa?"*.
+
+Un agente nella cartella, con i connettori, vede **tutto insieme**. Meglio di noi, francamente.
+
+<p class="muted">Va organizzato. E mail ed eventi partono solo col vostro clic.</p>
+
+</div>
+:::
+::::
+
+## formati aperti, un motivo in più
+
+:::: {.columns}
+::: {.column width="50%"}
+<div class="card">
+<h4><code>.qmd</code> · <code>.R</code> · <code>.csv</code> · <code>.bib</code></h4>
+legge → cambia una riga → fatto<br>
+<span class="muted">con Git si vede e si annulla</span>
+</div>
+:::
+::: {.column width="50%"}
+<div class="card" style="border-top-color: #a1a1aa;">
+<h4><code>.docx</code> · <code>.xlsx</code> · <code>.pptx</code> · <code>.sav</code></h4>
+estrai → modifica → ricomponi → controlla che non sia saltato niente<br>
+<span class="muted">più tempo, più consumo, più errori</span>
+</div>
+:::
+::::
+
+<div class="principio fragment">
+Un modello lavora su <b>testo</b>. FAIR per gli umani, FAIR per l'AI. Se serviva una scusa per mollare Word ed Excel…
+</div>
+
+# {.dark background-gradient="radial-gradient(1000px 700px at 10% 0%, rgba(255,90,31,0.32), transparent 65%), radial-gradient(1100px 800px at 95% 100%, rgba(124,58,237,0.42), transparent 65%), radial-gradient(700px 500px at 60% 40%, rgba(230,35,126,0.14), transparent 70%), linear-gradient(#0d1017, #0d1017)"}
+
+<div class="act-num">Atto 3</div>
+<div class="big">controllo e costi</div>
+<p class="muted">paradosso: l'agente che fa da solo si controlla meglio della chat</p>
+
+## prima il piano
+
+:::: {.columns}
+::: {.column width="50%"}
+<img class="shot" src="figures/codex-08-plan-domande.png" style="max-height: 480px;">
+<p class="cap">Codex fa domande prima di decidere</p>
+:::
+::: {.column width="50%"}
+<img class="shot" src="figures/claude-06-plan.png" style="max-height: 480px;">
+<p class="cap">Claude Code propone un piano e aspetta</p>
+:::
+::::
+
+<div class="principio fragment">
+Separare <b>decidere</b> da <b>fare</b>: gli equivoci saltano fuori quando correggerli costa zero.
+</div>
+
+## quanta autonomia?
+
+<img class="shot" src="figures/claude-05-modalita.png" style="max-height: 150px;">
+<p class="cap">Shift+Tab: <i>auto</i> · <i>manual</i> · <i>accept edits</i> · <i>plan</i></p>
+
+:::: {.columns}
+::: {.column width="55%"}
+<img class="shot fragment" src="figures/codex-10-sandbox.png" style="max-height: 400px;">
+:::
+::: {.column width="45%"}
+<div class="principio fragment">
+<b>Sandbox</b>: l'agente resta nel recinto; per uscire, chiede. E con <b>Git</b> si annulla tutto.
+</div>
+:::
+::::
+
+## ragionare costa (ma conviene)
+
+:::: {.columns}
+::: {.column width="50%"}
+<img class="shot" src="figures/codex-05-effort.png" style="max-height: 420px;">
+<p class="cap">livelli di ragionamento in Codex</p>
+:::
+::: {.column width="50%"}
+<div class="todo" style="min-height: 420px;"><div>stessa domanda (statistica o revisione critica) a <i>Instant</i> e a <i>High</i>, risposte affiancate</div></div>
+:::
+::::
+
+<div class="principio fragment">
+Il "ragionamento" è <b>calcolo in più prima di rispondere</b>: più token, più tempo, risposte migliori sui problemi difficili.
+</div>
+
+## conversazioni lunghe, conto salato {auto-animate=true}
+
+<div class="ctx" style="width: 30%;" data-id="t">
+<div class="c-files" style="width: 100%;">turno 1</div>
+</div>
+
+<p class="small muted">a ogni turno il modello si rilegge <b>tutto</b></p>
+
+## conversazioni lunghe, conto salato {auto-animate=true}
+
+<div class="ctx" style="width: 100%;" data-id="t">
+<div class="c-files" style="width: 30%;">turno 1</div>
+<div class="c-proj" style="width: 25%;">turno 2</div>
+<div class="c-skill" style="width: 25%;">turno 3</div>
+<div class="c-chat" style="width: 20%;">turno 4</div>
+</div>
+
+<p class="small muted">a ogni turno il modello si rilegge <b>tutto</b></p>
+
+<div class="principio">
+Ogni turno costa più del precedente. Quindi: <b>una sessione per compito</b>, e lo stato del lavoro <b>su file</b>, non in chat.
+</div>
+
+## quanto costa
+
+:::: {.columns}
+::: {.column width="55%"}
+<div class="small">
+
+- **ChatGPT Edu** (UniPD): ~100 € l'anno, Codex incluso
+  - *Chat* per tutto, anche a *High*
+  - *Work* = Codex in cloud, **stessi limiti**: non sprecateli
+- **Claude Pro**: ~22 € al mese, Claude Code incluso
+- limiti su **5 ore** e sulla **settimana**
+
+<p class="muted">ottobre 2026; cambia spesso</p>
+
+</div>
+:::
+::: {.column width="45%"}
+<img class="shot" src="figures/claude-04-usage.png" style="max-height: 420px;">
+<p class="cap"><code>/usage</code> in Claude Code</p>
+:::
+::::
+
+## precauzioni
+
+<div>
+
+- **Git**, o almeno una copia: l'agente può cancellare file
+- **dati sensibili**: quello che legge va sui server del fornitore
+- **autonomia graduale**: prima piano e approvazione, poi il resto
+- **skill e connettori altrui**: leggerli prima (girano con i vostri permessi)
+- **responsabilità**: codice che gira ≠ numeri giusti
+
+</div>
+
+<div class="fragment inchiostro">Mai fidarsi di qualcosa che pensa da solo, se non vedi dove tiene il cervello.</div>
+
+## {.dark background-gradient="radial-gradient(1000px 700px at 10% 0%, rgba(255,90,31,0.32), transparent 65%), radial-gradient(1100px 800px at 95% 100%, rgba(124,58,237,0.42), transparent 65%), radial-gradient(700px 500px at 60% 40%, rgba(230,35,126,0.14), transparent 70%), linear-gradient(#0d1017, #0d1017)"}
+
+<div class="center" style="margin-top: 140px;">
+<div class="big">una confessione</div>
+
+<div class="fragment" style="margin-top: 1em; font-size: 0.9em;">
+La prima stesura di queste slide l'ha scritta <span class="accent"><b>Claude Code</b></span>, partendo dai post del blog.<br>
+<span class="muted">Anche i post, screenshot compresi.</span>
+</div>
+
+<div class="fragment" style="margin-top: 1em; font-size: 0.8em;">
+Io: materiali, indicazioni, skill, revisione.
+</div>
+</div>
+
+::: notes
+Adattare questa slide a quanto davvero fatto alla fine (quanto è stato rivisto a mano).
+:::
+
+## ricapitolando
+
+<div class="ingr">
+<div><b>modello</b>campiona<br><span class="muted">→ verificare</span></div>
+<div><b>contesto</b>repository, AGENTS.md, skill<br><span class="muted">→ ciò che non c'è non esiste</span></div>
+<div><b>strumenti</b>R, Git, connettori, browser<br><span class="muted">→ agisce, non solo risponde</span></div>
+<div><b>ciclo</b>prova, guarda, corregge<br><span class="muted">→ si corregge da solo</span></div>
+</div>
+
+<p class="center" style="margin-top: 1.2em;">Il punto non è la velocità: è <b>un solo centro di comando</b>.</p>
+
+## domani mattina
+
+<div>
+
+1. terminale **in una cartella di progetto** (meglio se con Git), poi `codex` o `claude`
+2. prima un **piano**; poi leggete cosa fa
+3. un `AGENTS.md` di tre righe: cosa c'è, cosa non toccare, come si fa il render
+4. terza volta che correggete la stessa cosa? **skill**
+
+</div>
+
+## per saperne di più
+
+<div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.5em; margin-top: 0.8em;">
+<div class="qr"><img src="figures/qr-serie.svg"><br><a href="https://enricotoffalini.github.io/blog/posts/serie-ai/">la serie</a></div>
+<div class="qr"><img src="figures/qr-agenti.svg"><br><a href="https://enricotoffalini.github.io/blog/posts/agenti-cli/">agenti in locale</a></div>
+<div class="qr"><img src="figures/qr-gptedu.svg"><br><a href="https://enricotoffalini.github.io/blog/posts/gpt-edu/">ChatGPT Edu</a></div>
+<div class="qr"><img src="figures/qr-skills.svg"><br><a href="https://enricotoffalini.github.io/blog/posts/skills/">skill</a></div>
+<div class="qr"><img src="figures/qr-aiskills.svg"><br><a href="https://github.com/EnricoToffalini/ai-skills">le mie skill</a></div>
+</div>
+
+<p class="center small" style="margin-top: 1em;">→ <a href="extra.html">appendice: guide pratiche</a> <span class="muted">(installazione, modelli, limiti, permessi, GPT Edu)</span></p>

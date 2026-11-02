@@ -1,0 +1,40 @@
+<!-- Alone discreto che segue il mouse: schiarente sulle slide scure, ombra leggera sulle chiare -->
+<div id="alone-mouse" aria-hidden="true"></div>
+<script>
+(function () {
+  var el = document.getElementById('alone-mouse');
+  if (!el || window.matchMedia('(pointer: coarse)').matches) return;
+  var x = -9999, y = -9999, pending = false;
+  function aggiornaTono() {
+    var s = window.Reveal && Reveal.getCurrentSlide && Reveal.getCurrentSlide();
+    var scura = !!s && (s.classList.contains('dark') || s.id === 'title-slide');
+    el.classList.toggle('scura', scura);
+  }
+  document.addEventListener('mousemove', function (e) {
+    x = e.clientX; y = e.clientY;
+    el.classList.add('attivo');
+    if (!pending) {
+      pending = true;
+      requestAnimationFrame(function () {
+        var bounds = el.getBoundingClientRect();
+        el.style.setProperty('--ax', (x - bounds.left) + 'px');
+        el.style.setProperty('--ay', (y - bounds.top) + 'px');
+        pending = false;
+      });
+    }
+  }, { passive: true });
+  document.documentElement.addEventListener('mouseleave', function () { el.classList.remove('attivo'); });
+  function aggancia() {
+    if (!window.Reveal || !Reveal.on) return setTimeout(aggancia, 100);
+    function preparaSfondo() {
+      var sfondi = document.querySelector('.reveal .backgrounds');
+      if (sfondi) sfondi.appendChild(el);
+      aggiornaTono();
+    }
+    Reveal.on('ready', preparaSfondo);
+    Reveal.on('slidechanged', aggiornaTono);
+    preparaSfondo();
+  }
+  aggancia();
+})();
+</script>

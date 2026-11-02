@@ -1,0 +1,57 @@
+COMPITO: rifare 12 screenshot delle app desktop Claude (scheda Code) e ChatGPT (sezione Codex)
+con un esempio BII al posto della vecchia demo sui voti d'esame.
+
+CONTESTO
+- Le vecchie schermate mostrano un'analisi su "voti d'esame" (dati_esame.csv, voto ~ ore_studio + ansia + gruppo).
+  Non devono comparire MAI piu' voti, esami o studenti: rimandano a dati riservati.
+- Nuovo esempio: BII, una batteria d'intelligenza inventata (dati simulati, uso libero).
+- Le schermate da terminale sono gia' state rifatte. Leggere prima, per coerenza:
+  C:\TOFFEE_BLOG\posts\agenti-cli\app-desktop.qmd (testo gia' aggiornato al nuovo esempio)
+  C:\TOFFEE_BLOG\posts\agenti-cli\claude-code.qmd e codex.qmd (stesso flusso, da terminale)
+  C:\Users\enric\Desktop\labmeeting-ai-2026\AGENTS.md
+
+CARTELLA DI LAVORO
+- C:\Users\enric\Desktop\demo-app-desktop (contiene bii_campione.csv e LEGGIMI.md).
+- Prima di iniziare: git init in quella cartella (il pannello sessione mostra il branch).
+- In Codex creare/usare un progetto chiamato "Demo app desktop" che punta a quella cartella.
+
+RICHIESTE DA INCOLLARE (identiche alle guide da terminale)
+R1: In questa cartella c'è bii_campione.csv, il campione simulato di una batteria d'intelligenza inventata. Dai un'occhiata ai dati, poi scrivi uno script R chiamato analisi.R che descrive come crescono con l'età i punteggi grezzi dei quattro subtest, eseguilo e spiegami i risultati in poche righe.
+R2 (in modalita' Piano / Plan mode): Vorrei trasformare questa analisi in un breve report Quarto in HTML, con un grafico e una tabella. Prima di toccare qualsiasi file, proponimi un piano.
+In Codex: in R1 chiedere lo script "analisi_codex.R" e in R2 il report "report_codex.qmd" (nella cartella ci sono gia' i file di Claude).
+Ordine: prima tutto in Claude, poi tutto in Codex.
+
+SCREENSHOT (finestra dell'app, circa 1400x820 px salvo dove indicato; i titoli delle ALTRE sessioni/chat
+nella barra laterale vanno sfocati come nelle versioni attuali)
+App Claude, scheda Code (modalita' Auto, Opus 5.5, effort Alto):
+ 1 app-claude-02-richiesta.png  R1 scritta nella casella, non ancora inviata; sotto si vedono cartella demo-app-desktop, Auto, Opus 5.5 Alto (finestra stretta, ~990x990)
+ 2 app-claude-03-lavoro.png     mentre lavora: lista dei passi a destra, sessione nella barra laterale sotto demo-app-desktop
+ 3 app-claude-06-sessione.png   a fine R1: pannello sessione aperto (ambiente, contesto, connettori, modifiche, Conferma modifiche)
+ 4 app-claude-07-diff.png       pannello modifiche su analisi.R, righe aggiunte in verde
+ 5 app-claude-08-pannelli.png   conversazione + modifiche + file + terminale aperti insieme
+ 6 app-claude-09-piano.png      dopo R2 in modalita' Piano: piano nel pannello a destra, pulsanti Rifiuta/Rivedi/Accetta a sinistra
+ 7 app-claude-10-fine.png       piano accettato, report fatto e controllato nel browser integrato; riepilogo finale con la domanda sul commit (NON fare il commit)
+App ChatGPT, sezione Codex (Approve for me, GPT-6.1 Sol Medium):
+ 8 app-codex-02-risultato.png   risultato di R1, con il riquadro "Edited analisi_codex.R" (Undo / View changes) e il progetto nella barra laterale
+ 9 app-codex-03-diff.png        View changes aperto nel pannello laterale
+10 app-codex-08-domanda.png     R2 dal + -> Plan mode: riga "Ran Get-Content ... SKILL.md" della skill reporting-style-enrico e la domanda con l'opzione consigliata (rispondere con l'opzione consigliata)
+11 app-codex-09-piano.png       il piano con "Implement this plan?"
+12 app-codex-10-browser.png     report_codex.html aperto nel browser integrato del pannello, accanto alla chat
+
+SALVATAGGIO
+- Ogni file in C:\TOFFEE_BLOG\posts\agenti-cli\images\ (sovrascrivere).
+- Copiare anche in C:\Users\enric\Desktop\labmeeting-ai-2026\figures\ quelli usati nelle slide:
+  app-claude-02-richiesta, app-claude-08-pannelli, app-claude-10-fine, app-codex-02-risultato,
+  app-codex-08-domanda, app-codex-10-browser.
+- Controllare ogni immagine: nessuna traccia di voti/esami, email, ID, titoli privati non sfocati.
+
+DOPO GLI SCATTI
+- Allineare didascalie e testo di app-desktop.qmd a quello che le app hanno davvero fatto (tempi, scelte,
+  controlli, eventuali errori). Allineare le didascalie delle slide in labmeeting-ai-2026\index.qmd
+  (sezione "niente terminale? stessa cosa, dall'app", "i pannelli", "browser", "lo stesso, dall'app").
+- Preservare i fine riga CRLF dei .qmd.
+- Renderizzare: in C:\TOFFEE_BLOG "quarto render posts/agenti-cli"; nelle slide "quarto render index.qmd";
+  verificare a vista le slide toccate (ombre delle immagini incluse, regola in styles.css).
+- Cercare residui: grep -i "esame|voto|voti|ore_studio|ansia|regression" nei .qmd toccati.
+- NON fare commit ne' push: in C:\TOFFEE_BLOG\docs ci sono altre modifiche non committate di Enrico.
+- Resoconto finale: elenco degli screenshot rifatti, testi cambiati, cosa resta da controllare.
