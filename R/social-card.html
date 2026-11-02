@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="it"><head><meta charset="utf-8">
+<!-- Anteprima social 1280x640: rigenerare con headless Chrome, vedi commento in fondo -->
+<style>
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@400;600&display=swap");
+* { margin: 0; box-sizing: border-box; }
+html, body { width: 1280px; height: 640px; overflow: hidden; }
+body {
+  font-family: Inter, system-ui, sans-serif; color: #e4e4e7; position: relative;
+  background:
+    radial-gradient(900px 640px at 8% 0%, rgba(255,90,31,0.42), transparent 65%),
+    radial-gradient(1000px 720px at 98% 100%, rgba(124,58,237,0.55), transparent 65%),
+    radial-gradient(520px 380px at 62% 42%, rgba(230,35,126,0.20), transparent 70%),
+    #0d1017;
+}
+/* polvere di stelle */
+.stars span { position: absolute; border-radius: 50%; background: #fff; }
+.logos { position: absolute; top: 0; left: 50%; transform: translateX(-50%); display: flex; align-items: flex-start; }
+.logos img { width: 74px; height: 86px; object-fit: contain; margin-top: 22px; filter: drop-shadow(0 0 6px rgba(255,255,255,0.35)); }
+.logos img.ps { width: 92px; height: 106px; margin: 0 -4px; }
+.main { position: absolute; top: 172px; left: 0; right: 0; text-align: center; }
+.pill {
+  display: inline-block; font-family: "JetBrains Mono", monospace; font-size: 18px; font-weight: 600;
+  letter-spacing: 0.14em; text-transform: uppercase; color: #fff; padding: 7px 22px; border-radius: 999px;
+  background: linear-gradient(90deg, #ff5a1f, #e6237e 55%, #7c3aed); box-shadow: 0 0 30px rgba(230,35,126,0.6);
+}
+h1 {
+  font-size: 120px; font-weight: 800; letter-spacing: -0.045em; line-height: 1.05; margin-top: 22px; padding-bottom: 8px;
+  background: linear-gradient(90deg, #ff5a1f, #e6237e 55%, #a78bfa); -webkit-background-clip: text; background-clip: text; color: transparent;
+  filter: drop-shadow(0 0 28px rgba(230,35,126,0.35));
+}
+.sub { font-size: 34px; font-weight: 600; color: #ffb08a; margin-top: 10px; }
+.sub2 { font-size: 25px; color: #d4d4d8; margin-top: 8px; }
+.code { font-family: "JetBrains Mono", monospace; font-size: 19px; color: #f9a8d4; opacity: 0.85; margin-top: 34px; }
+.foot { position: absolute; bottom: 24px; left: 40px; right: 40px; display: flex; justify-content: space-between;
+  font-family: "JetBrains Mono", monospace; font-size: 17px; color: #a1a1aa; }
+.wand { position: absolute; font-size: 64px; filter: drop-shadow(0 0 18px rgba(255,176,138,0.8)); }
+</style></head>
+<body>
+<div class="stars" id="stars"></div>
+<div class="logos">
+  <img src="../figures/badge-grifondoro.svg"><img src="../figures/badge-serpeverde.svg"><img class="ps" src="../figures/psicostat.svg"><img src="../figures/badge-tassorosso.svg"><img src="../figures/badge-corvonero.svg">
+</div>
+<div class="wand" style="left: 190px; top: 372px; transform: rotate(-14deg);">🪄</div>
+<div class="wand" style="right: 190px; top: 366px; transform: rotate(6deg);">🧙</div>
+<div class="main">
+  <span class="pill">✨ Lab meeting · Psicostat</span>
+  <h1>Evocare gli agents</h1>
+  <div class="sub">l'AI che fa magie nel vostro computer</div>
+  <div class="sub2">poi qualcosa su gptEdu e sulle skills</div>
+  <div class="code">repeat { esegue(); osserva(); corregge(); if (finito) break }</div>
+</div>
+<div class="foot"><span>Memory &amp; Learning · 4 novembre 2026</span><span>Enrico Toffalini</span></div>
+<script>
+// stelline deterministiche (stesso risultato a ogni render)
+let s = 7, r = () => (s = (s * 16807) % 2147483647) / 2147483647, h = "";
+for (let i = 0; i < 90; i++) {
+  const z = 1 + r() * 2.6, o = 0.25 + r() * 0.65;
+  h += `<span style="left:${r()*1280}px;top:${r()*640}px;width:${z}px;height:${z}px;opacity:${o};box-shadow:0 0 ${z*3}px rgba(255,220,255,${o})"></span>`;
+}
+document.getElementById("stars").innerHTML = h;
+</script>
+<!-- Rigenerare (dalla cartella del progetto):
+"C:/Program Files/Google/Chrome/Application/chrome.exe" --headless=new --disable-gpu --hide-scrollbars --allow-file-access-from-files
+  --window-size=1280,640 --virtual-time-budget=5000 --screenshot=figures/social-preview.png R/social-card.html -->
+</body></html>

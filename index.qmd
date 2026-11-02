@@ -12,7 +12,22 @@ format:
     theme: default
     css: styles.css
     include-in-header:
-      text: <link rel="icon" type="image/svg+xml" href="favicon.svg">
+      text: |
+        <link rel="icon" type="image/svg+xml" href="favicon.svg">
+        <meta name="description" content="L'AI che fa magie nel vostro computer, poi qualcosa su gptEdu e sulle skills. Lab meeting Memory & Learning, 4 novembre 2026.">
+        <meta property="og:type" content="website">
+        <meta property="og:locale" content="it_IT">
+        <meta property="og:title" content="🪄 Evocare gli agents">
+        <meta property="og:description" content="L'AI che fa magie nel vostro computer, poi qualcosa su gptEdu e sulle skills. Lab meeting Memory & Learning, 4 novembre 2026.">
+        <meta property="og:url" content="https://enricotoffalini.github.io/evocare-agents/">
+        <meta property="og:image" content="https://enricotoffalini.github.io/evocare-agents/figures/social-preview.png">
+        <meta property="og:image:width" content="1280">
+        <meta property="og:image:height" content="640">
+        <meta property="og:image:alt" content="Evocare gli agents: titolo a gradiente arancio-viola su cielo stellato, con gli stemmi delle quattro casate e di Psicostat">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="🪄 Evocare gli agents">
+        <meta name="twitter:description" content="L'AI che fa magie nel vostro computer, poi qualcosa su gptEdu e sulle skills.">
+        <meta name="twitter:image" content="https://enricotoffalini.github.io/evocare-agents/figures/social-preview.png">
     include-after-body:
       - alone-mouse.html
       - magia-click.html
@@ -197,7 +212,7 @@ Clip registrata il 31 ottobre 2026 con Claude in Chrome, sola lettura: corso →
 
 <div class="examples-grid">
 <div class="card">
-<h4>ricerca</h4>
+<h4>siti ricerca</h4>
 <ul class="link-list">
 <li><a href="https://enricotoffalini.github.io/Most_interactions_are_wrong/" target="_blank" rel="noopener noreferrer">Most interactions are wrong</a></li>
 <li><a href="https://enricotoffalini.github.io/Taxometrics-Neurodevelopmental-Disorders/" target="_blank" rel="noopener noreferrer">Taxometrics in neurodevelopmental disorders</a></li>
