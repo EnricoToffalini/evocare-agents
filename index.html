@@ -2081,29 +2081,43 @@ Mai fidarsi di qualcosa che pensa da solo, se non vedi dove tiene il cervello.
 
       }
 
-      // 6. Una creatura attraversa lo schermo
+      // 6. Una creatura attraversa lo schermo aleggiando, senza rimbalzi
 
       function creatura(x, y) {
 
-        var el = crea('volatile', 0, 0, pick(creature)), sx = Math.random() < 0.5;
+        var el = crea('volatile', 0, 0, pick(creature));
 
-        var x0 = sx ? -80 : innerWidth + 80, x1 = sx ? innerWidth + 80 : -80, flip = sx ? 'scaleX(-1)' : '';
+        var verticale = Math.random() < 0.5, avanti = Math.random() < 0.5;
 
-        var yy = Math.max(60, Math.min(innerHeight - 60, y + rnd(-80, 80)));
+        var limite = verticale ? innerHeight : innerWidth;
 
-        anima(el, [
+        var inizio = avanti ? -100 : limite + 100, fine = avanti ? limite + 100 : -100;
 
-          { transform: T(x0, yy, flip) },
+        var centro = verticale ? Math.max(80, Math.min(innerWidth - 160, x)) : Math.max(80, Math.min(innerHeight - 160, y));
 
-          { transform: T((x0 + x1) * 0.25, yy - 60, flip + ' rotate(-6deg)') },
+        var flip = !verticale && avanti ? 'scaleX(-1)' : '';
 
-          { transform: T((x0 + x1) * 0.5, yy + 20, flip + ' rotate(6deg)') },
+        var ampiezza = rnd(40, 60);
 
-          { transform: T((x0 + x1) * 0.75, yy - 50, flip + ' rotate(-6deg)') },
+        var frames = [];
 
-          { transform: T(x1, yy, flip) }
+        for (var i = 0; i <= 80; i++) {
 
-        ], { duration: rnd(2200, 3200), easing: 'linear' });
+          var p = i / 80, onda = Math.sin(p * 3 * Math.PI);
+
+          var posizione = inizio + (fine - inizio) * p, deriva = centro + ampiezza * onda;
+
+          frames.push({
+
+            transform: T(verticale ? deriva : posizione, verticale ? posizione : deriva, flip + ' rotate(' + (5 * onda) + 'deg)'),
+
+            offset: p
+
+          });
+
+        }
+
+        anima(el, frames, { duration: rnd(3000, 4000), easing: 'linear' });
 
         scintille(x, y, 8);
 

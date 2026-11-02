@@ -120,18 +120,25 @@
       ], { duration: 1100, delay: i * 140, easing: 'cubic-bezier(.2,.6,.3,1)' });
     }
   }
-  // 6. Una creatura attraversa lo schermo
+  // 6. Una creatura attraversa lo schermo aleggiando, senza rimbalzi
   function creatura(x, y) {
-    var el = crea('volatile', 0, 0, pick(creature)), sx = Math.random() < 0.5;
-    var x0 = sx ? -80 : innerWidth + 80, x1 = sx ? innerWidth + 80 : -80, flip = sx ? 'scaleX(-1)' : '';
-    var yy = Math.max(60, Math.min(innerHeight - 60, y + rnd(-80, 80)));
-    anima(el, [
-      { transform: T(x0, yy, flip) },
-      { transform: T((x0 + x1) * 0.25, yy - 60, flip + ' rotate(-6deg)') },
-      { transform: T((x0 + x1) * 0.5, yy + 20, flip + ' rotate(6deg)') },
-      { transform: T((x0 + x1) * 0.75, yy - 50, flip + ' rotate(-6deg)') },
-      { transform: T(x1, yy, flip) }
-    ], { duration: rnd(2200, 3200), easing: 'linear' });
+    var el = crea('volatile', 0, 0, pick(creature));
+    var verticale = Math.random() < 0.5, avanti = Math.random() < 0.5;
+    var limite = verticale ? innerHeight : innerWidth;
+    var inizio = avanti ? -100 : limite + 100, fine = avanti ? limite + 100 : -100;
+    var centro = verticale ? Math.max(80, Math.min(innerWidth - 160, x)) : Math.max(80, Math.min(innerHeight - 160, y));
+    var flip = !verticale && avanti ? 'scaleX(-1)' : '';
+    var ampiezza = rnd(40, 60);
+    var frames = [];
+    for (var i = 0; i <= 80; i++) {
+      var p = i / 80, onda = Math.sin(p * 3 * Math.PI);
+      var posizione = inizio + (fine - inizio) * p, deriva = centro + ampiezza * onda;
+      frames.push({
+        transform: T(verticale ? deriva : posizione, verticale ? posizione : deriva, flip + ' rotate(' + (5 * onda) + 'deg)'),
+        offset: p
+      });
+    }
+    anima(el, frames, { duration: rnd(3000, 4000), easing: 'linear' });
     scintille(x, y, 8);
   }
   // 7. Sbuffo di fumo: qualcosa è stato evocato... e svanisce
