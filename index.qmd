@@ -804,8 +804,8 @@ UniPD: 7 € al mese + IVA, circa 100 € l'anno, pagabili su fondi di ricerca. 
 
 <div class="small" style="margin-top: 1em;">
 
-- i limiti si sentono in **Work** (sono quelli di Codex: 5 ore e settimana)
-- e soprattutto con **Pro** (in un periodo: 16 richieste al mese)
+- i limiti si sentono in **Work** (sono quelli di Codex: 5 ore + settimana)
+- e soprattutto con **Thinking Effort: Pro** (in un periodo: 16 richieste al mese)
 
 </div>
 
