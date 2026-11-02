@@ -241,6 +241,10 @@
     do { i = Math.floor(Math.random() * magie.length); } while (magie[i] === ultima);
     ultima = magie[i];
     magie[i](e.clientX, e.clientY, t);
+    // spesso la formula si aggiunge anche agli altri effetti, con un attimo di ritardo
+    var x = e.clientX, y = e.clientY;
+    if (ultima !== incantesimo && ultima !== levita && Math.random() < 0.4)
+      setTimeout(function () { incantesimo(x, y); }, 180 * DURATA);
   }, true);
 })();
 </script>
