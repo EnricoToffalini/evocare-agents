@@ -1,0 +1,59 @@
+<!-- Polvere di stelle sullo sfondo della cover, come nell'anteprima social (R/social-card.html):
+     stelline piccole di luminosità diverse, che tremolano e derivano lentamente su due piani -->
+<style>
+.stelle-cover { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+.stelle-cover .piano { position: absolute; inset: -40px; }
+.stelle-cover .piano.lontano { animation: stelle-deriva 140s ease-in-out infinite alternate; }
+.stelle-cover .piano.vicino { animation: stelle-deriva 90s ease-in-out infinite alternate-reverse; }
+.stelle-cover span {
+  position: absolute; border-radius: 50%; background: #fff;
+  animation: stelle-tremolio var(--t) ease-in-out var(--r) infinite alternate,
+             stelle-vaga var(--v) ease-in-out var(--r) infinite alternate;
+}
+/* ogni stellina vaga per conto suo attorno alla propria posizione */
+@keyframes stelle-vaga {
+  0%   { transform: translate(0, 0); }
+  33%  { transform: translate(var(--x1), var(--y1)); }
+  66%  { transform: translate(var(--x2), var(--y2)); }
+  100% { transform: translate(var(--x3), var(--y3)); }
+}
+@keyframes stelle-tremolio { from { opacity: var(--o); } to { opacity: calc(var(--o) * 0.3); } }
+@keyframes stelle-deriva { from { transform: translate(0, 0); } to { transform: translate(34px, -22px); } }
+@media (prefers-reduced-motion: reduce) {
+  .stelle-cover .piano, .stelle-cover span { animation: none; opacity: var(--o); }
+}
+</style>
+<script>
+(function () {
+  // stelline deterministiche (stessa disposizione a ogni apertura)
+  var s = 7, r = function () { return (s = (s * 16807) % 2147483647) / 2147483647; };
+  // spostamento casuale fino a +/- a pixel
+  function d(a) { return ((r() * 2 - 1) * a).toFixed(1) + 'px'; }
+  function piano(classe, n, zmin, zmax, a) {
+    var h = '';
+    for (var i = 0; i < n; i++) {
+      var z = zmin + r() * (zmax - zmin), o = 0.35 + r() * 0.65;
+      h += '<span style="left:' + (r() * 100).toFixed(2) + '%;top:' + (r() * 100).toFixed(2) + '%;width:' + z.toFixed(1) +
+        'px;height:' + z.toFixed(1) + 'px;--o:' + o.toFixed(2) + ';box-shadow:0 0 ' + (z * 3).toFixed(1) +
+        'px rgba(255,220,255,' + o.toFixed(2) + ');--t:' + (1.6 + r() * 4.4).toFixed(1) + 's;--r:-' + (r() * 6).toFixed(1) + 's;--v:' + (5 + r() * 9).toFixed(1) + 's' +
+        ';--x1:' + d(a) + ';--y1:' + d(a) + ';--x2:' + d(a) + ';--y2:' + d(a) + ';--x3:' + d(a) + ';--y3:' + d(a) + '"></span>';
+    }
+    return '<div class="piano ' + classe + '">' + h + '</div>';
+  }
+  function aggancia() {
+    if (!window.Reveal || !Reveal.getSlideBackground) return setTimeout(aggancia, 100);
+    function semina() {
+      var cover = document.getElementById('title-slide');
+      var sfondo = cover && Reveal.getSlideBackground(cover);
+      if (!sfondo || sfondo.querySelector('.stelle-cover')) return;
+      var el = document.createElement('div');
+      el.className = 'stelle-cover'; el.setAttribute('aria-hidden', 'true');
+      el.innerHTML = piano('lontano', 110, 1, 2.2, 14) + piano('vicino', 45, 1.8, 3.8, 26);
+      sfondo.appendChild(el);
+    }
+    Reveal.on('ready', semina);
+    semina();
+  }
+  aggancia();
+})();
+</script>
