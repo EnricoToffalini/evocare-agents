@@ -1614,6 +1614,9 @@ Mai fidarsi di qualcosa che pensa da solo, se non vedi dove tiene il cervello.
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
 'jumpToSlide': true,
+'scrollSnap': "proximity",
+'scrollLayout': "compact",
+'scrollActivationWidth': 500,
 'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
 'smaller': false,
  
@@ -2184,6 +2187,27 @@ Mai fidarsi di qualcosa che pensa da solo, se non vedi dove tiene il cervello.
 
     </script>
 
+    <!-- Telefono in verticale: sotto activation-width (index.qmd, scroll-view) reveal impila le slide
+         in una pagina da scorrere. Lì ogni slide con frammenti resterebbe ferma per un'intera schermata
+         a ogni passo; meglio mostrarla già nello stato finale, così tutte le slide sono compatte. -->
+    <script>
+    (function () {
+      function completa() {
+        if (!Reveal.isScrollView || !Reveal.isScrollView()) return;
+        var fr = document.querySelectorAll('.reveal .slides .fragment');
+        if (!fr.length) return;
+        fr.forEach(function (el) {
+          // stato finale: quello che a fine slide sparisce resta nascosto, il resto si vede
+          if (/\b(fade-out|current-visible|fade-in-then-out)\b/.test(el.className)) el.style.display = 'none';
+          el.classList.remove('fragment');
+        });
+        Reveal.layout();
+      }
+      Reveal.on('ready', completa);
+      Reveal.on('resize', completa);
+      if (Reveal.isReady()) completa();
+    })();
+    </script>
     <script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {
         const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")

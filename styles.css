@@ -69,6 +69,16 @@
   width: auto !important; text-align: right; font-size: 0.4em !important; color: #a1a1aa;
 }
 
+/* Schermi piccoli (telefono in orizzontale): reveal usa 100svh, cioè l'altezza
+   con la barra del browser visibile; quando la barra sparisce resta sotto una
+   fascia bianca con footer e menu (position: fixed). Con 100dvh la slide segue
+   l'altezza reale; footer e menu restano ancorati alla slide. */
+html.reveal-full-page { height: 100dvh; }
+.reveal .footer, .reveal .slide-menu-button { position: absolute; }
+@media screen and (max-height: 500px), screen and (max-width: 800px) {
+  .reveal .footer { display: none !important; }
+}
+
 /* Title slide (scura, sfondo in YAML) */
 .reveal #title-slide {
   color: #e4e4e7; height: 900px; box-sizing: border-box; padding-top: 240px;

@@ -32,6 +32,7 @@ format:
       - alone-mouse.html
       - magia-click.html
       - stelle-cover.html
+      - telefono.html
     width: 1600
     height: 900
     margin: 0.06
@@ -43,6 +44,10 @@ format:
     preview-links: false
     link-external-newwindow: true
     code-overflow: wrap
+    scroll-view:
+      activation-width: 500
+      layout: compact
+      snap: proximity
 footer: "Memory & Learning · Lab meeting · 4 novembre 2026"
 ---
 
