@@ -17,7 +17,7 @@
   66%  { transform: translate(var(--x2), var(--y2)); }
   100% { transform: translate(var(--x3), var(--y3)); }
 }
-@keyframes stelle-tremolio { from { opacity: var(--o); } to { opacity: calc(var(--o) * 0.3); } }
+@keyframes stelle-tremolio { from { opacity: var(--o); } to { opacity: calc(var(--o) * 0.4); } }
 @keyframes stelle-deriva { from { transform: translate(0, 0); } to { transform: translate(34px, -22px); } }
 @media (prefers-reduced-motion: reduce) {
   .stelle-cover .piano, .stelle-cover span { animation: none; opacity: var(--o); }
@@ -32,9 +32,9 @@
   function piano(classe, n, zmin, zmax, a) {
     var h = '';
     for (var i = 0; i < n; i++) {
-      var z = zmin + r() * (zmax - zmin), o = 0.35 + r() * 0.65;
+      var z = zmin + r() * (zmax - zmin), o = 0.5 + r() * 0.5;
       h += '<span style="left:' + (r() * 100).toFixed(2) + '%;top:' + (r() * 100).toFixed(2) + '%;width:' + z.toFixed(1) +
-        'px;height:' + z.toFixed(1) + 'px;--o:' + o.toFixed(2) + ';box-shadow:0 0 ' + (z * 3).toFixed(1) +
+        'px;height:' + z.toFixed(1) + 'px;--o:' + o.toFixed(2) + ';box-shadow:0 0 ' + (z * 4).toFixed(1) +
         'px rgba(255,220,255,' + o.toFixed(2) + ');--t:' + (1.6 + r() * 4.4).toFixed(1) + 's;--r:-' + (r() * 6).toFixed(1) + 's;--v:' + (5 + r() * 9).toFixed(1) + 's' +
         ';--x1:' + d(a) + ';--y1:' + d(a) + ';--x2:' + d(a) + ';--y2:' + d(a) + ';--x3:' + d(a) + ';--y3:' + d(a) + '"></span>';
     }
@@ -50,6 +50,102 @@
       el.className = 'stelle-cover'; el.setAttribute('aria-hidden', 'true');
       el.innerHTML = piano('lontano', 110, 1, 2.2, 14) + piano('vicino', 45, 1.8, 3.8, 26);
       sfondo.appendChild(el);
+      guizzi(el);
+    }
+    // Ogni tanto una stellina si agita: grandi swing alternati, poi rientra piano.
+    // Usa la proprieta' "translate", che si somma al "transform" della deriva CSS senza interferire.
+    function guizzi(el) {
+      if (!el.animate || !window.CSS || !CSS.supports('translate', '1px 1px') ||
+          (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches)) return;
+      var stelle = el.querySelectorAll('span');
+      function px(x, y) { return x.toFixed(1) + 'px ' + y.toFixed(1) + 'px'; }
+      function uno() {
+        var libere = Array.from(stelle).filter(function (st) { return !st.dataset.guizzo; });
+        var st = libere[Math.floor(Math.random() * libere.length)];
+        if (st) {
+          var a = Math.random() * 2 * Math.PI, L = 130 + Math.random() * 150;
+          // Centro dello swing rivolto verso l'interno, per tenere visibili anche le stelle ai bordi.
+          var cx = (50 - parseFloat(st.style.left)) * 3;
+          var cy = (50 - parseFloat(st.style.top)) * 2;
+          var swing = 4 + Math.floor(Math.random() * 3);
+          var scatto = swing * (1400 + Math.random() * 600), rientro = 5000 + Math.random() * 2500;
+          var f = scatto / (scatto + rientro);
+          var frames = [{ translate: '0px 0px', offset: 0, easing: 'ease-in-out' }];
+          for (var i = 1; i <= swing; i++) {
+            var lato = i % 2 ? 1 : -1;
+            var ampiezza = L * (0.7 + Math.random() * 0.3);
+            var curva = Math.sin(i * 1.7) * L * 0.45;
+            frames.push({
+              translate: px(cx + Math.cos(a) * ampiezza * lato - Math.sin(a) * curva,
+                            cy + Math.sin(a) * ampiezza * lato + Math.cos(a) * curva),
+              offset: f * i / swing, easing: 'ease-in-out'
+            });
+          }
+          frames.push({ translate: '0px 0px', offset: 1 });
+          st.dataset.guizzo = '1';
+          var animazione = st.animate(frames, { duration: scatto + rientro, composite: 'replace' });
+          animazione.onfinish = animazione.oncancel = function () { delete st.dataset.guizzo; };
+        }
+        setTimeout(uno, 8000 + Math.random() * 6000);
+      }
+      // Gli incontri dipendono dalla distanza attuale e dal caso, non da coppie fisse.
+      function incontro() {
+        setTimeout(incontro, 3800 + Math.random() * 5200);
+        if (document.hidden || Reveal.getCurrentSlide().id !== 'title-slide' || Math.random() > 0.7) return;
+        var scala = el.getBoundingClientRect().width / el.offsetWidth;
+        if (!scala) return;
+        var adesso = Date.now();
+        var libere = Array.from(stelle).filter(function (st) {
+          return !st.dataset.guizzo && adesso > Number(st.dataset.riposo || 0);
+        }).map(function (st) {
+          var b = st.getBoundingClientRect();
+          return { st: st, x: (b.left + b.width / 2) / scala, y: (b.top + b.height / 2) / scala };
+        });
+        var coppie = [];
+        for (var i = 0; i < libere.length; i++) {
+          for (var j = i + 1; j < libere.length; j++) {
+            var dx = libere[j].x - libere[i].x, dy = libere[j].y - libere[i].y;
+            var distanza = Math.hypot(dx, dy);
+            if (distanza > 18 && distanza < 95) coppie.push([libere[i], libere[j]]);
+          }
+        }
+        if (!coppie.length) return;
+        var coppia = coppie[Math.floor(Math.random() * coppie.length)];
+        var dx = coppia[1].x - coppia[0].x, dy = coppia[1].y - coppia[0].y;
+        var angolo = Math.atan2(-dy, -dx);
+        var giro = (Math.random() < 0.5 ? -1 : 1) * Math.PI * (1.3 + Math.random() * 1.1);
+        var raggio = 12 + Math.random() * 12, fuga = 55 + Math.random() * 35;
+        var durata = 6500 + Math.random() * 2500;
+        coppia.forEach(function (p, indice) {
+          var lato = indice === 0 ? 1 : -1;
+          var cx = dx * lato / 2, cy = dy * lato / 2;
+          // Piccole asimmetrie e il vagare CSS rendono il giro meno geometrico.
+          var variazione = 0.9 + Math.random() * 0.2;
+          var frames = [{ translate: '0px 0px', offset: 0, easing: 'ease-in-out' }];
+          for (var k = 0; k <= 40; k++) {
+            var t = k / 40, a = angolo + giro * t;
+            var r = raggio * variazione * (1 + 0.16 * Math.sin(t * Math.PI * 3));
+            frames.push({
+              translate: px(cx + lato * Math.cos(a) * r, cy + lato * Math.sin(a) * r),
+              offset: 0.18 + t * 0.46, easing: k === 40 ? 'ease-in-out' : 'linear'
+            });
+          }
+          var uscita = angolo + giro + 0.2;
+          frames.push({
+            translate: px(cx + lato * Math.cos(uscita) * fuga, cy + lato * Math.sin(uscita) * fuga),
+            offset: 0.82, easing: 'ease-in-out'
+          });
+          frames.push({ translate: '0px 0px', offset: 1 });
+          p.st.dataset.guizzo = 'danza';
+          var animazione = p.st.animate(frames, { duration: durata, composite: 'replace' });
+          animazione.onfinish = animazione.oncancel = function () {
+            delete p.st.dataset.guizzo;
+            p.st.dataset.riposo = Date.now() + 20000;
+          };
+        });
+      }
+      setTimeout(uno, 1500 + Math.random() * 2500);
+      setTimeout(incontro, 2500 + Math.random() * 3500);
     }
     Reveal.on('ready', semina);
     semina();

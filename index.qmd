@@ -6,7 +6,7 @@ date: "2026-11-04"
 date-format: "D MMMM YYYY"
 lang: it
 title-slide-attributes:
-  data-background-gradient: "radial-gradient(1320px 924px at 10% 0%, rgba(255,90,31,0.32), transparent 65%), radial-gradient(1452px 1056px at 95% 100%, rgba(124,58,237,0.42), transparent 65%), radial-gradient(700px 500px at 60% 40%, rgba(230,35,126,0.14), transparent 70%), linear-gradient(#0d1017, #0d1017)"
+  data-background-gradient: "radial-gradient(82.5% 102.7% at 10% 0%, rgba(255,90,31,0.32), transparent 65%), radial-gradient(90.75% 117.3% at 95% 100%, rgba(124,58,237,0.42), transparent 65%), radial-gradient(43.75% 55.6% at 60% 40%, rgba(230,35,126,0.14), transparent 70%), linear-gradient(#0d1017, #0d1017)"
 format:
   revealjs:
     theme: default
@@ -52,7 +52,7 @@ footer: "Memory & Learning · Lab meeting · 4 novembre 2026"
 ---
 
 
-## {.dark background-gradient="radial-gradient(1320px 924px at 10% 0%, rgba(255,90,31,0.32), transparent 65%), radial-gradient(1452px 1056px at 95% 100%, rgba(124,58,237,0.42), transparent 65%), radial-gradient(700px 500px at 60% 40%, rgba(230,35,126,0.14), transparent 70%), linear-gradient(#0d1017, #0d1017)"}
+## {.dark background-gradient="radial-gradient(82.5% 102.7% at 10% 0%, rgba(255,90,31,0.32), transparent 65%), radial-gradient(90.75% 117.3% at 95% 100%, rgba(124,58,237,0.42), transparent 65%), radial-gradient(43.75% 55.6% at 60% 40%, rgba(230,35,126,0.14), transparent 70%), linear-gradient(#0d1017, #0d1017)"}
 
 <span class="magic-mark" aria-hidden="true">🪄</span>
 
@@ -82,7 +82,7 @@ footer: "Memory & Learning · Lab meeting · 4 novembre 2026"
 Esecuzione reale: codex exec in sola lettura sulla repo LINK FUNCTION, 2 novembre 2026, interrotta dopo circa 40 secondi per non consumare token. Righe abbreviate, comandi veri. Il punto non è il risultato ma la portata: l'agente legge da solo paper, script e tabelle di una repo con centinaia di file e li mette a confronto.
 :::
 
-## {.dark background-gradient="radial-gradient(1320px 924px at 10% 0%, rgba(255,90,31,0.32), transparent 65%), radial-gradient(1452px 1056px at 95% 100%, rgba(124,58,237,0.42), transparent 65%), radial-gradient(700px 500px at 60% 40%, rgba(230,35,126,0.14), transparent 70%), linear-gradient(#0d1017, #0d1017)"}
+## {.dark background-gradient="radial-gradient(82.5% 102.7% at 10% 0%, rgba(255,90,31,0.32), transparent 65%), radial-gradient(90.75% 117.3% at 95% 100%, rgba(124,58,237,0.42), transparent 65%), radial-gradient(43.75% 55.6% at 60% 40%, rgba(230,35,126,0.14), transparent 70%), linear-gradient(#0d1017, #0d1017)"}
 
 <span class="magic-mark" aria-hidden="true">🪄</span>
 
@@ -201,7 +201,7 @@ if (location.protocol === "file:" || ["localhost", "127.0.0.1"].includes(locatio
 <iframe src="https://drive.google.com/file/d/1073IkTNHvEg_nCDm4ND4jXph7lDyvB-e/preview" style="width: 100%; height: 600px; border: 0; border-radius: 8px;" allow="autoplay; fullscreen" allowfullscreen></iframe>
 <p class="cap"><a href="https://github.com/EnricoToffalini/mahabharata-game" target="_blank" rel="noopener noreferrer">mahabharata-game</a> • <a href="https://godotengine.org/" target="_blank" rel="noopener noreferrer" title="Apri approfondimento in una nuova scheda">Godot</a></p>
 
-## {.dark background-gradient="radial-gradient(1320px 924px at 10% 0%, rgba(255,90,31,0.32), transparent 65%), radial-gradient(1452px 1056px at 95% 100%, rgba(124,58,237,0.42), transparent 65%), radial-gradient(700px 500px at 60% 40%, rgba(230,35,126,0.14), transparent 70%), linear-gradient(#0d1017, #0d1017)"}
+## {.dark background-gradient="radial-gradient(82.5% 102.7% at 10% 0%, rgba(255,90,31,0.32), transparent 65%), radial-gradient(90.75% 117.3% at 95% 100%, rgba(124,58,237,0.42), transparent 65%), radial-gradient(43.75% 55.6% at 60% 40%, rgba(230,35,126,0.14), transparent 70%), linear-gradient(#0d1017, #0d1017)"}
 
 <span class="magic-mark" aria-hidden="true">🪄</span>
 
@@ -296,7 +296,7 @@ Le vostre convenzioni (e la vostra expertise) scritte <b>una volta</b>, applicat
 
 <!-- ============================ PARTE 1 ============================ -->
 
-# {.dark background-gradient="radial-gradient(1320px 924px at 10% 0%, rgba(255,90,31,0.32), transparent 65%), radial-gradient(1452px 1056px at 95% 100%, rgba(124,58,237,0.42), transparent 65%), radial-gradient(700px 500px at 60% 40%, rgba(230,35,126,0.14), transparent 70%), linear-gradient(#0d1017, #0d1017)"}
+# {.dark background-gradient="radial-gradient(82.5% 102.7% at 10% 0%, rgba(255,90,31,0.32), transparent 65%), radial-gradient(90.75% 117.3% at 95% 100%, rgba(124,58,237,0.42), transparent 65%), radial-gradient(43.75% 55.6% at 60% 40%, rgba(230,35,126,0.14), transparent 70%), linear-gradient(#0d1017, #0d1017)"}
 
 <div class="act-num">Parte 1</div>
 <div class="big">agenti in locale</div>
@@ -755,7 +755,7 @@ estrai → modifica → ricomponi → controlla<br>
 
 <!-- ============================ PARTE 2 ============================ -->
 
-# {.dark background-gradient="radial-gradient(1320px 924px at 10% 0%, rgba(255,90,31,0.32), transparent 65%), radial-gradient(1452px 1056px at 95% 100%, rgba(124,58,237,0.42), transparent 65%), radial-gradient(700px 500px at 60% 40%, rgba(230,35,126,0.14), transparent 70%), linear-gradient(#0d1017, #0d1017)"}
+# {.dark background-gradient="radial-gradient(82.5% 102.7% at 10% 0%, rgba(255,90,31,0.32), transparent 65%), radial-gradient(90.75% 117.3% at 95% 100%, rgba(124,58,237,0.42), transparent 65%), radial-gradient(43.75% 55.6% at 60% 40%, rgba(230,35,126,0.14), transparent 70%), linear-gradient(#0d1017, #0d1017)"}
 
 <div class="act-num">Parte 2</div>
 <div class="big">ChatGPT Edu</div>
@@ -912,7 +912,7 @@ UniPD: 7 € al mese + IVA, circa 100 € l'anno, pagabili su fondi di ricerca. 
 
 <!-- ============================ PARTE 3 ============================ -->
 
-# {.dark background-gradient="radial-gradient(1320px 924px at 10% 0%, rgba(255,90,31,0.32), transparent 65%), radial-gradient(1452px 1056px at 95% 100%, rgba(124,58,237,0.42), transparent 65%), radial-gradient(700px 500px at 60% 40%, rgba(230,35,126,0.14), transparent 70%), linear-gradient(#0d1017, #0d1017)"}
+# {.dark background-gradient="radial-gradient(82.5% 102.7% at 10% 0%, rgba(255,90,31,0.32), transparent 65%), radial-gradient(90.75% 117.3% at 95% 100%, rgba(124,58,237,0.42), transparent 65%), radial-gradient(43.75% 55.6% at 60% 40%, rgba(230,35,126,0.14), transparent 70%), linear-gradient(#0d1017, #0d1017)"}
 
 <div class="act-num">Parte 3</div>
 <div class="big">skill</div>
@@ -1033,7 +1033,7 @@ Cosa finisce caricato nel contesto
 ```
 
 
-## {.dark background-gradient="radial-gradient(1320px 924px at 10% 0%, rgba(255,90,31,0.32), transparent 65%), radial-gradient(1452px 1056px at 95% 100%, rgba(124,58,237,0.42), transparent 65%), radial-gradient(700px 500px at 60% 40%, rgba(230,35,126,0.14), transparent 70%), linear-gradient(#0d1017, #0d1017)"}
+## {.dark background-gradient="radial-gradient(82.5% 102.7% at 10% 0%, rgba(255,90,31,0.32), transparent 65%), radial-gradient(90.75% 117.3% at 95% 100%, rgba(124,58,237,0.42), transparent 65%), radial-gradient(43.75% 55.6% at 60% 40%, rgba(230,35,126,0.14), transparent 70%), linear-gradient(#0d1017, #0d1017)"}
 
 <span class="magic-mark" aria-hidden="true">🪄</span>
 
@@ -1152,7 +1152,7 @@ Altre idee per il lab:
 
 <!-- ============================ CHIUSURA ============================ -->
 
-# {#ultime-cose .dark background-gradient="radial-gradient(1320px 924px at 10% 0%, rgba(255,90,31,0.32), transparent 65%), radial-gradient(1452px 1056px at 95% 100%, rgba(124,58,237,0.42), transparent 65%), radial-gradient(700px 500px at 60% 40%, rgba(230,35,126,0.14), transparent 70%), linear-gradient(#0d1017, #0d1017)"}
+# {#ultime-cose .dark background-gradient="radial-gradient(82.5% 102.7% at 10% 0%, rgba(255,90,31,0.32), transparent 65%), radial-gradient(90.75% 117.3% at 95% 100%, rgba(124,58,237,0.42), transparent 65%), radial-gradient(43.75% 55.6% at 60% 40%, rgba(230,35,126,0.14), transparent 70%), linear-gradient(#0d1017, #0d1017)"}
 
 <div class="act-num">Extra</div>
 <div class="big">ultime cose</div>
