@@ -26,7 +26,21 @@
   var oggetti = ['🪄', '🔮', '🧹', '⚡', '🕯️', '📜', '🗝️', '🌙', '💫', '🫖'];
   var formule = ['Lumos!', 'Accio CSV!', 'Wingardium Leviosa!', 'Riproducibilis!', 'Expecto Agentum!',
     'Alohomora!', 'Evoca Codex!', 'Finite p-hacking!', 'Rscriptus Maxima!', 'Obliviate cache!',
-    'Reparo codice!', 'Revelio errori!', 'Prior Incantato!', 'Accio skill!', 'Nox!'];
+    'Reparo codice!', 'Revelio errori!', 'Prior Incantato!', 'Accio skill!', 'Nox!',
+    // incantesimi in salsa nerd: R, statistica, Open Science
+    'Expelliarmus outlier!', 'Expecto Replicatum!', 'Avada Kedataframe!', 'Riddikulus p < .05!',
+    'Petrificus set.seed(42)!', 'Protego preregistrazione!', 'Confundo confondenti!', 'Silencio warnings()!',
+    'Engorgio N!', 'Reducio dimensioni!', 'Geminio git clone!', 'Tergeo NA!', 'Incendio HARKing!',
+    'Alohomora paywall!', 'Obliviate .RData!', 'Crucio Excel!', 'Portus Zenodo!', 'Legilimens codebook!',
+    'Imperio tidyverse!', 'Muffliato Reviewer 2!', 'Diffindo train/test!', 'Lumos ORCID!',
+    'Specialis Revelio DOI!', 'Expecto Open Data!', 'Priori Informativi!', 'È LeviOsa, non LevioSAS!',
+    'Fatto il misfatto: git push!', 'Giuro di non fare p-hacking!',
+    // Open Science, riproducibilità, FAIR
+    'Accio FAIR!', 'Findabilis! Accessibilis!', 'Interoperabilis! Reusabilis!', 'Expecto Riproducibilis!',
+    'Revelio file drawer!', 'Finite Incantatem: paywall!', 'Homenum Revelio: README!', 'Protego CC-BY!',
+    'Accio codice e dati!', 'Episkey replication crisis!', 'Reparo renv.lock!', 'Priori Incantatem: commit!',
+    'Lumos Registered Report!', 'Alohomora OSF!', 'Expelliarmus «dati su richiesta»!', 'Portus PsychArchives!',
+    'Geminio replica!', 'Revelio metadati!', 'Specialis Revelio dizionario!', 'Tergeo dati personali!'];
   var rnd = function (a, b) { return a + Math.random() * (b - a); };
   var DURATA = 0.6; // fattore di durata degli effetti: più basso = svaniscono prima
   var pick = function (v) { return v[Math.floor(Math.random() * v.length)]; };
@@ -215,8 +229,8 @@
     setTimeout(function () { incantesimo(x, y); creatura(x, y); }, 250 * DURATA);
   }
 
-  // arcobaleno e lampo compaiono due volte: escono più spesso
-  var magie = [scintille, stelline, oggetto, incantesimo, onde, creatura, fumo, tremito, arcobaleno, arcobaleno, levita, danza, lampo, lampo, respiro];
+  // incantesimo, arcobaleno e lampo compaiono due volte: escono più spesso
+  var magie = [scintille, stelline, oggetto, incantesimo, incantesimo, onde, creatura, fumo, tremito, arcobaleno, arcobaleno, levita, danza, lampo, lampo, respiro];
   var ultima = null;
   document.addEventListener('click', function (e) {
     if (e.button !== 0 || !e.isTrusted) return;

@@ -29,10 +29,10 @@ format:
         <meta name="twitter:description" content="L'AI che fa magie nel vostro computer, poi qualcosa su gptEdu e sulle skills.">
         <meta name="twitter:image" content="https://enricotoffalini.github.io/evocare-agents/figures/social-preview.png">
     include-after-body:
-      - alone-mouse.html
-      - magia-click.html
-      - stelle-cover.html
-      - telefono.html
+      - includes/alone-mouse.html
+      - includes/magia-click.html
+      - includes/stelle-cover.html
+      - includes/telefono.html
     width: 1600
     height: 900
     margin: 0.06
