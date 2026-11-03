@@ -61,9 +61,9 @@ footer: "Memory & Learning · Lab meeting · 4 novembre 2026"
 > Ho più di mille documenti nel Download. Esaminali, riconosci i diversi tipi, rinominali in modo coerente e organizzali in sottocartelle. Individua i duplicati e lascia i casi dubbi da verificare. Non cancellare nulla.
 :::
 
-<img class="shot demo-visual nostretch fragment" data-fragment-index="0" src="figures/demo-01-confronto.png" alt="Accio, ordine! Schermata illustrativa Windows 11, basata sui materiali sintetici: 1.270 file, materiale iniziale e risultato verificato tramite script.">
+<img class="shot demo-visual nostretch" src="figures/demo-01-confronto.png" alt="Accio, ordine! Schermata illustrativa Windows 11, basata sui materiali sintetici: 1.270 file, materiale iniziale e risultato verificato tramite script.">
 
-<p class="demo-caption fragment" data-fragment-index="0">1051 classificati · 40 duplicati · 179 da verificare · nessun file cancellato</p>
+<p class="demo-caption">1051 classificati · 40 duplicati · 179 da verificare · nessun file cancellato</p>
 
 
 ## Accio, PDF! {#demo-locale-5 .dark .demo-local background-gradient="radial-gradient(82.5% 102.7% at 10% 0%, rgba(255,90,31,0.32), transparent 65%), radial-gradient(90.75% 117.3% at 95% 100%, rgba(124,58,237,0.42), transparent 65%), radial-gradient(43.75% 55.6% at 60% 40%, rgba(230,35,126,0.14), transparent 70%), linear-gradient(#0d1017, #0d1017)"}
@@ -75,9 +75,9 @@ footer: "Memory & Learning · Lab meeting · 4 novembre 2026"
 > Ho 600 iscritti nel modulo di iscrizione del convegno. Vedi le ricevute di pagamento e controlla chi ha già pagato. Dai registri della segreteria vedi chi si è effettivamente presentato. Quindi prepara gli attestati di partecipazione in PDF in A4 per tutti quelli in regola
 :::
 
-<img class="shot demo-visual nostretch fragment" data-fragment-index="0" src="figures/demo-05-confronto.png" alt="Accio, Excel! Schermata illustrativa Windows 11, basata sui materiali sintetici: 600 iscritti, verifica dei pagamenti e attestati PDF personalizzati.">
+<img class="shot demo-visual nostretch" src="figures/demo-05-confronto.png" alt="Accio, Excel! Schermata illustrativa Windows 11, basata sui materiali sintetici: 600 iscritti, verifica dei pagamenti e attestati PDF personalizzati.">
 
-<p class="demo-caption fragment" data-fragment-index="0">560 attestati PDF pronti da stampare · 28 pagamenti mancanti · 12 casi da verificare</p>
+<p class="demo-caption">560 attestati PDF pronti da stampare · 28 pagamenti mancanti · 12 casi da verificare</p>
 
 
 ::: notes
@@ -94,9 +94,9 @@ Materiali sintetici: un modulo Excel con 600 iscritti e due moduli di pagamento 
 > Ho 350 documenti di segreteria e organi del dottorato. Trova tutte le informazioni relative a spese e finanziamenti. Prepara un Excel con importi, date, finalità e riferimento preciso al documento originale
 :::
 
-<img class="shot demo-visual nostretch fragment" data-fragment-index="0" src="figures/demo-02-confronto.png" alt="Accio, informazione! Schermata illustrativa Windows 11, basata sui materiali sintetici: 350 documenti, materiale iniziale e risultato verificato tramite script.">
+<img class="shot demo-visual nostretch" src="figures/demo-02-confronto.png" alt="Accio, informazione! Schermata illustrativa Windows 11, basata sui materiali sintetici: 350 documenti, materiale iniziale e risultato verificato tramite script.">
 
-<p class="demo-caption fragment" data-fragment-index="0">Un Excel con 24 decisioni e le fonti · 4 righe discordanti · 3 da verificare</p>
+<p class="demo-caption">Un Excel con 24 decisioni e le fonti · 4 righe discordanti · 3 da verificare</p>
 
 
 ## Accio, burocrazia! {#demo-locale-3 .dark .demo-local background-gradient="radial-gradient(82.5% 102.7% at 10% 0%, rgba(255,90,31,0.32), transparent 65%), radial-gradient(90.75% 117.3% at 95% 100%, rgba(124,58,237,0.42), transparent 65%), radial-gradient(43.75% 55.6% at 60% 40%, rgba(230,35,126,0.14), transparent 70%), linear-gradient(#0d1017, #0d1017)"}
@@ -108,9 +108,9 @@ Materiali sintetici: un modulo Excel con 600 iscritti e due moduli di pagamento 
 > Devo compilare una relazione triennale sugli eventi svolti secondo il modulo fornito. Le informazioni sono sparse nei vari documenti che ho raccolto dentro questa cartella e in parte nella mia mail e negli allegati. Recuperale, compila direttamente il modello Word mantenendo la sua formattazione originale e segnala quello che manca, che è dubbio, o che richiede una mia decisione
 :::
 
-<img class="shot demo-visual nostretch fragment" data-fragment-index="0" src="figures/demo-03-confronto.png" alt="Accio, burocrazia! Schermata illustrativa Windows 11, basata sui materiali sintetici: 200 documenti, materiale iniziale e risultato verificato tramite script.">
+<img class="shot demo-visual nostretch" src="figures/demo-03-confronto.png" alt="Accio, burocrazia! Schermata illustrativa Windows 11, basata sui materiali sintetici: 200 documenti, materiale iniziale e risultato verificato tramite script.">
 
-<p class="demo-caption fragment" data-fragment-index="0">Il modello è compilato, con le stesse tabelle e gli stessi stili · 2 campi da verificare</p>
+<p class="demo-caption">Il modello è compilato, con le stesse tabelle e gli stessi stili · 2 campi da verificare</p>
 
 ::: notes
 Materiali sintetici: 200 PDF, Word, TXT, XLSX e presentazioni, più modello.docx con sezioni e tabella. Esecuzione di riferimento in demo-locali/03-burocrazia: sei indicatori dai consuntivi approvati, riempimento dei campi esistenti, provenienza per ogni dato e due campi lasciati in giallo. Verificati dati, stili, struttura delle tabelle e sezioni; modello e risultato sono stati realmente esportati da Microsoft Word e controllati visivamente. I ritagli provengono dai documenti effettivi esportati da Word; la cornice di Microsoft Word è ricostruita a scopo illustrativo. Dal vivo: copiare input, modello.docx e prompt.md in una cartella nuova. Limiti: scenario inventato e strutturato; non sono inventati gradimento o referente per la validazione.
@@ -125,9 +125,9 @@ Materiali sintetici: 200 PDF, Word, TXT, XLSX e presentazioni, più modello.docx
 > Questo sito ha molte pagine. Aggiorna all’anno accademico corrente con le informazioni pertinenti in base ai documenti forniti, correggi i link interni non funzionanti e preserva l’archivio storico a parte. Poi ricostruisci il sito e guarda che tutto funzioni.
 :::
 
-<img class="shot demo-visual nostretch fragment" data-fragment-index="0" src="figures/demo-06-confronto.png" alt="Accio, sito aggiornato! Schermata illustrativa Windows 11, basata sui materiali sintetici: 150 pagine, materiale iniziale e risultato verificato tramite script.">
+<img class="shot demo-visual nostretch" src="figures/demo-06-confronto.png" alt="Accio, sito aggiornato! Schermata illustrativa Windows 11, basata sui materiali sintetici: 150 pagine, materiale iniziale e risultato verificato tramite script.">
 
-<p class="demo-caption fragment" data-fragment-index="0">80 pagine aggiornate · 45 link corretti · build verificata · 30 pagine storiche intatte</p>
+<p class="demo-caption">80 pagine aggiornate · 45 link corretti · build verificata · 30 pagine storiche intatte</p>
 
 ::: notes
 Materiali sintetici: 150 sorgenti JSON interconnessi e una build HTML locale. Esecuzione di riferimento in demo-locali/06-sito: aggiornamento di 80 pagine correnti al 2026/2027, correzione di 45 link con redirects.json, ricostruzione di 150 HTML. Controllati tutti i 300 link interni: zero mancanti. Le 30 pagine storiche sono identiche byte per byte. Le cornici di Esplora file e del browser sono ricostruzioni illustrative; il contenuto del sito prima/dopo è renderizzato dai file locali effettivi. Eseguita anche la navigazione al programma corretto, senza pubblicazione. Dal vivo: nuova cartella con input, prompt.md e redirects.json; l’agent modifica i sorgenti, usa la build descritta nel README e controlla nel browser. Limite: piccolo sito statico dimostrativo, controllo di esistenza dei link senza autenticazione o backend.
