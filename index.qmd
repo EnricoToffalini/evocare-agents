@@ -929,28 +929,21 @@ UniPD: 7 € al mese + IVA, circa 100 € l'anno, pagabili su fondi di ricerca. 
 <div class="big">skill</div>
 <p class="muted">come smettere di correggere sempre le stesse cose</p>
 
-## vi suona familiare?
+## vi suona familiare? {.familiare}
 
-<div class="prompt">quota di articoli con dati aperti, anno per anno</div>
+<div class="prompt">analizza quota articoli con open data per anno</div>
 
-::: {.r-stack}
-::: {.fragment .fade-out fragment-index=1}
 <p class="small muted">senza skill: otto pacchetti tidyverse, anche se voi non li usate e manco vi piacciono (eccetto ggplot2 ❤️)</p>
 
 ```r
 library(tidyverse)
-
 pubs <- read_csv("data/publications.csv")
-
-pubs %>%
-  mutate(open_data = str_detect(practices, "open_data")) %>%
-  group_by(year) %>%
-  summarise(n = n(), quota = mean(open_data)) %>%
-  ungroup()
+pubs %>% mutate(open_data = str_detect(practices, "open_data")) %>%
+      group_by(year) %>% 
+      summarise(n = n(), quota = mean(open_data)) %>% 
+      ungroup()
 ```
-:::
 
-::: {.fragment fragment-index=1}
 <p class="small muted">con la mia <a href="https://github.com/EnricoToffalini/ai-skills" target="_blank" rel="noopener noreferrer" title="Apri approfondimento in una nuova scheda">skill sul codice "`coding-style-enrico`"</a></p>
 
 ```r
@@ -958,27 +951,18 @@ pubs = read.csv("data/publications.csv")
 pubs$open_data = grepl("open_data", pubs$practices)
 aggregate(open_data ~ year, data = pubs, FUN = mean)
 ```
-:::
-:::
 
-<p class="cap">esempio illustrativo · lo stesso vale per i report (Quarto!), le email (niente tre righe di convenevoli)…</p>
+## il modello non sbaglia: vi dà la risposta "media" {.medium}
 
-## il modello non sbaglia: vi dà la risposta media
-
-<div class="small">
-
-| | senza skill | con una skill |
-|---|---|---|
-| [**codice**](https://github.com/EnricoToffalini/ai-skills){target="_blank" rel="noopener noreferrer"} | tidyverse, funzioni ovunque | R base, dall'alto in basso |
-| [**report**](https://github.com/EnricoToffalini/ai-skills){target="_blank" rel="noopener noreferrer"} | un HTML bellissimo, sorgente chissà | Quarto forever |
-| [**email**](https://github.com/EnricoToffalini/ai-skills){target="_blank" rel="noopener noreferrer"} | tre righe di convenevoli | il punto, subito |
-| [**calendario**](https://github.com/EnricoToffalini/ai-skills){target="_blank" rel="noopener noreferrer"} | "ho creato un evento" | il calendario giusto col nome giusto |
-
-</div>
-
+| | senza skill (risposta "media") | con skill personalizzata |
+|-----|-----|-----|
+| [**codice**](https://github.com/EnricoToffalini/ai-skills){target="_blank" rel="noopener noreferrer"} | preferenza per python, in R usa tidyverse, funzioni e controlli ovunque, fortemente ingegnerizzato | preferenza R base, dall'alto in basso, naive ma leggibile |
+| [**report**](https://github.com/EnricoToffalini/ai-skills){target="_blank" rel="noopener noreferrer"} | un HTML bellissimo, sorgente chissà | Quarto, forever |
+| [**email**](https://github.com/EnricoToffalini/ai-skills){target="_blank" rel="noopener noreferrer"} | tre righe di convenevoli | subito al punto |
+| [**calendario**](https://github.com/EnricoToffalini/ai-skills){target="_blank" rel="noopener noreferrer"} | "ho creato un evento": inserisce attività generica con nome troppo lungo | il calendario giusto con le convenzioni giusti |
 
 ```{=html}
-<div class="trucco">Correggete lo stesso output AI per la <b>terza volta</b>? Fatevi una skill!</div>
+<div class="trucco">Correggete l'output AI per lo stesso motivo per la terza volta? <b>Fatevi una skill!</b></div>
 ```
 
 

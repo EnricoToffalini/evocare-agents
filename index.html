@@ -1238,75 +1238,61 @@ skill
 come smettere di correggere sempre le stesse cose
 </p>
 </section>
-<section id="vi-suona-familiare" class="slide level2">
+<section id="vi-suona-familiare" class="slide level2 familiare">
 <h2>vi suona familiare?</h2>
 <div class="prompt">
-quota di articoli con dati aperti, anno per anno
+analizza quota articoli con open data per anno
 </div>
-<div class="r-stack">
-<div class="fragment fade-out" data-fragment-index="1">
 <p class="small muted">
 senza skill: otto pacchetti tidyverse, anche se voi non li usate e manco vi piacciono (eccetto ggplot2 ❤️)
 </p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href=""></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb4-2"><a href=""></a></span>
-<span id="cb4-3"><a href=""></a>pubs <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/publications.csv"</span>)</span>
-<span id="cb4-4"><a href=""></a></span>
-<span id="cb4-5"><a href=""></a>pubs <span class="sc">%&gt;%</span></span>
-<span id="cb4-6"><a href=""></a>  <span class="fu">mutate</span>(<span class="at">open_data =</span> <span class="fu">str_detect</span>(practices, <span class="st">"open_data"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb4-7"><a href=""></a>  <span class="fu">group_by</span>(year) <span class="sc">%&gt;%</span></span>
-<span id="cb4-8"><a href=""></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>(), <span class="at">quota =</span> <span class="fu">mean</span>(open_data)) <span class="sc">%&gt;%</span></span>
-<span id="cb4-9"><a href=""></a>  <span class="fu">ungroup</span>()</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="fragment" data-fragment-index="1">
+<span id="cb4-2"><a href=""></a>pubs <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/publications.csv"</span>)</span>
+<span id="cb4-3"><a href=""></a>pubs <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">open_data =</span> <span class="fu">str_detect</span>(practices, <span class="st">"open_data"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb4-4"><a href=""></a>      <span class="fu">group_by</span>(year) <span class="sc">%&gt;%</span> </span>
+<span id="cb4-5"><a href=""></a>      <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>(), <span class="at">quota =</span> <span class="fu">mean</span>(open_data)) <span class="sc">%&gt;%</span> </span>
+<span id="cb4-6"><a href=""></a>      <span class="fu">ungroup</span>()</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p class="small muted">
 con la mia <a href="https://github.com/EnricoToffalini/ai-skills" target="_blank" rel="noopener noreferrer" title="Apri approfondimento in una nuova scheda">skill sul codice “<code>coding-style-enrico</code>”</a>
 </p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a>pubs <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">"data/publications.csv"</span>)</span>
 <span id="cb5-2"><a href=""></a>pubs<span class="sc">$</span>open_data <span class="ot">=</span> <span class="fu">grepl</span>(<span class="st">"open_data"</span>, pubs<span class="sc">$</span>practices)</span>
 <span id="cb5-3"><a href=""></a><span class="fu">aggregate</span>(open_data <span class="sc">~</span> year, <span class="at">data =</span> pubs, <span class="at">FUN =</span> mean)</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
-<p class="cap">
-esempio illustrativo · lo stesso vale per i report (Quarto!), le email (niente tre righe di convenevoli)…
-</p>
 </section>
-<section id="il-modello-non-sbaglia-vi-dà-la-risposta-media" class="slide level2">
-<h2>il modello non sbaglia: vi dà la risposta media</h2>
-<div class="small">
+<section id="il-modello-non-sbaglia-vi-dà-la-risposta-media" class="slide level2 medium">
+<h2>il modello non sbaglia: vi dà la risposta “media”</h2>
 <table class="caption-top">
 <thead>
 <tr class="header">
 <th></th>
-<th>senza skill</th>
-<th>con una skill</th>
+<th>senza skill (risposta “media”)</th>
+<th>con skill personalizzata</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td><a href="https://github.com/EnricoToffalini/ai-skills" target="_blank" rel="noopener noreferrer"><strong>codice</strong></a></td>
-<td>tidyverse, funzioni ovunque</td>
-<td>R base, dall’alto in basso</td>
+<td>preferenza per python, in R usa tidyverse, funzioni e controlli ovunque, fortemente ingegnerizzato</td>
+<td>preferenza R base, dall’alto in basso, naive ma leggibile</td>
 </tr>
 <tr class="even">
 <td><a href="https://github.com/EnricoToffalini/ai-skills" target="_blank" rel="noopener noreferrer"><strong>report</strong></a></td>
 <td>un HTML bellissimo, sorgente chissà</td>
-<td>Quarto forever</td>
+<td>Quarto, forever</td>
 </tr>
 <tr class="odd">
 <td><a href="https://github.com/EnricoToffalini/ai-skills" target="_blank" rel="noopener noreferrer"><strong>email</strong></a></td>
 <td>tre righe di convenevoli</td>
-<td>il punto, subito</td>
+<td>subito al punto</td>
 </tr>
 <tr class="even">
 <td><a href="https://github.com/EnricoToffalini/ai-skills" target="_blank" rel="noopener noreferrer"><strong>calendario</strong></a></td>
-<td>“ho creato un evento”</td>
-<td>il calendario giusto col nome giusto</td>
+<td>“ho creato un evento”: inserisce attività generica con nome troppo lungo</td>
+<td>il calendario giusto con le convenzioni giusti</td>
 </tr>
 </tbody>
 </table>
-</div>
-<div class="trucco">Correggete lo stesso output AI per la <b>terza volta</b>? Fatevi una skill!</div>
+<div class="trucco">Correggete l'output AI per lo stesso motivo per la terza volta? <b>Fatevi una skill!</b></div>
 </section>
 <section id="cosè-una-skill" class="slide level2">
 <h2>cos’è una skill</h2>

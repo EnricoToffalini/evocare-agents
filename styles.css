@@ -59,6 +59,8 @@
 .reveal strong { font-weight: 800; }
 .reveal .muted { color: var(--muted); }
 .reveal .small { font-size: 0.7em; }
+.reveal .medium { font-size: 0.85em; }
+.reveal section.medium > h2 { font-size: calc(1.35em / 0.85); }
 .reveal .tiny { font-size: 0.5em; }
 .reveal .accent { color: var(--accent); }
 .reveal .center { text-align: center; }
@@ -254,6 +256,10 @@ html.reveal-full-page { height: 100dvh; }
 
 .reveal div.sourceCode { border: none; border-radius: 12px; background: #fbfaff; box-shadow: 0 12px 32px -14px rgba(76,29,149,0.35), 0 0 0 1px rgba(124,58,237,0.12); }
 .reveal pre code { font-size: 0.62em; line-height: 1.35; max-height: 560px; }
+/* "vi suona familiare?": i due blocchi di codice sopra-sotto nella stessa schermata */
+.reveal section.familiare pre { margin: 0.3em auto 0.6em; }
+.reveal section.familiare pre code { font-size: 1.12em; line-height: 1.45; }
+.reveal section.familiare p.small { font-size: 0.72em; margin: 0.7em 0 0.15em; }
 .reveal .qr img { width: 210px; height: 210px; margin: 0; border: none; border-radius: 12px; padding: 8px; background: #fff; }
 .reveal .qr { text-align: center; font-size: 0.5em; }
 .reveal section.dark h2::after, .reveal h2:empty::after { display: none; }
