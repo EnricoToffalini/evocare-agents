@@ -277,7 +277,7 @@ html.reveal-full-page { height: 100dvh; }
 .reveal .term .d { color: #71717a; }                       /* righe omesse */
 .reveal .term.fragment { display: block; }
 
-/* Trucchi pratici: riquadro con etichetta */
+/* Riquadri "da sapere": riquadro con etichetta */
 .reveal .trucco {
   background: linear-gradient(180deg, #0d9488, #22c55e) left / 8px 100% no-repeat, #ecfdf5;
   border-radius: 0 14px 14px 0; padding: 0.45em 0.9em 0.45em calc(0.9em + 8px);

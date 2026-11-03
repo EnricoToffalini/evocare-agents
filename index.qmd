@@ -436,9 +436,9 @@ Opzioni npm verificate nella documentazione ufficiale: https://code.claude.com/d
 
 <p class="small muted center">Io preferisco il terminale: non apro l'AI chiedendomi "cosa facciamo oggi?", la chiamo al bisogno <b>dentro la cartella in cui sto già lavorando</b></p>
 
-<!-- ---- trucchi ---- -->
+<!-- ---- da sapere ---- -->
 
-## trucco n. 1: prima il `/plan`
+## da sapere n. 1: prima il `/plan`
 
 :::: {.columns}
 ::: {.column width="50%"}
@@ -457,7 +457,7 @@ Opzioni npm verificate nella documentazione ufficiale: https://code.claude.com/d
 ```
 
 
-## stesso trucco, su un progetto vero
+## il `/plan`, su un progetto vero
 
 <div class="prompt">Vorrei un breve report Quarto in HTML su quanti articoli del catalogo hanno dati e codice aperti, anno per anno. Non scrivere ancora niente: proponimi solo un piano.</div>
 
@@ -499,7 +499,7 @@ non finisce in docs/ e non tocca il sito.
 Prove del 1 novembre 2026, su copie della repo del catalogo, in sola lettura. Trascrizioni accorciate.
 :::
 
-## trucco n. 2: prima di "fare", "spiegami"
+## da sapere n. 2: prima di "fare", "spiegami"
 
 :::: {.columns}
 ::: {.column width="40%"}
@@ -540,7 +540,7 @@ Per un nuovo luogo:
 Prova del 1 novembre 2026 su una copia dei soli file di testo della repo (codice, scene, documentazione), mai sull'originale. Strumenti consentiti: solo Read, Glob, Grep.
 :::
 
-## trucco n. 3: decidete voi quanta autonomia
+## da sapere n. 3: decidete voi quanta autonomia
 
 <a href="https://enricotoffalini.github.io/blog/posts/agenti-cli/claude-code.html#le-modalit%C3%A0-di-lavoro" target="_blank" rel="noopener noreferrer" class="media-link" title="Apri la sezione pertinente della guida in una nuova scheda"><img alt="claude 05 modalita" class="shot" src="figures/claude-05-modalita.png" style="max-height: 120px;"></a>
 <p class="cap">Claude Code, <code>Shift+Tab</code>: <i>auto</i> · <i>manual</i> · <i>accept edits</i> · <i>plan</i></p>
@@ -577,7 +577,7 @@ Prova del 1 novembre 2026 su una copia dei soli file di testo della repo (codice
 ```
 
 
-## trucco n. 4: alzate il ragionamento quando serve
+## da sapere n. 4: alzate il ragionamento quando serve
 
 :::: {.columns}
 ::: {.column width="50%"}
@@ -634,7 +634,7 @@ I sottoagenti non richiedono Ultra o Ultracode. Riferimenti: [Codex: sottoagenti
 :::
 
 
-## trucco n. 5: guardate quanto vi resta
+## da sapere n. 5: guardate quanto vi resta
 
 :::: {.columns}
 ::: {.column width="50%"}
@@ -655,6 +655,30 @@ I sottoagenti non richiedono Ultra o Ultracode. Riferimenti: [Codex: sottoagenti
 ```
 
 
+## da sapere n. 6: `resume` riprende una conversazione
+
+:::: {.columns}
+::: {.column width="50%"}
+<a href="https://enricotoffalini.github.io/blog/posts/agenti-cli/claude-code.html#riprendere-una-conversazione" target="_blank" rel="noopener noreferrer" class="media-link" title="Apri la sezione pertinente della guida in una nuova scheda"><img alt="claude 08 resume" class="shot" src="figures/claude-08-resume.png" style="max-height: 330px;"></a>
+<p class="cap">Claude Code, <code>claude -r</code>: conversazioni della cartella, con ricerca</p>
+:::
+::: {.column width="50%"}
+<a href="https://enricotoffalini.github.io/blog/posts/agenti-cli/codex.html#riprendere-una-conversazione" target="_blank" rel="noopener noreferrer" class="media-link" title="Apri la sezione pertinente della guida in una nuova scheda"><img alt="codex 11 resume" class="shot" src="figures/codex-11-resume.png" style="max-height: 330px;"></a>
+<p class="cap">Codex, <code>codex resume</code>: elenco, filtri e anteprima</p>
+:::
+::::
+
+
+```{=html}
+<div class="trucco">Le conversazioni restano <b>salvate sul vostro computer</b>, legate alla cartella (⚠️ se cambiate nome alla cartella, potrebbero non essere più recuperabili). Terminale chiuso? limite di <em>usage</em> raggiunto? lavoro da continuare domani? Fate <code>resume</code> dalla stessa cartella e ripartite <b>con tutto il contesto</b>:
+  <ul>
+    <li>l'ultima: <code>claude -c</code> o <code>codex resume --last</code></li>
+    <li>una a scelta: <code>claude -r</code> / <code>claude --resume</code> o <code>codex resume</code> (dentro una sessione: <code>/resume</code>)</li>
+  </ul>
+</div>
+```
+
+
 ## il prontuario
 
 <div class="cmd">
@@ -667,7 +691,7 @@ I sottoagenti non richiedono Ultra o Ultracode. Riferimenti: [Codex: sottoagenti
 | quanto mi resta | `/usage` | `/status` |
 | nuova conversazione | `/clear` | `/new` |
 | riassumere e liberare contesto | `/compact` | `/compact` |
-| riprendere dopo un limite o una chiusura | `claude -c` | `codex resume --last` |
+| riprendere dopo un limite o una chiusura | `claude -c`, `claude -r` | `codex resume --last`, `codex resume` |
 | tornare indietro, anche nel codice | `/rewind` | (Git) |
 | file di istruzioni del progetto | `/init` → `CLAUDE.md` | `/init` → `AGENTS.md` |
 | un comando del terminale al volo | `!git status` | |
@@ -676,7 +700,7 @@ I sottoagenti non richiedono Ultra o Ultracode. Riferimenti: [Codex: sottoagenti
 
 <p class="small muted center">Digitando <code>/</code> compare l'elenco completo. Nelle app: gli stessi comandi, o i menu sotto la casella.</p>
 
-## trucco n. 6: un `AGENTS.md` sintetico nella cartella
+## da sapere n. 7: un `AGENTS.md` sintetico nella cartella
 
 :::: {.columns}
 ::: {.column width="52%"}
@@ -719,7 +743,7 @@ Analisi in R/, manoscritto in paper/main.qmd.
 <a href="https://enricotoffalini.github.io/blog/posts/agenti-cli/#il-contesto-%C3%A8-ricco-e-non-va-aggiornato-a-mano" target="_blank" rel="noopener noreferrer" title="Apri la sezione pertinente in una nuova scheda" class="panel-link trucco">Ricordate l'uso di <b><code>AGENTS.md</code></b> come mappa (quale cartella di Drive, quale calendario, cosa cercare nelle mail, chi sono i collaboratori...)</a>
 ```
 
-## trucco n. 7: formati aperti
+## da sapere n. 8: formati aperti
 
 :::: {.columns}
 ::: {.column width="50%"}
@@ -1120,7 +1144,7 @@ Altre idee per il lab:
 :::
 ::::
 
-## scriverne una: sei trucchi
+## scriverne una: sei cose da sapere
 
 <div class="small">
 
