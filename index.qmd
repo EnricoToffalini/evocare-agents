@@ -31,6 +31,7 @@ format:
     include-after-body:
       - includes/alone-mouse.html
       - includes/magia-click.html
+      - includes/cursore-cover.html
       - includes/stelle-cover.html
       - includes/telefono.html
     width: 1600

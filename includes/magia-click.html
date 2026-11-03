@@ -98,8 +98,8 @@
     scintille(x, y, 10);
   }
   // 4. Una formula magica scritta nell'aria
-  function incantesimo(x, y) {
-    var el = crea('incantesimo', x, y, pick(formule));
+  function incantesimo(x, y, testo) {
+    var el = crea('incantesimo', x, y, testo || pick(formule));
     var w = el.offsetWidth, x0 = Math.min(Math.max(x - w / 2, 10), innerWidth - w - 10);
     anima(el, [
       { transform: T(x0, y - 20, 'scale(0.6)'), opacity: 0, filter: 'blur(6px)' },
@@ -236,6 +236,15 @@
     scintille(x, y, 60); onde(x, y); stelline(x, y);
     setTimeout(function () { incantesimo(x, y); creatura(x, y); }, 250 * DURATA);
   }
+
+  // Gran finale per la dimostrazione in copertina: tutto insieme, a ondate
+  function grandeMagia(x, y) {
+    lampo(x, y); scintille(x, y, 70); onde(x, y); respiro(x, y);
+    setTimeout(function () { stelline(x, y); incantesimo(x, y, 'Expecto Agentum!'); }, 200 * DURATA);
+    setTimeout(function () { scintille(x, y, 50); oggetto(x, y); creatura(x, y); }, 700 * DURATA);
+    setTimeout(function () { onde(x, y); arcobaleno(x, y); }, 1300 * DURATA);
+  }
+  window.magiaClick = { grande: grandeMagia };
 
   // incantesimo, arcobaleno e lampo compaiono due volte: escono più spesso
   var magie = [scintille, stelline, oggetto, onde, creatura, fumo, tremito, arcobaleno, arcobaleno, levita, danza, lampo, lampo, respiro];

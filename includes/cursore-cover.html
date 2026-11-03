@@ -1,0 +1,58 @@
+<!-- Copertina: mentre compare la scritta magica, una freccetta del mouse entra, si ferma in un punto vuoto
+     e "clicca", lanciando un incantesimo. Serve a far capire che ai click corrispondono incantesimi. -->
+<style>
+#cursore-cover { position: fixed; left: 0; top: 0; width: 22px; height: 32px; z-index: 2147483001; pointer-events: none; opacity: 0; will-change: transform, opacity; }
+#cursore-cover svg { width: 100%; height: 100%; display: block; filter: drop-shadow(0 0 6px rgba(255,255,255,0.35)) drop-shadow(0 2px 3px rgba(0,0,0,0.5)); }
+@media print { #cursore-cover { display: none; } }
+</style>
+<div id="cursore-cover" aria-hidden="true">
+  <svg viewBox="0 0 17 25" xmlns="http://www.w3.org/2000/svg">
+    <path d="M1 1 L1 19.5 L5.6 15.4 L8.9 23 L12 21.6 L8.8 14.2 L15 14.2 Z" fill="#fff" stroke="#111" stroke-width="1.3" stroke-linejoin="round"/>
+  </svg>
+</div>
+<script>
+(function () {
+  var c = document.getElementById('cursore-cover');
+  if (!c || !c.animate || (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches)) return;
+  var timer = null, anim = null;
+  function T(x, y, s) { return 'translate(' + x + 'px,' + y + 'px) scale(' + (s || 1) + ')'; }
+  function ferma() { clearTimeout(timer); if (anim) anim.cancel(); anim = null; }
+  function mostra() {
+    ferma();
+    // punto vuoto in alto a destra, lontano da stemmi, titolo e numero di slide
+    var x = innerWidth * 0.83, y = innerHeight * 0.24;
+    var x0 = innerWidth + 60, y0 = innerHeight * 0.85;
+    c.style.transformOrigin = '2px 2px';
+    anim = c.animate([
+      { transform: T(x0, y0), opacity: 0, offset: 0 },
+      { transform: T(x0 - 80, y0 - 60), opacity: 1, offset: 0.08 },
+      { transform: T(x + 40, y + 25), opacity: 1, offset: 0.42, easing: 'ease-out' },
+      { transform: T(x, y), opacity: 1, offset: 0.52 },                 // si ferma...
+      { transform: T(x, y), opacity: 1, offset: 0.68 },
+      { transform: T(x, y, 0.8), opacity: 1, offset: 0.71 },            // ...click
+      { transform: T(x, y), opacity: 1, offset: 0.75 },
+      { transform: T(x, y), opacity: 1, offset: 0.9 },
+      { transform: T(x + 6, y + 10), opacity: 0, offset: 1 }
+    ], { duration: 3600, delay: 2000, easing: 'ease-in-out', fill: 'both' });
+    anim.onfinish = function () { anim && anim.cancel(); anim = null; };
+    // click al 71% della durata (dopo il ritardo iniziale)
+    timer = setTimeout(function () {
+      if (window.magiaClick) window.magiaClick.grande(x + 2, y + 2);
+    }, 2000 + 3600 * 0.71);
+  }
+  var visto = null;
+  function controlla() {
+    var s = Reveal.getCurrentSlide && Reveal.getCurrentSlide();
+    var cover = !!s && s.id === 'title-slide';
+    if (cover && visto !== s) mostra();
+    if (!cover) ferma();
+    visto = cover ? s : null;
+  }
+  function aggancia() {
+    if (!window.Reveal || !Reveal.on) return setTimeout(aggancia, 100);
+    Reveal.on('slidechanged', controlla);
+    if (Reveal.isReady && Reveal.isReady()) controlla(); else Reveal.on('ready', controlla);
+  }
+  aggancia();
+})();
+</script>
