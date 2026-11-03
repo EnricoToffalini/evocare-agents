@@ -52,7 +52,7 @@ footer: "Memory & Learning · Lab meeting · 4 novembre 2026"
 ---
 
 
-## Accio, ordine! {#section .dark .demo-local background-gradient="radial-gradient(82.5% 102.7% at 10% 0%, rgba(255,90,31,0.32), transparent 65%), radial-gradient(90.75% 117.3% at 95% 100%, rgba(124,58,237,0.42), transparent 65%), radial-gradient(43.75% 55.6% at 60% 40%, rgba(230,35,126,0.14), transparent 70%), linear-gradient(#0d1017, #0d1017)"}
+## Accio, ordine! {#accio-ordine .dark .demo-local background-gradient="radial-gradient(82.5% 102.7% at 10% 0%, rgba(255,90,31,0.32), transparent 65%), radial-gradient(90.75% 117.3% at 95% 100%, rgba(124,58,237,0.42), transparent 65%), radial-gradient(43.75% 55.6% at 60% 40%, rgba(230,35,126,0.14), transparent 70%), linear-gradient(#0d1017, #0d1017)"}
 
 <span class="magic-mark" aria-hidden="true">🪄</span>
 <span class="demo-volume">1.270 file</span>
@@ -66,7 +66,7 @@ footer: "Memory & Learning · Lab meeting · 4 novembre 2026"
 <p class="demo-caption">1051 classificati · 40 duplicati · 179 da verificare · nessun file cancellato</p>
 
 
-## Accio, PDF! {#demo-locale-5 .dark .demo-local background-gradient="radial-gradient(82.5% 102.7% at 10% 0%, rgba(255,90,31,0.32), transparent 65%), radial-gradient(90.75% 117.3% at 95% 100%, rgba(124,58,237,0.42), transparent 65%), radial-gradient(43.75% 55.6% at 60% 40%, rgba(230,35,126,0.14), transparent 70%), linear-gradient(#0d1017, #0d1017)"}
+## Accio, PDF! {#accio-pdf .dark .demo-local background-gradient="radial-gradient(82.5% 102.7% at 10% 0%, rgba(255,90,31,0.32), transparent 65%), radial-gradient(90.75% 117.3% at 95% 100%, rgba(124,58,237,0.42), transparent 65%), radial-gradient(43.75% 55.6% at 60% 40%, rgba(230,35,126,0.14), transparent 70%), linear-gradient(#0d1017, #0d1017)"}
 
 <span class="magic-mark" aria-hidden="true">🪄</span>
 <span class="demo-volume">600 iscritti</span>
@@ -79,13 +79,7 @@ footer: "Memory & Learning · Lab meeting · 4 novembre 2026"
 
 <p class="demo-caption">560 attestati PDF pronti da stampare · 28 pagamenti mancanti · 12 casi da verificare</p>
 
-
-::: notes
-Materiali sintetici: un modulo Excel con 600 iscritti e due moduli di pagamento (bonifici e pagamenti online), con otto transazioni duplicate, 28 pagamenti mancanti e 12 importi o esiti da verificare. Esecuzione di riferimento tramite script in demo-locali/05-excel: incrocio per identificativo e transazione, registro-iscrizioni.xlsx con fonti, 560 PDF individuali e fascicolo attestati-stampa.pdf di 560 pagine A4. Verificati nominativi, identificativi, pagamenti, unicità e corrispondenza tra registro e PDF. Si tratta di attestati d'iscrizione: il pagamento non dimostra la presenza. Dal vivo: copiare input e prompt.md in una cartella nuova, aprirla con l'agent e inviare il prompt. L'interfaccia Windows 11 / Excel è illustrativa; dati e PDF sono effettivi. Nessuna email inviata.
-:::
-
-
-## Accio, Excel! {#section-1 .dark .demo-local background-gradient="radial-gradient(82.5% 102.7% at 10% 0%, rgba(255,90,31,0.32), transparent 65%), radial-gradient(90.75% 117.3% at 95% 100%, rgba(124,58,237,0.42), transparent 65%), radial-gradient(43.75% 55.6% at 60% 40%, rgba(230,35,126,0.14), transparent 70%), linear-gradient(#0d1017, #0d1017)"}
+## Accio, Excel! {#accio-excel .dark .demo-local background-gradient="radial-gradient(82.5% 102.7% at 10% 0%, rgba(255,90,31,0.32), transparent 65%), radial-gradient(90.75% 117.3% at 95% 100%, rgba(124,58,237,0.42), transparent 65%), radial-gradient(43.75% 55.6% at 60% 40%, rgba(230,35,126,0.14), transparent 70%), linear-gradient(#0d1017, #0d1017)"}
 
 <span class="magic-mark" aria-hidden="true">🪄</span>
 <span class="demo-volume">350 documenti</span>
@@ -99,7 +93,7 @@ Materiali sintetici: un modulo Excel con 600 iscritti e due moduli di pagamento 
 <p class="demo-caption">Un Excel con 24 decisioni e le fonti · 4 righe discordanti · 3 da verificare</p>
 
 
-## Accio, burocrazia! {#demo-locale-3 .dark .demo-local background-gradient="radial-gradient(82.5% 102.7% at 10% 0%, rgba(255,90,31,0.32), transparent 65%), radial-gradient(90.75% 117.3% at 95% 100%, rgba(124,58,237,0.42), transparent 65%), radial-gradient(43.75% 55.6% at 60% 40%, rgba(230,35,126,0.14), transparent 70%), linear-gradient(#0d1017, #0d1017)"}
+## Accio, burocrazia! {#accio-burocrazia .dark .demo-local background-gradient="radial-gradient(82.5% 102.7% at 10% 0%, rgba(255,90,31,0.32), transparent 65%), radial-gradient(90.75% 117.3% at 95% 100%, rgba(124,58,237,0.42), transparent 65%), radial-gradient(43.75% 55.6% at 60% 40%, rgba(230,35,126,0.14), transparent 70%), linear-gradient(#0d1017, #0d1017)"}
 
 <span class="magic-mark" aria-hidden="true">🪄</span>
 <span class="demo-volume">200 documenti</span>
@@ -112,11 +106,7 @@ Materiali sintetici: un modulo Excel con 600 iscritti e due moduli di pagamento 
 
 <p class="demo-caption">Il modello è compilato, con le stesse tabelle e gli stessi stili · 2 campi da verificare</p>
 
-::: notes
-Materiali sintetici: 200 PDF, Word, TXT, XLSX e presentazioni, più modello.docx con sezioni e tabella. Esecuzione di riferimento in demo-locali/03-burocrazia: sei indicatori dai consuntivi approvati, riempimento dei campi esistenti, provenienza per ogni dato e due campi lasciati in giallo. Verificati dati, stili, struttura delle tabelle e sezioni; modello e risultato sono stati realmente esportati da Microsoft Word e controllati visivamente. I ritagli provengono dai documenti effettivi esportati da Word; la cornice di Microsoft Word è ricostruita a scopo illustrativo. Dal vivo: copiare input, modello.docx e prompt.md in una cartella nuova. Limiti: scenario inventato e strutturato; non sono inventati gradimento o referente per la validazione.
-:::
-
-## Accio, sito aggiornato! {#demo-locale-6 .dark .demo-local background-gradient="radial-gradient(82.5% 102.7% at 10% 0%, rgba(255,90,31,0.32), transparent 65%), radial-gradient(90.75% 117.3% at 95% 100%, rgba(124,58,237,0.42), transparent 65%), radial-gradient(43.75% 55.6% at 60% 40%, rgba(230,35,126,0.14), transparent 70%), linear-gradient(#0d1017, #0d1017)"}
+## Accio, sito aggiornato! {#accio-sito .dark .demo-local background-gradient="radial-gradient(82.5% 102.7% at 10% 0%, rgba(255,90,31,0.32), transparent 65%), radial-gradient(90.75% 117.3% at 95% 100%, rgba(124,58,237,0.42), transparent 65%), radial-gradient(43.75% 55.6% at 60% 40%, rgba(230,35,126,0.14), transparent 70%), linear-gradient(#0d1017, #0d1017)"}
 
 <span class="magic-mark" aria-hidden="true">🪄</span>
 <span class="demo-volume">150 pagine web</span>
