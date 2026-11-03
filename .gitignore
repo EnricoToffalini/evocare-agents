@@ -1,1 +1,10 @@
 local/
+
+# Dataset e copie di lavoro delle sei demo: rigenerabili, solo locali.
+demo-locali/*/input/
+demo-locali/*/output/
+demo-locali/*/work/
+demo-locali/*/truth.json
+demo-locali/**/__pycache__/
+demo-locali/__pycache__/
+.demo-qa/

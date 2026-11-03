@@ -216,29 +216,33 @@
 
   <p class="date">4 novembre 2026</p>
 </section>
-<section id="section" class="slide level2 dark" data-background-gradient="radial-gradient(82.5% 102.7% at 10% 0%, rgba(255,90,31,0.32), transparent 65%), radial-gradient(90.75% 117.3% at 95% 100%, rgba(124,58,237,0.42), transparent 65%), radial-gradient(43.75% 55.6% at 60% 40%, rgba(230,35,126,0.14), transparent 70%), linear-gradient(#0d1017, #0d1017)">
-<h2></h2>
-<p><span class="magic-mark" aria-hidden="true">🪄</span></p>
-<div class="columns">
-<div class="column" style="width:68%;">
+<section id="section" class="slide level2 dark demo-local" data-background-gradient="radial-gradient(82.5% 102.7% at 10% 0%, rgba(255,90,31,0.32), transparent 65%), radial-gradient(90.75% 117.3% at 95% 100%, rgba(124,58,237,0.42), transparent 65%), radial-gradient(43.75% 55.6% at 60% 40%, rgba(230,35,126,0.14), transparent 70%), linear-gradient(#0d1017, #0d1017)">
+<h2>Accio, ordine!</h2>
+<p><span class="magic-mark" aria-hidden="true">🪄</span> <span class="demo-volume">1.270 file</span></p>
+<div class="demo-prompt">
 <blockquote>
-<p><em>Guarda questa cartella e fai un controllo di coerenza, correttezza e stile. Il codice fa quello che dice il paper? I numeri, le tabelle e le figure nel testo corrispondono agli output? Segnalami errori, incongruenze e punti deboli</em></p>
+<p>Ho più di mille documenti nel Download. Esaminali, riconosci i diversi tipi, rinominali in modo coerente e organizzali in sottocartelle. Individua i duplicati e lascia i casi dubbi da verificare. Non cancellare nulla.</p>
 </blockquote>
-<div class="term fragment" data-fragment-index="1" style="font-size: 0.5em;"><span class="t">● codex</span>  Controllo la corrispondenza tra paper, script e output
-         salvati, inclusi i supplementi. <span class="d">Non modifico nulla, non
-         rilancio le simulazioni; distinguo gli errori verificabili
-         dai punti che richiedono una nuova esecuzione.</span>
-<span class="t">● exec</span>   rg --files   <span class="d">~400 file in 11 cartelle</span>
-<span class="t">● exec</span>   Get-Content AGENTS.md README.md paper/paper-v2.qmd
-<span class="t">● exec</span>   Get-Content scripts/03a-simulation-forced-choice.R
-<span class="t">● exec</span>   Get-Content scripts/03b-… 03c-…
-<span class="t">● exec</span>   Get-Content tables/simulation-summary-*.csv
-<span class="d">  … </span></div>
-</div><div class="column" style="width:30%;">
-<p><img alt="cartella LINK FUNCTION" class="shot fragment" data-fragment-index="0" src="figures/repo-link-function.png" style="max-height: 640px; margin: 0;"></p>
-</div></div>
+</div>
+<p><img class="shot demo-visual fragment" data-fragment-index="0" src="figures/demo-01-confronto.png" alt="Accio, ordine! Schermata illustrativa Windows 11, basata sui materiali sintetici: 1.270 file, materiale iniziale e risultato verificato tramite script."></p>
+<p class="demo-caption fragment" data-fragment-index="0">
+1051 classificati · 40 duplicati · 179 da verificare · nessun file cancellato
+</p>
+</section>
+<section id="demo-locale-5" class="slide level2 dark demo-local" data-background-gradient="radial-gradient(82.5% 102.7% at 10% 0%, rgba(255,90,31,0.32), transparent 65%), radial-gradient(90.75% 117.3% at 95% 100%, rgba(124,58,237,0.42), transparent 65%), radial-gradient(43.75% 55.6% at 60% 40%, rgba(230,35,126,0.14), transparent 70%), linear-gradient(#0d1017, #0d1017)">
+<h2>Accio, Excel!</h2>
+<p><span class="magic-mark" aria-hidden="true">🪄</span> <span class="demo-volume">600 iscritti</span></p>
+<div class="demo-prompt">
+<blockquote>
+<p>Ho 600 iscritti nel modulo di iscrizione del convegno. Vedi le ricevute di pagamento e controlla chi ha già pagato. Dai registri della segreteria vedi chi si è effettivamente presentato. Quindi prepara gli attestati di partecipazione in PDF in A4 per tutti quelli in regola</p>
+</blockquote>
+</div>
+<p><img class="shot demo-visual fragment" data-fragment-index="0" src="figures/demo-05-confronto.png" alt="Accio, Excel! Schermata illustrativa Windows 11, basata sui materiali sintetici: 600 iscritti, verifica dei pagamenti e attestati PDF personalizzati."></p>
+<p class="demo-caption fragment" data-fragment-index="0">
+560 attestati PDF pronti da stampare · 28 pagamenti mancanti · 12 casi da verificare
+</p>
 <aside class="notes">
-<p>Esecuzione reale: codex exec in sola lettura sulla repo LINK FUNCTION, 2 novembre 2026, interrotta dopo circa 40 secondi per non consumare token. Righe abbreviate, comandi veri. Il punto non è il risultato ma la portata: l’agente legge da solo paper, script e tabelle di una repo con centinaia di file e li mette a confronto.</p>
+<p>Materiali sintetici: un modulo Excel con 600 iscritti e due moduli di pagamento (bonifici e pagamenti online), con otto transazioni duplicate, 28 pagamenti mancanti e 12 importi o esiti da verificare. Esecuzione di riferimento tramite script in demo-locali/05-excel: incrocio per identificativo e transazione, registro-iscrizioni.xlsx con fonti, 560 PDF individuali e fascicolo attestati-stampa.pdf di 560 pagine A4. Verificati nominativi, identificativi, pagamenti, unicità e corrispondenza tra registro e PDF. Si tratta di attestati d’iscrizione: il pagamento non dimostra la presenza. Dal vivo: copiare input e prompt.md in una cartella nuova, aprirla con l’agent e inviare il prompt. L’interfaccia Windows 11 / Excel è illustrativa; dati e PDF sono effettivi. Nessuna email inviata.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -251,45 +255,80 @@
           display:block!important;
       }</style></aside>
 </section>
-<section id="section-1" class="slide level2 dark" data-background-gradient="radial-gradient(82.5% 102.7% at 10% 0%, rgba(255,90,31,0.32), transparent 65%), radial-gradient(90.75% 117.3% at 95% 100%, rgba(124,58,237,0.42), transparent 65%), radial-gradient(43.75% 55.6% at 60% 40%, rgba(230,35,126,0.14), transparent 70%), linear-gradient(#0d1017, #0d1017)">
-<h2></h2>
-<p><span class="magic-mark" aria-hidden="true">🪄</span></p>
-<div class="columns">
-<div class="column" style="width:66%;">
-<div style="font-size: 0.8em;">
+<section id="section-1" class="slide level2 dark demo-local" data-background-gradient="radial-gradient(82.5% 102.7% at 10% 0%, rgba(255,90,31,0.32), transparent 65%), radial-gradient(90.75% 117.3% at 95% 100%, rgba(124,58,237,0.42), transparent 65%), radial-gradient(43.75% 55.6% at 60% 40%, rgba(230,35,126,0.14), transparent 70%), linear-gradient(#0d1017, #0d1017)">
+<h2>Accio, informazione!</h2>
+<p><span class="magic-mark" aria-hidden="true">🪄</span> <span class="demo-volume">350 documenti</span></p>
+<div class="demo-prompt">
 <blockquote>
-<p><em>In questa cartella ci sono depositi dati/codice pubblici di articoli DPG, in zip. Per ognuno: estrailo in una copia, trova lo script di analisi principale e fallo girare così com’è. Se si blocca, correggi il minimo indispensabile nella copia, mai negli originali. Alla fine fammi una tabella in esiti.csv: gira sì/no, cosa hai dovuto cambiare, cosa resta bloccato.</em></p>
+<p>Ho 350 documenti di segreteria e organi del dottorato. Trova tutte le informazioni relative a spese e finanziamenti. Prepara un Excel con importi, date, finalità e riferimento preciso al documento originale</p>
 </blockquote>
 </div>
-<div class="term fragment" data-fragment-index="1" style="font-size: 0.45em;"><span class="t">● Bash</span>  unzip 14 depositi → copie/   <span class="d">4 contengono altri zip</span>
-<span class="t">● Bash</span>  find *.R *.Rmd *.qmd   <span class="d">02, 06, 11: anche Stata, MATLAB, jamovi</span>
-<span class="t">● Bash</span>  5 pacchetti mancanti → rlib/, la vostra libreria R non la tocco
-<span class="t">● Bash</span>  Rscript copie/09/…   <span class="e">cannot open file 'C:/Users/PC/…'</span>
-<span class="t">● Edit</span>  copia 09   percorsi assoluti → relativi
-<span class="t">● Bash</span>  Rscript copie/12/…   <span class="e">Error: RStudio not running</span>
-<span class="t">● Edit</span>  copia 12   percorso fisso al posto di rstudioapi
-<span class="t">● Bash</span>  Rscript copie/13/…   <span class="e">Error in summarise(): `Sex` must be size 1</span>
-<span class="t">● Edit</span>  copia 13   summarise( → reframe(
-<span class="d">  … altri depositi …</span>
-<span class="t">● Write</span> esiti.csv
-<span class="ok">Quasi tutti girano, molti dopo ritocchi minimi (percorsi, pacchetti,
-versioni). Bloccati: 04 (oggetti mai definiti; serve VOSviewer) e la
-power analysis di 13 (FamilyRank non c'è per R 4.5). Originali intatti.</span></div>
-</div><div class="column" style="width:30%;">
-<p><img alt="cartella FAIR-test-DPG2025" class="shot fragment" data-fragment-index="0" src="figures/repo-fair-test.png" style="max-height: 640px; margin: 0;"></p>
-</div></div>
+<p><img class="shot demo-visual fragment" data-fragment-index="0" src="figures/demo-02-confronto.png" alt="Accio, informazione! Schermata illustrativa Windows 11, basata sui materiali sintetici: 350 documenti, materiale iniziale e risultato verificato tramite script."></p>
+<p class="demo-caption fragment" data-fragment-index="0">
+Un Excel con 24 decisioni e le fonti · 4 righe discordanti · 3 da verificare
+</p>
 </section>
-<section id="come-si-procede" class="slide level2">
-<h2>come si procede?</h2>
+<section id="demo-locale-3" class="slide level2 dark demo-local" data-background-gradient="radial-gradient(82.5% 102.7% at 10% 0%, rgba(255,90,31,0.32), transparent 65%), radial-gradient(90.75% 117.3% at 95% 100%, rgba(124,58,237,0.42), transparent 65%), radial-gradient(43.75% 55.6% at 60% 40%, rgba(230,35,126,0.14), transparent 70%), linear-gradient(#0d1017, #0d1017)">
+<h2>Accio, burocrazia!</h2>
+<p><span class="magic-mark" aria-hidden="true">🪄</span> <span class="demo-volume">200 documenti</span></p>
+<div class="demo-prompt">
+<blockquote>
+<p>Devo compilare una relazione triennale sugli eventi svolti secondo il modulo fornito. Le informazioni sono sparse nei vari documenti che ho raccolto dentro questa cartella e in parte nella mia mail e negli allegati. Recuperale, compila direttamente il modello Word mantenendo la sua formattazione originale e segnala quello che manca, che è dubbio, o che richiede una mia decisione</p>
+</blockquote>
+</div>
+<p><img class="shot demo-visual fragment" data-fragment-index="0" src="figures/demo-03-confronto.png" alt="Accio, burocrazia! Schermata illustrativa Windows 11, basata sui materiali sintetici: 200 documenti, materiale iniziale e risultato verificato tramite script."></p>
+<p class="demo-caption fragment" data-fragment-index="0">
+Il modello è compilato, con le stesse tabelle e gli stessi stili · 2 campi da verificare
+</p>
+<aside class="notes">
+<p>Materiali sintetici: 200 PDF, Word, TXT, XLSX e presentazioni, più modello.docx con sezioni e tabella. Esecuzione di riferimento in demo-locali/03-burocrazia: sei indicatori dai consuntivi approvati, riempimento dei campi esistenti, provenienza per ogni dato e due campi lasciati in giallo. Verificati dati, stili, struttura delle tabelle e sezioni; modello e risultato sono stati realmente esportati da Microsoft Word e controllati visivamente. I ritagli provengono dai documenti effettivi esportati da Word; la cornice di Microsoft Word è ricostruita a scopo illustrativo. Dal vivo: copiare input, modello.docx e prompt.md in una cartella nuova. Limiti: scenario inventato e strutturato; non sono inventati gradimento o referente per la validazione.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="demo-locale-6" class="slide level2 dark demo-local" data-background-gradient="radial-gradient(82.5% 102.7% at 10% 0%, rgba(255,90,31,0.32), transparent 65%), radial-gradient(90.75% 117.3% at 95% 100%, rgba(124,58,237,0.42), transparent 65%), radial-gradient(43.75% 55.6% at 60% 40%, rgba(230,35,126,0.14), transparent 70%), linear-gradient(#0d1017, #0d1017)">
+<h2>Accio, sito aggiornato!</h2>
+<p><span class="magic-mark" aria-hidden="true">🪄</span> <span class="demo-volume">150 pagine web</span></p>
+<div class="demo-prompt">
+<blockquote>
+<p>Questo sito ha molte pagine. Aggiorna all’anno accademico corrente con le informazioni pertinenti in base ai documenti forniti, correggi i link interni non funzionanti e preserva l’archivio storico a parte. Poi ricostruisci il sito e guarda che tutto funzioni.</p>
+</blockquote>
+</div>
+<p><img class="shot demo-visual fragment" data-fragment-index="0" src="figures/demo-06-confronto.png" alt="Accio, sito aggiornato! Schermata illustrativa Windows 11, basata sui materiali sintetici: 150 pagine, materiale iniziale e risultato verificato tramite script."></p>
+<p class="demo-caption fragment" data-fragment-index="0">
+80 pagine aggiornate · 45 link corretti · build verificata · 30 pagine storiche intatte
+</p>
+<aside class="notes">
+<p>Materiali sintetici: 150 sorgenti JSON interconnessi e una build HTML locale. Esecuzione di riferimento in demo-locali/06-sito: aggiornamento di 80 pagine correnti al 2026/2027, correzione di 45 link con redirects.json, ricostruzione di 150 HTML. Controllati tutti i 300 link interni: zero mancanti. Le 30 pagine storiche sono identiche byte per byte. Le cornici di Esplora file e del browser sono ricostruzioni illustrative; il contenuto del sito prima/dopo è renderizzato dai file locali effettivi. Eseguita anche la navigazione al programma corretto, senza pubblicazione. Dal vivo: nuova cartella con input, prompt.md e redirects.json; l’agent modifica i sorgenti, usa la build descritta nel README e controlla nel browser. Limite: piccolo sito statico dimostrativo, controllo di esistenza dei link senza autenticazione o backend.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="accio-r" class="slide level2">
+<h2>Accio, R!</h2>
+<p>Anche per un semplice script R un agent che opera localmente aiuta molto</p>
 <div class="columns">
 <div class="column" style="width:50%;">
 <h3 id="in-chat">in chat</h3>
 <div class="chat-line" style="justify-content: flex-start;">
 <p><span class="step you">prompt</span>→<span class="step you">alleghi file</span>→<span class="step">chat risponde</span>→<span class="step you">incolli in RStudio</span>→<span class="step">R esegue</span>→<span class="step">errore</span>→<span class="step you">copi l’errore in chat</span>→<span class="step">…</span>→<span class="step you">rialleghi file aggiornati</span>→<span class="step">chat risponde</span>→<span class="step">…</span></p>
 </div>
-<p class="small muted" style="margin-top: 1em;">
-il copia-incolla lo fate voi, ci dovete stare dietro a ogni intoppo
-</p>
 </div><div class="column fragment" style="width:50%;">
 <h3 id="con-un-agente">con un agente</h3>
 <div class="chat-line" style="justify-content: flex-start;">
@@ -304,7 +343,7 @@ C'è lo stesso LLM della chat. Cambia che <b>lavora sui vostri file</b>, tutti, 
 </div>
 </section>
 <section id="la-cartella-locale-come-centro-di-comando" class="slide level2">
-<h2>la cartella locale come centro di comando</h2>
+<h2>🕯️ La cartella locale come centro di comando</h2>
 <div class="columns">
 <div class="column" style="width:55%;">
 <div class="small">
@@ -325,7 +364,7 @@ Mail, eventi e condivisioni partono solo col vostro clic.
 </p>
 </div>
 </div></div>
-<div class="trucco">Un documento locale <b><code>AGENTS.md</code></b> può mappare quello che sta fuori: quale cartella di Drive, quale calendario, cosa cercare nelle mail, chi sono i collaboratori...</div>
+<div class="trucco">Un documento locale <b><code>AGENTS.md</code></b> può mappare quello che sta "fuori" dal contesto locale: le cartella di Drive pertinente, il calendario, le parole chiave nelle mail, i nomi dei collaboratori...</div>
 <!-- ---- cose fatte ---- -->
 </section>
 <section id="delegare-agli-agents-catalogo-open-science-dpg" class="slide level2">
@@ -335,17 +374,6 @@ Mail, eventi e condivisioni partono solo col vostro clic.
 </p>
 <iframe src="https://opensciencedpg.github.io/OS-promotion/" style="width: 100%; height: 640px; border: 1px solid #ddd; border-radius: 8px;">
 </iframe>
-</section>
-<section id="progetto-riproducibilità-fairness-paper-dpg" class="slide level2">
-<h2>progetto riproducibilità &amp; FAIRness paper DPG</h2>
-<!--<p class="cap">report completo: <a href="demo/report-riproducibilita.html" target="_blank" rel="noopener noreferrer">apri in una nuova scheda</a></p>-->
-<!-- online: versione anonimizzata (demo/, da R/report-anonimo.R); in locale: versione completa (local/, non su git) -->
-<iframe id="report-ripr" src="demo/report-riproducibilita.html" style="width: 100%; height: 680px; border: 1px solid #ddd; border-radius: 8px;">
-</iframe>
-<script>
-if (location.protocol === "file:" || ["localhost", "127.0.0.1"].includes(location.hostname))
-  document.getElementById("report-ripr").src = "local/report-riproducibilita.html";
-</script>
 </section>
 <section id="un-videogioco" class="slide level2">
 <h2>un videogioco</h2>
@@ -384,6 +412,25 @@ Claude in Chrome sul corso Moodle: la freccia la muove lui
 <div class="examples-grid">
 <div class="card">
 <h4>
+personali
+</h4>
+<ul class="link-list">
+<li>
+<a href="https://enricotoffalini.github.io/" target="_blank" rel="noopener noreferrer">Homepage personale</a>
+</li>
+<li>
+<a href="https://enricotoffalini.github.io/blog/" target="_blank" rel="noopener noreferrer">Blog</a>
+</li>
+<li>
+<a href="https://enricotoffalini.github.io/cv/" target="_blank" rel="noopener noreferrer">CV online</a>
+</li>
+<li>
+<a href="https://github.com/EnricoToffalini/ai-skills" target="_blank" rel="noopener noreferrer">Skill AI personali</a>
+</li>
+</ul>
+</div>
+<div class="card">
+<h4>
 siti ricerca
 </h4>
 <ul class="link-list">
@@ -397,7 +444,7 @@ siti ricerca
 </div>
 <div class="card">
 <h4>
-didattica
+didattica e app
 </h4>
 <ul class="link-list">
 <li>
@@ -424,25 +471,6 @@ edizioni e documenti
 </li>
 <li>
 <a href="https://enricotoffalini.github.io/trasparenza-dati-normativi/" target="_blank" rel="noopener noreferrer">Trasparenza e dati normativi</a>
-</li>
-</ul>
-</div>
-<div class="card">
-<h4>
-personali
-</h4>
-<ul class="link-list">
-<li>
-<a href="https://enricotoffalini.github.io/" target="_blank" rel="noopener noreferrer">Homepage personale</a>
-</li>
-<li>
-<a href="https://enricotoffalini.github.io/blog/" target="_blank" rel="noopener noreferrer">Blog</a>
-</li>
-<li>
-<a href="https://enricotoffalini.github.io/cv/" target="_blank" rel="noopener noreferrer">CV online</a>
-</li>
-<li>
-<a href="https://github.com/EnricoToffalini/ai-skills" target="_blank" rel="noopener noreferrer">Skill AI personali</a>
 </li>
 </ul>
 </div>
@@ -492,8 +520,57 @@ agenti in locale
 Claude Code e Codex: stessa richiesta, due agenti, terminale o app
 </p>
 </section>
-<section id="tasto-destro-apri-nel-terminale-claude" class="slide level2">
-<h2>tasto destro → apri nel terminale → <code>claude</code></h2>
+<section id="installazione" class="slide level2">
+<h2>installazione</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<h3 id="claude-code"><a href="https://enricotoffalini.github.io/blog/posts/agenti-cli/claude-code.html#installazione" target="_blank" rel="noopener noreferrer">Claude Code</a></h3>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href=""></a><span class="co"># Windows (PowerShell)</span></span>
+<span id="cb1-2"><a href=""></a><span class="ex">irm</span> https://claude.ai/install.ps1 <span class="kw">|</span> <span class="ex">iex</span></span>
+<span id="cb1-3"><a href=""></a></span>
+<span id="cb1-4"><a href=""></a><span class="co"># macOS / Linux</span></span>
+<span id="cb1-5"><a href=""></a><span class="ex">curl</span> <span class="at">-fsSL</span> https://claude.ai/install.sh <span class="kw">|</span> <span class="fu">bash</span></span>
+<span id="cb1-6"><a href=""></a></span>
+<span id="cb1-7"><a href=""></a><span class="co"># alternativa: npm (tutti i sistemi)</span></span>
+<span id="cb1-8"><a href=""></a><span class="ex">npm</span> install <span class="at">-g</span> @anthropic-ai/claude-code</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p class="small muted">
+serve almeno Claude <b>Pro</b>
+</p>
+</div><div class="column" style="width:50%;">
+<h3 id="codex"><a href="https://enricotoffalini.github.io/blog/posts/agenti-cli/codex.html#installazione" target="_blank" rel="noopener noreferrer">Codex</a></h3>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href=""></a><span class="co"># Windows (PowerShell)</span></span>
+<span id="cb2-2"><a href=""></a><span class="ex">powershell</span> <span class="at">-ExecutionPolicy</span> ByPass <span class="at">-c</span> <span class="kw">`</span></span>
+<span id="cb2-3"><a href=""></a>  <span class="st">"irm https://chatgpt.com/codex/install.ps1 | iex"</span></span>
+<span id="cb2-4"><a href=""></a>  </span>
+<span id="cb2-5"><a href=""></a><span class="co"># macOS / Linux</span></span>
+<span id="cb2-6"><a href=""></a><span class="ex">curl</span> <span class="at">-fsSL</span> https://chatgpt.com/codex/install.sh <span class="kw">|</span> <span class="fu">sh</span></span>
+<span id="cb2-7"><a href=""></a></span>
+<span id="cb2-8"><a href=""></a><span class="co"># alternativa: npm (tutti i sistemi)</span></span>
+<span id="cb2-9"><a href=""></a><span class="ex">npm</span> install <span class="at">-g</span> @openai/codex</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p class="small muted">
+incluso in ChatGPT <b>Edu</b> e Plus
+</p>
+</div></div>
+<p class="small muted">
+Per l’opzione npm: installate prima <a href="https://nodejs.org/" target="_blank" rel="noopener noreferrer">Node.js LTS</a> (include npm).
+</p>
+<aside class="notes">
+<p>Opzioni npm verificate nella documentazione ufficiale: https://code.claude.com/docs/en/setup#install-with-npm e https://developers.openai.com/cookbook/examples/codex/using_goals_in_codex . I comandi npm sono alternativi agli installer sopra: basta scegliere un metodo per ciascun agente.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<div class="trucco">Chiudete e riaprite il terminale, poi <code>claude --version</code> / <code>codex --version</code>. Se non va: <code>claude doctor</code>.</div>
+</section>
+<section id="tasto-destro-apri-nel-terminale-claude-o-codex" class="slide level2">
+<h2>tasto destro → apri nel terminale → <code>claude</code> o <code>codex</code> ↵</h2>
 <a href="https://enricotoffalini.github.io/blog/posts/agenti-cli/claude-code.html#primo-avvio" target="_blank" rel="noopener noreferrer" class="media-link" title="Apri la sezione pertinente della guida in una nuova scheda"><img alt="claude 01 avvio" class="shot" src="figures/claude-01-avvio.png" style="max-height: 560px;"></a>
 <p class="cap">
 in alto: modello, effort, piano e <b>cartella di lavoro</b>. Da qui in poi si scrive in italiano
@@ -556,57 +633,8 @@ Codex
 </p>
 </div></div>
 </section>
-<section id="installazione" class="slide level2">
-<h2>installazione</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<h3 id="claude-code"><a href="https://enricotoffalini.github.io/blog/posts/agenti-cli/claude-code.html#installazione" target="_blank" rel="noopener noreferrer">Claude Code</a></h3>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href=""></a><span class="co"># Windows (PowerShell)</span></span>
-<span id="cb1-2"><a href=""></a><span class="ex">irm</span> https://claude.ai/install.ps1 <span class="kw">|</span> <span class="ex">iex</span></span>
-<span id="cb1-3"><a href=""></a></span>
-<span id="cb1-4"><a href=""></a><span class="co"># macOS / Linux</span></span>
-<span id="cb1-5"><a href=""></a><span class="ex">curl</span> <span class="at">-fsSL</span> https://claude.ai/install.sh <span class="kw">|</span> <span class="fu">bash</span></span>
-<span id="cb1-6"><a href=""></a></span>
-<span id="cb1-7"><a href=""></a><span class="co"># alternativa: npm (tutti i sistemi)</span></span>
-<span id="cb1-8"><a href=""></a><span class="ex">npm</span> install <span class="at">-g</span> @anthropic-ai/claude-code</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p class="small muted">
-serve almeno Claude <b>Pro</b>
-</p>
-</div><div class="column" style="width:50%;">
-<h3 id="codex"><a href="https://enricotoffalini.github.io/blog/posts/agenti-cli/codex.html#installazione" target="_blank" rel="noopener noreferrer">Codex</a></h3>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href=""></a><span class="co"># Windows (PowerShell)</span></span>
-<span id="cb2-2"><a href=""></a><span class="ex">powershell</span> <span class="at">-ExecutionPolicy</span> ByPass <span class="at">-c</span> <span class="kw">`</span></span>
-<span id="cb2-3"><a href=""></a>  <span class="st">"irm https://chatgpt.com/codex/install.ps1 | iex"</span></span>
-<span id="cb2-4"><a href=""></a>  </span>
-<span id="cb2-5"><a href=""></a><span class="co"># macOS / Linux</span></span>
-<span id="cb2-6"><a href=""></a><span class="ex">curl</span> <span class="at">-fsSL</span> https://chatgpt.com/codex/install.sh <span class="kw">|</span> <span class="fu">sh</span></span>
-<span id="cb2-7"><a href=""></a></span>
-<span id="cb2-8"><a href=""></a><span class="co"># alternativa: npm (tutti i sistemi)</span></span>
-<span id="cb2-9"><a href=""></a><span class="ex">npm</span> install <span class="at">-g</span> @openai/codex</span></code><button title="Copia negli appunti" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p class="small muted">
-incluso in ChatGPT <b>Edu</b> e Plus
-</p>
-</div></div>
-<p class="small muted">
-Per l’opzione npm: installate prima <a href="https://nodejs.org/" target="_blank" rel="noopener noreferrer">Node.js LTS</a> (include npm).
-</p>
-<aside class="notes">
-<p>Opzioni npm verificate nella documentazione ufficiale: https://code.claude.com/docs/en/setup#install-with-npm e https://developers.openai.com/cookbook/examples/codex/using_goals_in_codex . I comandi npm sono alternativi agli installer sopra: basta scegliere un metodo per ciascun agente.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-<div class="trucco">Chiudete e riaprite il terminale, poi <code>claude --version</code> / <code>codex --version</code>. Se non va: <code>claude doctor</code>.</div>
-</section>
-<section id="non-piace-il-terminale-stessa-cosa-dallapp" class="slide level2">
-<h2>non piace il terminale? stessa cosa dall’app</h2>
+<section id="non-piace-il-terminale-stessa-cosa-dallapp-desktop" class="slide level2">
+<h2>non piace il terminale? stessa cosa dall’app desktop</h2>
 <div class="columns">
 <div class="column" style="width:45%;">
 <a href="https://enricotoffalini.github.io/blog/posts/agenti-cli/app-desktop.html#la-prima-richiesta" target="_blank" rel="noopener noreferrer" class="media-link" title="Apri la sezione pertinente della guida in una nuova scheda"><img alt="app claude 02 richiesta" class="shot" src="figures/app-claude-02-richiesta.png" style="max-height: 600px;"></a>
@@ -661,59 +689,8 @@ Codex, <code>/plan</code> o (<code>Shift+Tab</code>): prima di decidere <b>fa do
 </div></div>
 <div class="trucco">Per qualsiasi compito non banale: <i>"Non toccare niente: proponimi solo un piano."</i> Legge, esplora, non modifica nulla. Approvate, correggete, o ripartite.</div>
 </section>
-<section id="il-plan-su-un-progetto-vero" class="slide level2">
-<h2>il <code>/plan</code>, su un progetto vero</h2>
-<div class="prompt">
-Vorrei un breve report Quarto in HTML su quanti articoli del catalogo hanno dati e codice aperti, anno per anno. Non scrivere ancora niente: proponimi solo un piano.
-</div>
-<div class="columns">
-<div class="column" style="width:50%;">
-<div class="term">Propongo questo piano:
-1. Perimetro: record con final_decision: keep,
-   stato ready o published, anche prima del 2025.
-2. Per anno: totale, dati aperti, codice aperto,
-   entrambi; i valori sconosciuti distinti dai false.
-3. Report breve: metodo, un grafico, una tabella;
-   segnalare cosa viene dalla modalità rapida.
-4. Render e controlli, senza toccare record e sito.</div>
-<p class="cap">
-Codex, 18 secondi ? <a href="https://opensciencedpg.github.io/OS-promotion/" target="_blank" rel="noopener noreferrer" title="Apri approfondimento in una nuova scheda">catalogo Open Science DPG ?</a>
-</p>
-</div><div class="column" style="width:50%;">
-<div class="term">Fonte: i record, non data/: data/ ha solo
-gli articoli visibili sul sito (dal 2025).
-<span class="d">  …</span>
-Un file autonomo in analysis/, così il render
-non finisce in docs/ e non tocca il sito.
-
-<span class="p">Domande prima di partire</span>
-1. Quali anni? Consiglio tutti.
-2. Quali stati? Consiglio solo ready/published.
-3. Rapida contro verificata: basta una nota?
-4. Va bene che resti fuori dal sito?</div>
-<p class="cap">
-Claude Code, 25 secondi
-</p>
-</div></div>
-<p class="small center">
-Gli equivoci saltano fuori quando correggerli costa zero.
-</p>
-<aside class="notes">
-<p>Prove del 1 novembre 2026, su copie della repo del catalogo, in sola lettura. Trascrizioni accorciate.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
 <section id="da-sapere-n.-2-prima-di-fare-spiegami" class="slide level2">
-<h2>da sapere n.&nbsp;2: prima di “fare”, “spiegami”</h2>
+<h2>da sapere n.&nbsp;2: prima di fare, spiegami</h2>
 <div class="columns">
 <div class="column" style="width:40%;">
 <div class="prompt" style="font-size: 0.68em;">
@@ -760,26 +737,32 @@ Claude Code, trascrizione accorciata ? <a href="https://github.com/EnricoToffali
 </section>
 <section id="da-sapere-n.-3-decidete-voi-quanta-autonomia" class="slide level2">
 <h2>da sapere n.&nbsp;3: decidete voi quanta autonomia</h2>
-<a href="https://enricotoffalini.github.io/blog/posts/agenti-cli/claude-code.html#le-modalit%C3%A0-di-lavoro" target="_blank" rel="noopener noreferrer" class="media-link" title="Apri la sezione pertinente della guida in una nuova scheda"><img alt="claude 05 modalita" class="shot" src="figures/claude-05-modalita.png" style="max-height: 120px;"></a>
-<p class="cap">
-Claude Code, <code>Shift+Tab</code>: <i>auto</i> · <i>manual</i> · <i>accept edits</i> · <i>plan</i>
-</p>
 <div class="columns">
-<div class="column" style="width:55%;">
-<a href="https://enricotoffalini.github.io/blog/posts/agenti-cli/codex.html#permessi" target="_blank" rel="noopener noreferrer" class="media-link" title="Apri la sezione pertinente della guida in una nuova scheda"><img alt="codex 07 permissions" class="shot" src="figures/codex-07-permissions.png" style="max-height: 420px;"></a>
-<p class="cap">
-Codex, <code>/permissions</code>: <i>Read Only</i> → <i>Full Access</i>
-</p>
-</div><div class="column" style="width:45%;">
-<div class="small" style="margin-top: 0.5em;">
+<div class="column" style="width: 48%; padding-top: 1.2em;">
+<p><a href="https://enricotoffalini.github.io/blog/posts/agenti-cli/claude-code.html#le-modalit%C3%A0-di-lavoro" target="_blank" rel="noopener noreferrer" class="media-link" title="Apri la sezione pertinente della guida in una nuova scheda"><img alt="claude 05 modalita" class="shot" src="figures/claude-05-modalita.png" style="width: 100%;"></a></p>
+</div><div class="column" style="width: 52%; font-size: 0.55em;">
+<p><strong>Claude Code</strong>: <code>Shift+Tab</code> nel terminale, menu in basso nell’app</p>
 <ul>
-<li>all’inizio: chiede ogni approvazione prima di agire</li>
-<li>poi <em>auto</em> / <em>Approve for me</em>: chiede solo per le azioni rischiose</li>
-<li><em>Full Access</em>: con cautela</li>
+<li><em>Manual</em>: chiede prima di ogni modifica o comando</li>
+<li><em>Auto</em>: fa da sé; un secondo modello blocca le azioni rischiose</li>
+<li><em>Accept edits on</em>: modifica i file, chiede per i comandi</li>
+<li><em>Plan</em>: legge e propone un piano, non modifica nulla</li>
 </ul>
-</div>
-<div class="trucco"><code>Esc</code> interrompe l'agente in qualsiasi momento.</div>
 </div></div>
+<div class="columns">
+<div class="column" style="width: 48%; padding-top: 1.2em;">
+<p><a href="https://enricotoffalini.github.io/blog/posts/agenti-cli/codex.html#permessi" target="_blank" rel="noopener noreferrer" class="media-link" title="Apri la sezione pertinente della guida in una nuova scheda"><img alt="codex 07 permissions" class="shot" src="figures/codex-07-permissions.png" style="width: 100%;"></a></p>
+</div><div class="column" style="width: 52%; font-size: 0.55em;">
+<p><strong>Codex</strong>: <code>/permissions</code> nel terminale, menu in basso nell’app</p>
+<ul>
+<li><em>Ask for approval</em>: chiede solo per internet e file esterni</li>
+<li><em>Approve for me</em>: fa da sé; chiede solo per le azioni rischiose</li>
+<li><em>Full Access</em>: nessun limite, anche fuori dalla cartella e in rete</li>
+<li><em>Read Only</em>: legge, chiede prima di modificare o andare in rete</li>
+<li>(<code>/plan</code> per pianificazione senza modifiche è attivato a parte)</li>
+</ul>
+</div></div>
+<div class="trucco" style="font-size: 0.6em;">All'inizio <i>Manuale</i> / <i>Ask for approval</i>; poi <i>Auto</i> / <i>Approve for me</i>; accesso totale con cautela. <code>Esc</code> interrompe l'agente.</div>
 </section>
 <section id="leggete-il-riepilogo-finale" class="slide level2">
 <h2>leggete il riepilogo finale</h2>
@@ -881,8 +864,8 @@ Aggiornato al 2 novembre 2026 · Modelli e livelli disponibili dipendono da pian
           display:block!important;
       }</style></aside>
 </section>
-<section id="da-sapere-n.-5-guardate-quanto-vi-resta" class="slide level2">
-<h2>da sapere n.&nbsp;5: guardate quanto vi resta</h2>
+<section id="da-sapere-n.-5-guardate-quanto-usage-vi-resta" class="slide level2">
+<h2>da sapere n.&nbsp;5: guardate quanto <em>usage</em> vi resta</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
 <a href="https://enricotoffalini.github.io/blog/posts/agenti-cli/claude-code.html#controllare-lutilizzo-residuo" target="_blank" rel="noopener noreferrer" class="media-link" title="Apri la sezione pertinente della guida in una nuova scheda"><img alt="claude 04 usage" class="shot" src="figures/claude-04-usage.png" style="max-height: 480px;"></a>

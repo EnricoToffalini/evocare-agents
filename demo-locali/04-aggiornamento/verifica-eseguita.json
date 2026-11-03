@@ -1,0 +1,15 @@
+{
+  "demo": 4,
+  "controlli_indipendenti": "superati",
+  "risultati": {
+    "provenienza": "Output di riferimento generato tramite script; non è una trascrizione di agent interattivo.",
+    "file_controllati": 240,
+    "modificati": 150,
+    "gia_corretti": 40,
+    "simili_preservati": 30,
+    "storici_da_esaminare": 20,
+    "vecchio_indirizzo_nei_file_interessati": 0,
+    "sole_sostituzioni_autorizzate": true,
+    "input_immutati_sha256": true
+  }
+}

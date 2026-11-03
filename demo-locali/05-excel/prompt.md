@@ -1,0 +1,3 @@
+Ho 600 iscritti nel modulo di iscrizione. Incrocia i dati con questi altri moduli e controlla chi ha pagato. Poi prepara gli attestati PDF personalizzati, pronti da stampare, per tutti quelli in regola. Segnala i pagamenti mancanti e i casi dubbi.
+
+I moduli sono in input: iscrizioni.xlsx, bonifici.xlsx e pagamenti-online.xlsx. La quota è 40 EUR. Genera attestati d'iscrizione per chi ha un pagamento accreditato di importo corretto, senza certificare la presenza. Crea anche un fascicolo PDF unico A4 per la stampa e un registro con esito e fonte. Non duplicare gli attestati se una transazione compare in piu moduli. Lascia i casi dubbi da verificare, senza inviare nulla.

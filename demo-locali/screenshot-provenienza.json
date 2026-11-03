@@ -1,0 +1,104 @@
+[
+  {
+    "file": "figures/demo-01-confronto.png",
+    "url": "http://127.0.0.1:8765/demo-locali/01-ordine/work/gallery.html",
+    "metodo": "Schermata illustrativa: interfaccia Windows 11 / Office ricostruita in HTML/CSS su richiesta di Enrico; dati dai file verificati, documenti da render PDF e sito locale. Non è una cattura desktop.",
+    "dimensioni": "1600 × 520",
+    "sha256": "bbdede1b5cd70ed74ff7195d91e7f59fe376f53674c51c033355d656b6f97b4d"
+  },
+  {
+    "file": "figures/demo-02-confronto.png",
+    "url": "http://127.0.0.1:8765/demo-locali/02-informazione/work/gallery.html",
+    "metodo": "Schermata illustrativa: interfaccia Windows 11 / Office ricostruita in HTML/CSS su richiesta di Enrico; dati dai file verificati, documenti da render PDF e sito locale. Non è una cattura desktop.",
+    "dimensioni": "1600 × 520",
+    "sha256": "341c11eb3b16b125eaa732daa8ab7f4857f6b7ec17c091f720a7f5eaa52a32a8"
+  },
+  {
+    "file": "figures/demo-03-confronto.png",
+    "url": "http://127.0.0.1:8765/demo-locali/03-burocrazia/work/gallery.html",
+    "metodo": "Schermata illustrativa: interfaccia Windows 11 / Office ricostruita in HTML/CSS su richiesta di Enrico; dati dai file verificati, documenti da render PDF e sito locale. Non è una cattura desktop.",
+    "dimensioni": "1600 × 520",
+    "sha256": "e4c8fdc70bc310bf68b3e8776c6146962f2af9c67ef354c3f1a27a1ef6ef6b64"
+  },
+  {
+    "file": "figures/demo-04-confronto.png",
+    "url": "http://127.0.0.1:8765/demo-locali/04-aggiornamento/work/gallery.html",
+    "metodo": "Schermata illustrativa: interfaccia Windows 11 / Office ricostruita in HTML/CSS su richiesta di Enrico; dati dai file verificati, documenti da render PDF e sito locale. Non è una cattura desktop.",
+    "dimensioni": "1600 × 520",
+    "sha256": "5dc0b0ffa1e4f1f395f457666892c14c0fb27b6de63c273dced31a72598631d5"
+  },
+  {
+    "file": "figures/demo-06-confronto.png",
+    "url": "http://127.0.0.1:8765/demo-locali/06-sito/work/gallery.html",
+    "metodo": "Schermata illustrativa: interfaccia Windows 11 / Office ricostruita in HTML/CSS su richiesta di Enrico; dati dai file verificati, documenti da render PDF e sito locale. Non è una cattura desktop.",
+    "dimensioni": "1600 × 520",
+    "sha256": "3b96133e9ab7c8371757bdd7efcd97a2e1584c37f57fd3df0b5c9711779dba47"
+  },
+  {
+    "file": "figures/demo-02-delibera.png",
+    "source": "demo-locali/02-informazione/input/2026/Ricerca/verbale_001.pdf",
+    "metodo": "PDF originale rasterizzato e ritagliato",
+    "sha256": "1b58f13e2d2f8dfb4bc2d7afa5d6a0295f6a970683e1e89d5ef3658baac87a93"
+  },
+  {
+    "file": "figures/demo-03-modello.png",
+    "source": "demo-locali/03-burocrazia/modello.docx",
+    "metodo": "Export Microsoft Word in PDF, rasterizzato e ritagliato",
+    "sha256": "b1ced756a1305f0828fa55282e263c20f2f4a2161e621681b4513344f4abf615"
+  },
+  {
+    "file": "figures/demo-03-compilata.png",
+    "source": "demo-locali/03-burocrazia/output/relazione-compilata.docx",
+    "metodo": "Export Microsoft Word in PDF, rasterizzato e ritagliato",
+    "sha256": "e88fbb7acf843531e155d55d2fd7268b76505c7d204717245231f54e27462912"
+  },
+  {
+    "file": "figures/demo-03-modello-campi.png",
+    "source": "demo-locali/03-burocrazia/modello.docx",
+    "metodo": "Export Microsoft Word: ritaglio dei campi da compilare",
+    "sha256": "d064c54d0729fa4e262fe90efed53ac4c5b1172ffa6e76f943cfcc1691ddb4a5"
+  },
+  {
+    "file": "figures/demo-03-compilata-campi.png",
+    "source": "demo-locali/03-burocrazia/output/relazione-compilata.docx",
+    "metodo": "Export Microsoft Word: ritaglio dei campi da verificare",
+    "sha256": "690f64a9f0ac9049dbe31f38020db8220998b0d25193feeba029cbc41bcf513a"
+  },
+  {
+    "file": "figures/demo-04-documento-prima.png",
+    "source": "demo-locali/04-aggiornamento/input/modello/modello_001.docx",
+    "metodo": "Export Microsoft Word in PDF, rasterizzato e ritagliato",
+    "sha256": "750bd2eef41ecee2e2c4fe8f04633ffdd366aa67e7125681c5847358fc8a88db"
+  },
+  {
+    "file": "figures/demo-04-documento-dopo.png",
+    "source": "demo-locali/04-aggiornamento/output/documenti/modello/modello_001.docx",
+    "metodo": "Export Microsoft Word in PDF, rasterizzato e ritagliato",
+    "sha256": "a5e18179c8109cacdcfda870fffeeb14214804db762cf76ee915d7239b9db6ee"
+  },
+  {
+    "file": "figures/demo-06-sito-prima.png",
+    "source": "demo-locali/06-sito/input/site/servizi/pagina-001.html",
+    "metodo": "Screenshot Chromium della build locale iniziale",
+    "sha256": "564b7deba6b7bb4fcc3220f7e158637d1811cc8f13aa5b823c7b74c045750f69"
+  },
+  {
+    "file": "figures/demo-06-sito-dopo.png",
+    "source": "demo-locali/06-sito/output/site/servizi/pagina-001.html",
+    "metodo": "Screenshot Chromium della build locale aggiornata",
+    "sha256": "1604fc0a18abaf4cd346f5defe8bd6a1412e212a252d3a5729587c59ee3e3b14"
+  },
+  {
+    "file": "figures/demo-05-confronto.png",
+    "url": "http://127.0.0.1:8765/demo-locali/05-excel/work/gallery.html",
+    "metodo": "Schermata illustrativa: interfaccia Windows 11 / Office ricostruita in HTML/CSS su richiesta di Enrico; dati dai file verificati, documenti da render PDF e sito locale. Non è una cattura desktop.",
+    "dimensioni": "1600 × 520",
+    "sha256": "041c7ed754df0249730ae85aebff022a6a4700962397c3087db7adc1b139df81"
+  },
+  {
+    "file": "figures/demo-05-attestato.png",
+    "source": "demo-locali/05-excel/output/attestati/IS-0001_ada-esempio-01.pdf",
+    "metodo": "Attestato di iscrizione PDF generato, rasterizzato e ritagliato",
+    "sha256": "00a949feabbe3e7db43d39d8b8524ad78c6954ba75334e69c17b065384ba5c5d"
+  }
+]

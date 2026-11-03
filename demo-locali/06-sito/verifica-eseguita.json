@@ -1,0 +1,16 @@
+{
+  "demo": 6,
+  "controlli_indipendenti": "superati",
+  "risultati": {
+    "provenienza": "Output di riferimento generato tramite script; non è una trascrizione di agent interattivo.",
+    "pagine_generate": 150,
+    "pagine_anno_aggiornato": 80,
+    "link_rotti_prima": 45,
+    "link_corretti": 45,
+    "link_controllati": 300,
+    "link_rotti_dopo": 0,
+    "pagine_storiche_preservate": 30,
+    "build": "completata, 150 HTML",
+    "input_immutati_sha256": true
+  }
+}

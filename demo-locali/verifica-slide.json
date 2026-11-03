@@ -1,0 +1,14 @@
+{
+  "controllo": "Aggiornamento demo Excel dopo le modifiche di Enrico",
+  "slide_demo_attuali": 5,
+  "altre_slide_qmd_identiche_alla_versione_di_enrico": true,
+  "ordine_preservato": true,
+  "layout_1600x900": "superato",
+  "immagini_mancanti": [],
+  "attestati_pdf": 560,
+  "iscritti": 600,
+  "pagamenti_mancanti": 28,
+  "casi_da_verificare": 12,
+  "provenienza_immagini_demo_excel_sha256": "verificata",
+  "nessun_commit_o_push": true
+}

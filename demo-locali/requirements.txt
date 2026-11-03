@@ -1,0 +1,9 @@
+python-docx>=1.1
+reportlab>=4.0
+pypdf>=5.0
+Pillow>=10.0
+python-pptx>=1.0
+openpyxl>=3.1
+PyMuPDF>=1.24
+# openpyxl è usato SOLO in lettura per estrazione e verifiche.
+# La scrittura XLSX usa @oai/artifact-tool (runtime Codex).

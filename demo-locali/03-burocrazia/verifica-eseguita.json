@@ -1,0 +1,13 @@
+{
+  "demo": 3,
+  "controlli_indipendenti": "superati",
+  "risultati": {
+    "provenienza": "Output di riferimento generato tramite script; non è una trascrizione di agent interattivo.",
+    "documenti_letti": 200,
+    "indicatori_recuperati": 6,
+    "campi_da_verificare": 2,
+    "stili_preservati": true,
+    "tabelle_preservate": true,
+    "input_immutati_sha256": true
+  }
+}
