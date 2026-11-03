@@ -66,7 +66,7 @@ footer: "Memory & Learning · Lab meeting · 4 novembre 2026"
 <p class="demo-caption fragment" data-fragment-index="0">1051 classificati · 40 duplicati · 179 da verificare · nessun file cancellato</p>
 
 
-## Accio, Excel! {#demo-locale-5 .dark .demo-local background-gradient="radial-gradient(82.5% 102.7% at 10% 0%, rgba(255,90,31,0.32), transparent 65%), radial-gradient(90.75% 117.3% at 95% 100%, rgba(124,58,237,0.42), transparent 65%), radial-gradient(43.75% 55.6% at 60% 40%, rgba(230,35,126,0.14), transparent 70%), linear-gradient(#0d1017, #0d1017)"}
+## Accio, PDF! {#demo-locale-5 .dark .demo-local background-gradient="radial-gradient(82.5% 102.7% at 10% 0%, rgba(255,90,31,0.32), transparent 65%), radial-gradient(90.75% 117.3% at 95% 100%, rgba(124,58,237,0.42), transparent 65%), radial-gradient(43.75% 55.6% at 60% 40%, rgba(230,35,126,0.14), transparent 70%), linear-gradient(#0d1017, #0d1017)"}
 
 <span class="magic-mark" aria-hidden="true">🪄</span>
 <span class="demo-volume">600 iscritti</span>
@@ -85,7 +85,7 @@ Materiali sintetici: un modulo Excel con 600 iscritti e due moduli di pagamento 
 :::
 
 
-## Accio, informazione! {#section-1 .dark .demo-local background-gradient="radial-gradient(82.5% 102.7% at 10% 0%, rgba(255,90,31,0.32), transparent 65%), radial-gradient(90.75% 117.3% at 95% 100%, rgba(124,58,237,0.42), transparent 65%), radial-gradient(43.75% 55.6% at 60% 40%, rgba(230,35,126,0.14), transparent 70%), linear-gradient(#0d1017, #0d1017)"}
+## Accio, Excel! {#section-1 .dark .demo-local background-gradient="radial-gradient(82.5% 102.7% at 10% 0%, rgba(255,90,31,0.32), transparent 65%), radial-gradient(90.75% 117.3% at 95% 100%, rgba(124,58,237,0.42), transparent 65%), radial-gradient(43.75% 55.6% at 60% 40%, rgba(230,35,126,0.14), transparent 70%), linear-gradient(#0d1017, #0d1017)"}
 
 <span class="magic-mark" aria-hidden="true">🪄</span>
 <span class="demo-volume">350 documenti</span>
