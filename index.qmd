@@ -217,7 +217,7 @@ if (location.protocol === "file:" || ["localhost", "127.0.0.1"].includes(locatio
 </script>
 ```
 
-## un videogioco
+## delegare agli agents: un videogioco
 
 <iframe src="https://drive.google.com/file/d/1073IkTNHvEg_nCDm4ND4jXph7lDyvB-e/preview" style="width: 100%; height: 600px; border: 0; border-radius: 8px;" allow="autoplay; fullscreen" allowfullscreen></iframe>
 <p class="cap"><a href="https://github.com/EnricoToffalini/mahabharata-game" target="_blank" rel="noopener noreferrer">mahabharata-game</a> • <a href="https://godotengine.org/" target="_blank" rel="noopener noreferrer" title="Apri approfondimento in una nuova scheda">Godot</a></p>
