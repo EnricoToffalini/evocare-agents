@@ -322,6 +322,14 @@ html.reveal-full-page { height: 100dvh; }
   font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #0f766e; margin-bottom: 0.1em;
 }
 .reveal .trucco code { background: rgba(13,148,136,0.12); padding: 0 0.25em; border-radius: 6px; }
+/* Avvisi di aggiornamento (es. novità sui limiti): piccoli, ambra, con emoji */
+.reveal .avviso {
+  background: linear-gradient(180deg, #f59e0b, #f97316) left / 6px 100% no-repeat, #fffbeb;
+  border-radius: 0 10px 10px 0; padding: 0.35em 0.8em 0.35em calc(0.8em + 6px);
+  margin-top: 0.45em; font-size: 0.48em; line-height: 1.35; text-align: left; color: #44403c;
+}
+.reveal .avviso::before { content: "⚠️ "; }
+.reveal .avviso a { color: #b45309; text-decoration: underline; }
 /* Richiesta data all'agente, riusata identica in più slide */
 .reveal .prompt {
   font-size: 0.62em; font-style: italic; background: #fff7ed; border-left: 6px solid var(--accent);
