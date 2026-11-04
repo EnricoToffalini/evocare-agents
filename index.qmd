@@ -769,12 +769,13 @@ UniPD: 7 € al mese + IVA, circa 100 € l'anno, pagabili su fondi di ricerca. 
 
 ## Chat o Work? di default, Chat
 
-<a href="https://enricotoffalini.github.io/blog/posts/gpt-edu/#chat-o-work-di-default-chat" target="_blank" rel="noopener noreferrer" class="media-link" title="Apri la sezione pertinente della guida in una nuova scheda"><img alt="01 work" class="shot" src="figures/01-work.png" style="max-height: 520px;"></a>
+<a href="https://enricotoffalini.github.io/blog/posts/gpt-edu/#chat-o-work-di-default-chat" target="_blank" rel="noopener noreferrer" class="media-link" title="Apri la sezione pertinente della guida in una nuova scheda"><img alt="01 work" class="shot" src="figures/01-work.png" style="max-height: 440px;"></a>
 <p class="cap">il selettore Chat / Work in alto; qui la modalità Work</p>
 
 
 ```{=html}
 <div class="trucco"><b>Work = Codex in cloud</b>, con gli <b>stessi limiti</b> di Codex. Tutto ciò che si chiude in una Chat (anche con file caricati e scaricati) fatelo in Chat. Il credito Work tenetelo per Codex in locale.</div>
+<div class="avviso"><b>Novità (<a href="https://help.openai.com/en/articles/20001625-understanding-chatgpt-and-codex-usage-limits" target="_blank" rel="noopener noreferrer">OpenAI</a>):</b> da dicembre, su Plus, Pro e Business, anche la Chat (tranne <i>Instant</i>) consumerà la stessa quota di Codex/Work. Per Edu, per ora, nessuna comunicazione: se arriverà, questa distinzione perde senso.</div>
 ```
 
 
@@ -814,6 +815,7 @@ UniPD: 7 € al mese + IVA, circa 100 € l'anno, pagabili su fondi di ricerca. 
 
 ```{=html}
 <div class="trucco">È la cosa che quasi nessuno tocca. Spostate il cursore su <b>High</b> e lasciatelo lì.</div>
+<div class="avviso">Vale finché la Chat ha limiti separati: da dicembre, su Plus, Pro e Business, la Chat a <i>Medium</i>/<i>High</i> attingerà alla quota di Codex. Per Edu non si sa ancora.</div>
 ```
 
 
@@ -909,6 +911,7 @@ UniPD: 7 € al mese + IVA, circa 100 € l'anno, pagabili su fondi di ricerca. 
 
 ```{=html}
 <div class="trucco">Il credito Work/Codex è quello che finisce: <b>non sprecatelo in Work</b> per cose che una Chat a <i>High</i> risolve.</div>
+<div class="avviso">Se la novità di dicembre (Plus, Pro, Business) arriverà anche su Edu, Chat e Codex attingeranno allo stesso credito: conterà scegliere lo strumento più adatto, non “risparmiare” Work.</div>
 ```
 
 
@@ -1157,6 +1160,8 @@ Altre idee per il lab:
 - per me una finestra di 5 ore basta per parecchi compiti
 
 <p class="muted">ottobre 2026; cambia spesso</p>
+
+<div class="avviso" style="font-size: 0.6em;">da dicembre, su ChatGPT Plus, anche la Chat (tranne <i>Instant</i>) consuma i limiti di Codex: un unico budget, come con Claude</div>
 
 </div>
 :::
