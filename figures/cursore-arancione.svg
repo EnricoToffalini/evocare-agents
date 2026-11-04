@@ -1,11 +1,14 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+  <!-- Freccia in stile Claude: corpo crema, contorno sottile arancione, ampio alone arancione sfumato. Punta in (20,16). -->
   <defs>
-    <filter id="alone" x="-100%" y="-100%" width="300%" height="300%" color-interpolation-filters="sRGB">
-      <feGaussianBlur stdDeviation="1.6"/>
+    <filter id="alone" x="-150%" y="-150%" width="400%" height="400%" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="5"/>
     </filter>
   </defs>
-  <path d="M8 7 L8 32 L14.5 25.5 L20 37 L25 34.5 L19.5 23 L29 23 Z"
-        fill="none" stroke="#ff5a1f" stroke-width="5" stroke-linejoin="round" opacity="0.85" filter="url(#alone)"/>
-  <path d="M8 7 L8 32 L14.5 25.5 L20 37 L25 34.5 L19.5 23 L29 23 Z"
-        fill="#fffaf5" stroke="#ff5a1f" stroke-width="1.6" stroke-linejoin="round"/>
+  <g transform="translate(20 16)">
+    <path d="M0 0 L0 24 L5.6 19.2 L9.2 27.6 L13.4 25.8 L9.8 17.6 L17.6 17.6 Z"
+          fill="#d97757" stroke="#d97757" stroke-width="6" stroke-linejoin="round" opacity="0.5" filter="url(#alone)"/>
+    <path d="M0 0 L0 24 L5.6 19.2 L9.2 27.6 L13.4 25.8 L9.8 17.6 L17.6 17.6 Z"
+          fill="#faf9f5" stroke="#d97757" stroke-width="1.6" stroke-linejoin="round"/>
+  </g>
 </svg>

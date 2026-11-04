@@ -353,22 +353,22 @@ html.reveal-full-page { height: 100dvh; }
 
 /* Freccia con contorno arancione sfumato, solo nella presentazione. */
 @media (hover: hover) and (pointer: fine) {
-  .reveal { cursor: url("figures/cursore-arancione.svg") 8 7, auto; }
+  .reveal { cursor: url("figures/cursore-arancione.svg") 20 16, auto; }
   .reveal a, .reveal button, .reveal .controls { cursor: pointer; }
   .reveal input, .reveal textarea, .reveal [contenteditable="true"] { cursor: text; }
 }
 
-/* Alone discreto che segue il mouse (vedi includes/alone-mouse.html) */
+/* Alone arancione (stile Claude) che segue il mouse (vedi includes/alone-mouse.html) */
 .reveal .backgrounds { z-index: 0; isolation: isolate; }
 #alone-mouse {
   /* Lo sfondo attivo di Reveal ha z-index: 2; i contenuti restano fuori e sopra questo livello. */
   position: absolute; inset: 0; pointer-events: none; z-index: 3;
   opacity: 0; transition: opacity 0.6s ease;
-  background: radial-gradient(460px circle at var(--ax, -999px) var(--ay, -999px), rgba(20,24,35,0.07), rgba(20,24,35,0.03) 45%, transparent 75%);
+  background: radial-gradient(460px circle at var(--ax, -999px) var(--ay, -999px), rgba(217,119,87,0.16), rgba(217,119,87,0.06) 45%, transparent 75%);
   mix-blend-mode: multiply;
 }
 #alone-mouse.scura {
-  background: radial-gradient(520px circle at var(--ax, -999px) var(--ay, -999px), rgba(255,244,225,0.09), rgba(255,244,225,0.035) 45%, transparent 75%);
+  background: radial-gradient(520px circle at var(--ax, -999px) var(--ay, -999px), rgba(217,119,87,0.16), rgba(217,119,87,0.06) 45%, transparent 75%);
   mix-blend-mode: screen;
 }
 #alone-mouse.attivo { opacity: 1; }
