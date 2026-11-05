@@ -214,18 +214,45 @@ if (location.protocol === "file:" || ["localhost", "127.0.0.1"].includes(locatio
 <iframe src="https://drive.google.com/file/d/1073IkTNHvEg_nCDm4ND4jXph7lDyvB-e/preview" style="width: 100%; height: 600px; border: 0; border-radius: 8px;" allow="autoplay; fullscreen" allowfullscreen></iframe>
 <p class="cap"><a href="https://github.com/EnricoToffalini/mahabharata-game" target="_blank" rel="noopener noreferrer">mahabharata-game</a> • <a href="https://godotengine.org/" target="_blank" rel="noopener noreferrer" title="Apri approfondimento in una nuova scheda">Godot</a></p>
 
-## {.dark background-gradient="radial-gradient(82.5% 102.7% at 10% 0%, rgba(255,90,31,0.32), transparent 65%), radial-gradient(90.75% 117.3% at 95% 100%, rgba(124,58,237,0.42), transparent 65%), radial-gradient(43.75% 55.6% at 60% 40%, rgba(230,35,126,0.14), transparent 70%), linear-gradient(#0d1017, #0d1017)"}
+## delegare agli agents: il vostro browser
+
+Lo stesso agent può anche **aprirsi il vostro Chrome e usarlo**
+
+```{=html}
+<div style="display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; align-items: stretch; gap: 0.4em; margin-top: 0.6em;">
+<div class="card" style="height: auto;"><h4>🖥️ l'agent, sul vostro PC</h4>Claude Code o Codex: legge il prompt, decide il prossimo passo, e intanto può lavorare anche sui vostri file</div>
+<div style="align-self: center; font-size: 1.3em;">⇄</div>
+<div class="card" style="--c: var(--accent2); height: auto;"><h4>🧩 l'estensione, in Chrome</h4>gli fa "vedere" la pagina (screenshot e struttura) ed esegue i suoi clic e quello che scrive</div>
+<div style="align-self: center; font-size: 1.3em;">⇄</div>
+<div class="card" style="--c: var(--accent3); height: auto;"><h4>🌐 i siti, con i vostri login</h4>lavora in schede sue, bordate di arancione: potete guardarlo o fermarlo; prima di pagare o inviare chiede</div>
+</div>
+
+<div class="trucco" style="margin-top: 1em; font-size: 0.62em;">
+<b>Cosa serve</b>
+<ul style="margin: 0.15em 0 0 0; padding-left: 1.2em;">
+<li><b>Chrome aperto</b>, con attiva <b>l'estensione del vostro agent</b>, collegata allo stesso account. Poi:
+<ul style="margin: 0.1em 0 0 0; padding-left: 1.2em;">
+<li>se usate <b>Claude Code</b>: <a href="https://chromewebstore.google.com/detail/claude/fcoeoabgfenejglbffodgkkbkcdhcgfn" target="_blank" rel="noopener noreferrer">Claude in Chrome</a> (lo propone lui alla prima richiesta, o con <code>/chrome</code>) · <a href="https://code.claude.com/docs/en/chrome" target="_blank" rel="noopener noreferrer">guida</a></li>
+<li>se usate <b>Codex</b>: l'estensione <a href="https://chromewebstore.google.com/detail/codex/hehggadaopoacecdllhhajmbjkdcmajg" target="_blank" rel="noopener noreferrer">Codex</a>, dall'app desktop (Impostazioni → Computer Use) · <a href="https://learn.chatgpt.com/docs/chrome-extension" target="_blank" rel="noopener noreferrer">guida</a> · <span class="muted">disattivato con l'account GPT Edu di ateneo</span></li>
+</ul></li>
+<li>poi <b>basta chiederlo a parole</b>: «Vai sul sito di Trenitalia e trovami...» <em>(vedi esempio nella prossima slide)</em></li>
+</ul>
+</div>
+```
+
+::: notes
+Come funziona: Claude Code (terminale o app desktop) parla con l'estensione Claude in Chrome. L'agent riceve screenshot e struttura della pagina, decide dove cliccare e cosa scrivere, guarda di nuovo, e così via: lo stesso ciclo "esegue → guarda → corregge" che fa con R, ma su una pagina web. Usa le schede del vostro Chrome, con i vostri login; le schede su cui lavora sono raggruppate e bordate di arancione. Con l'account Edu, Codex non può usare il browser (disattivato dall'ateneo); Claude Code con l'estensione per Chrome sì.
+:::
+
+## Accio, treno!  {#accio-treno .dark .demo-local background-gradient="radial-gradient(82.5% 102.7% at 10% 0%, rgba(255,90,31,0.32), transparent 65%), radial-gradient(90.75% 117.3% at 95% 100%, rgba(124,58,237,0.42), transparent 65%), radial-gradient(43.75% 55.6% at 60% 40%, rgba(230,35,126,0.14), transparent 70%), linear-gradient(#0d1017, #0d1017)"}
 
 <span class="magic-mark" aria-hidden="true">🪄</span>
 
-<div class="inchiostro incanto">Accio quiz!</div>
-
-<a href="https://enricotoffalini.github.io/blog/posts/agenti-cli/#pu%C3%B2-agire-anche-fuori-dal-computer-tramite-connettori" target="_blank" rel="noopener noreferrer" class="media-link" title="Apri la sezione pertinente della guida in una nuova scheda"><img alt="moodle agente" class="shot" src="figures/moodle-agente.gif" style="max-height: 540px;"></a>
-<p class="cap">Claude in Chrome sul corso Moodle: la freccia la muove lui</p>
-
-::: notes
-Clip registrata il 31 ottobre 2026 con Claude in Chrome, sola lettura: corso → quiz → elenco domande. Uso reale: far rivedere l'intero corso, forum e quiz compresi, segnalando incoerenze. Con l'account Edu, Codex non può usare il browser (disattivato dall'ateneo).
+::: {.demo-prompt}
+> Vai sul sito di Trenitalia e trovami il Frecciarossa più economico da Padova a Roma per venerdì 13, di mattina. Fermati prima del pagamento.
 :::
+
+<a href="https://enricotoffalini.github.io/blog/posts/agenti-cli/#pu%C3%B2-agire-anche-fuori-dal-computer-tramite-connettori" target="_blank" rel="noopener noreferrer" class="media-link" title="Apri la sezione pertinente della guida in una nuova scheda"><img alt="Claude in Chrome compila la ricerca su Trenitalia, legge le soluzioni e seleziona il Frecciarossa più economico, fermandosi prima del pagamento" class="shot nostretch" src="figures/browser-treno.gif" style="display: block; margin: 0 auto; max-height: 560px;"></a>
 
 ## altro dove gli agents aiutano
 
