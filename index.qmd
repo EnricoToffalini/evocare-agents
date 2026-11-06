@@ -127,7 +127,7 @@ Materiali sintetici: 150 sorgenti JSON interconnessi e una build HTML locale. Es
 
 ## Accio, R!
 
-Anche per un semplice script R un agent che opera localmente aiuta molto
+Anche scrivendo script R un agent che opera localmente può aiutare molto...
 
 :::: {.columns}
 ::: {.column width="50%"}
@@ -138,7 +138,7 @@ Anche per un semplice script R un agent che opera localmente aiuta molto
 </div>
 :::
 
-::: {.column width="50%" .fragment}
+::: {.column width="50%"}
 ### con un agente
 
 <div class="chat-line" style="justify-content: flex-start;">
@@ -151,7 +151,7 @@ Anche per un semplice script R un agent che opera localmente aiuta molto
 
 
 ```{=html}
-<div class="principio fragment" style="margin-top: 1.5em;">
+<div class="principio" style="margin-top: 1.5em;">
 C'è lo stesso LLM della chat. Cambia che <b>lavora sui vostri file</b>, tutti, con i <b>vostri software locali</b>, ed <b>esegue direttamente</b>: lancia comandi, guarda l'errore, corregge, rilancia comandi, e lascia i risultati su disco (il risultato può essere un report, ma anche un intero sito, un'intera app, ecc.)
 </div>
 ```
