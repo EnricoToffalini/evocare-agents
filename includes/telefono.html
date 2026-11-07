@@ -14,6 +14,26 @@
     });
     Reveal.layout();
   }
+  // Il passaggio da e verso lo scorrimento dipende dalla larghezza della finestra, ma solo quando
+  // questa resta stabile: reveal lo ricontrolla a ogni layout, e un restringimento momentaneo
+  // (fullscreen, finestra agganciata, schermo esterno che si ricollega) basterebbe a farlo scattare.
+  var cfg = Reveal.getConfig(), soglia = cfg.scrollActivationWidth, timer = null, ultimaL = -1;
+  function controlla() {
+    cfg.scrollActivationWidth = soglia; Reveal.layout(); cfg.scrollActivationWidth = null;
+  }
+  function stabile() {
+    clearTimeout(timer);
+    timer = setTimeout(function () {
+      var l = window.innerWidth;
+      if (l !== ultimaL) { ultimaL = l; return stabile(); }
+      controlla();
+    }, 450);
+  }
+  if (typeof soglia === 'number') {
+    Reveal.on('ready', function () { cfg.scrollActivationWidth = null; ultimaL = window.innerWidth; });
+    if (Reveal.isReady()) { cfg.scrollActivationWidth = null; ultimaL = window.innerWidth; }
+    window.addEventListener('resize', stabile);
+  }
   Reveal.on('ready', completa);
   Reveal.on('resize', completa);
   if (Reveal.isReady()) completa();

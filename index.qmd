@@ -129,7 +129,7 @@ Materiali sintetici: 150 sorgenti JSON interconnessi e una build HTML locale. Es
 
 Anche scrivendo script R un agent che opera localmente può aiutare molto...
 
-:::: {.columns}
+:::: {.columns .flussi}
 ::: {.column width="50%"}
 ### in chat
 
@@ -139,7 +139,7 @@ Anche scrivendo script R un agent che opera localmente può aiutare molto...
 :::
 
 ::: {.column width="50%"}
-### con un agente
+### con un agent
 
 <div class="chat-line" style="justify-content: flex-start;">
 <span class="step you">prompt</span>→<span class="step">legge</span>→<span class="step">scrive</span>→<span class="step">esegue</span>→<span class="step">sbaglia</span>→<span class="step">corregge</span>→<span class="step">…</span>→<span class="step you">verifichi</span>
@@ -151,7 +151,7 @@ Anche scrivendo script R un agent che opera localmente può aiutare molto...
 
 
 ```{=html}
-<div class="principio" style="margin-top: 1.5em;">
+<div class="principio" style="margin-top: 1.2em; font-size: 0.68em;">
 C'è lo stesso LLM della chat. Cambia che <b>lavora sui vostri file</b>, tutti, con i <b>vostri software locali</b>, ed <b>esegue direttamente</b>: lancia comandi, guarda l'errore, corregge, rilancia comandi, e lascia i risultati su disco (il risultato può essere un report, ma anche un intero sito, un'intera app, ecc.)
 </div>
 ```
@@ -316,7 +316,7 @@ Claude Code e Codex lavorano <b>sui file del vostro computer</b>. Da terminale o
 <a class="panel-link card" href="https://enricotoffalini.github.io/blog/posts/gpt-edu/" target="_blank" rel="noopener noreferrer" title="Apri la guida in una nuova scheda">
 <h4>2 · ChatGPT Edu</h4>
 Quello che l'ateneo già vi dà: come usarlo <b>bene</b> e senza sprecarlo.<br><br>
-<span class="muted">~8.6 € l'anno, su fondi</span>
+<span class="muted">~8.6 € al mese, su fondi</span>
 </a>
 ```
 
@@ -442,15 +442,15 @@ Da notare: ha scelto da solo un GAM per curve non lineari, ha controllato pavime
 :::
 ::::
 
-## non piace il terminale? stessa cosa dall'app desktop
+## non piace il terminale? stessa cosa dall'app desktop {#app-desktop}
 
 :::: {.columns}
 ::: {.column width="45%"}
-<a href="https://enricotoffalini.github.io/blog/posts/agenti-cli/app-desktop.html#la-prima-richiesta" target="_blank" rel="noopener noreferrer" class="media-link" title="Apri la sezione pertinente della guida in una nuova scheda"><img alt="app claude 02 richiesta" class="shot" src="figures/app-claude-02-richiesta.png" style="max-height: 600px;"></a>
+<a href="https://code.claude.com/docs/en/desktop" target="_blank" rel="noopener noreferrer" class="media-link" title="Documentazione e download dell'app Claude (Anthropic) in una nuova scheda"><img alt="app claude 02 richiesta" class="shot" src="figures/app-claude-02-richiesta.png" style="max-height: 600px;"></a>
 <p class="cap">app Claude, scheda <b>Code</b>: cartella, modalità, modello sotto la casella</p>
 :::
 ::: {.column width="55%"}
-<a href="https://enricotoffalini.github.io/blog/posts/agenti-cli/app-desktop.html#la-prima-richiesta-1" target="_blank" rel="noopener noreferrer" class="media-link" title="Apri la sezione pertinente della guida in una nuova scheda"><img alt="app codex 02 risultato" class="shot" src="figures/app-codex-02-risultato.png" style="max-height: 420px;"></a>
+<a href="https://learn.chatgpt.com/docs/app" target="_blank" rel="noopener noreferrer" class="media-link" title="Documentazione e download dell'app Codex (OpenAI) in una nuova scheda"><img alt="app codex 02 risultato" class="shot" src="figures/app-codex-02-risultato.png" style="max-height: 420px;"></a>
 <p class="cap">app ChatGPT, sezione <b>Codex</b>: stessa richiesta, stesso risultato</p>
 <div class="small" style="margin-top: 0.6em;">
 
@@ -496,48 +496,7 @@ Da notare: ha scelto da solo un GAM per curve non lineari, ha controllato pavime
 ```
 
 
-## da sapere n. 2: prima di fare, spiegami
-
-:::: {.columns}
-::: {.column width="40%"}
-<div class="prompt" style="font-size: 0.68em;">Questa è la repo di un videogioco che non conosci. Senza modificare nulla, spiegami com'è fatto e quali file dovrei toccare per aggiungere un nuovo luogo da esplorare.</div>
-
-<p class="muted small">35 secondi · solo lettura</p>
-
-
-```{=html}
-<div class="trucco">Il modo più economico per entrare in un progetto, vostro o altrui: la tesi di uno studente, il codice di un collega, un deposito OSF.</div>
-```
-
-:::
-::: {.column width="60%"}
-```{=html}
-<div class="term"><span class="t">● Glob</span>  game/src/**/*.gd · docs/**/*.md
-<span class="t">● Read</span>  main.gd · CURRENT_PROJECT_STATE.md · project.godot
-<span class="t">● Read</span>  forest_party_prototype.gd · .tscn
-<span class="d">  …</span>
-<span class="ok">Motore: Godot 4, GDScript. Tutto il gioco sta in game/:
-scene quasi vuote, logica in src/, episodi in JSON in content/.
-
-Non c'è un mondo unico: "modalità" separate, scelte con
---mode= in main.gd:32. I luoghi sono costruiti via codice.
-
-Per un nuovo luogo:
-1. nuovo_luogo.gd + .tscn, sul modello della foresta
-2. main.gd: preload, un caso nel match, la modalità (riga 55)
-3. nemici? CombatRules.reset(), come chiede AGENTS.md
-4. testi? un JSON in content/
-5. poi smoke test headless: godot --headless -- --mode=…</span></div>
-```
-<p class="cap">Claude Code, trascrizione accorciata ? <a href="https://github.com/EnricoToffalini/mahabharata-game" target="_blank" rel="noopener noreferrer" title="Apri approfondimento in una nuova scheda">repository del videogioco ?</a></p>
-:::
-::::
-
-::: notes
-Prova del 1 novembre 2026 su una copia dei soli file di testo della repo (codice, scene, documentazione), mai sull'originale. Strumenti consentiti: solo Read, Glob, Grep.
-:::
-
-## da sapere n. 3: decidete voi quanta autonomia
+## da sapere n. 2: decidete voi quanta autonomia
 
 :::: {.columns}
 ::: {.column style="width: 48%; padding-top: 1.2em;"}
@@ -583,7 +542,7 @@ Prova del 1 novembre 2026 su una copia dei soli file di testo della repo (codice
 ```
 
 
-## da sapere n. 4: alzate il ragionamento quando serve
+## da sapere n. 3: alzate il ragionamento quando serve
 
 :::: {.columns}
 ::: {.column width="50%"}
@@ -640,7 +599,7 @@ I sottoagenti non richiedono Ultra o Ultracode. Riferimenti: [Codex: sottoagenti
 :::
 
 
-## da sapere n. 5: guardate quanto *usage* vi resta
+## da sapere n. 4: guardate quanto *usage* vi resta
 
 :::: {.columns}
 ::: {.column width="50%"}
@@ -661,7 +620,7 @@ I sottoagenti non richiedono Ultra o Ultracode. Riferimenti: [Codex: sottoagenti
 ```
 
 
-## da sapere n. 6: `resume` riprende una conversazione
+## da sapere n. 5: `resume` riprende una conversazione
 
 :::: {.columns}
 ::: {.column width="50%"}
@@ -706,7 +665,7 @@ I sottoagenti non richiedono Ultra o Ultracode. Riferimenti: [Codex: sottoagenti
 
 <p class="small muted center">Digitando <code>/</code> compare l'elenco completo. Nelle app: gli stessi comandi, o i menu sotto la casella.</p>
 
-## da sapere n. 7: un `AGENTS.md` sintetico nella cartella
+## da sapere n. 6: un `AGENTS.md` sintetico nella cartella
 
 :::: {.columns}
 ::: {.column width="52%"}
@@ -749,16 +708,18 @@ Analisi in R/, manoscritto in paper/main.qmd.
 <a href="https://enricotoffalini.github.io/blog/posts/agenti-cli/#il-contesto-%C3%A8-ricco-e-non-va-aggiornato-a-mano" target="_blank" rel="noopener noreferrer" title="Apri la sezione pertinente in una nuova scheda" class="panel-link trucco">Ricordate l'uso di <b><code>AGENTS.md</code></b> come mappa (quale cartella di Drive, quale calendario, cosa cercare nelle mail, chi sono i collaboratori...)</a>
 ```
 
-## da sapere n. 8: formati aperti
+## da sapere n. 7: formati aperti
 
 :::: {.columns}
 ::: {.column width="50%"}
 
 ```{=html}
 <div class="card">
-<h4><code>.qmd</code> · <code>.R</code> · <code>.csv</code> · <code>.bib</code></h4>
-legge → cambia una riga → fatto<br>
-<span class="muted">con Git si vede e si annulla</span>
+<h4>testo semplice, software aperto</h4>
+<code>.qmd</code> <code>.md</code> con <a href="https://quarto.org" target="_blank" rel="noopener noreferrer">Quarto</a>, al posto di Word e PowerPoint<br>
+<code>.R</code> <code>.csv</code> con <a href="https://www.r-project.org" target="_blank" rel="noopener noreferrer">R</a>, al posto di SPSS ed Excel<br>
+<code>.bib</code> con <a href="https://www.zotero.org" target="_blank" rel="noopener noreferrer">Zotero</a><br>
+<b>l'agente legge → cambia una riga → fatto</b>
 </div>
 ```
 
@@ -768,7 +729,9 @@ legge → cambia una riga → fatto<br>
 ```{=html}
 <div class="card" style="border-top-color: #a1a1aa;">
 <h4><code>.docx</code> · <code>.xlsx</code> · <code>.pptx</code> · <code>.sav</code></h4>
-estrai → modifica → ricomponi → controlla<br>
+file compressi o binari, pensati per un programma specifico<br>
+l'agente deve passare da librerie e conversioni<br>
+<b>estrai → modifica → ricomponi → controlla</b><br>
 <span class="muted">più tempo, più consumo, più errori</span>
 </div>
 ```
@@ -776,11 +739,10 @@ estrai → modifica → ricomponi → controlla<br>
 :::
 ::::
 
-<p class="center" style="margin-top: 1em;">FAIR per gli umani, FAIR per l'AI.</p>
-
+<p class="center small" style="margin-top: 0.8em;">Preferite software aperto e formati aperti: all'inizio <b>richiede un po' di studio</b> (e l'agente è un buon insegnante), poi ripaga. FAIR per gli umani, FAIR per l'AI.</p>
 
 ```{=html}
-<div class="trucco">E <b>Git</b>: ogni modifica dell'agente si vede e si annulla. I comandi non servono a memoria: <i>"fai un commit di queste modifiche"</i>, <i>"torna alla versione di ieri"</i>.</div>
+<div class="trucco">Scoprite <a href="https://git-scm.com" target="_blank" rel="noopener noreferrer"><b>Git</b></a> e <a href="https://github.com" target="_blank" rel="noopener noreferrer"><b>GitHub</b></a>. Git tiene la storia di ogni versione dei file: ogni modifica dell'agente diventa visibile, confrontabile e annullabile. GitHub la conserva online, per collaborare e pubblicare (anche siti, con GitHub Pages). I comandi non servono a memoria: <i>"fai un commit di queste modifiche"</i>, <i>"mostrami cosa hai cambiato"</i>, <i>"torna alla versione di ieri"</i>. Per iniziare senza terminale: <a href="https://desktop.github.com" target="_blank" rel="noopener noreferrer">GitHub Desktop</a>.</div>
 ```
 
 <!-- ============================ PARTE 2 ============================ -->
@@ -1246,5 +1208,4 @@ Altre idee per il lab:
 </div>
 
 <p class="center small" style="margin-top: 1em;"><a href="https://opensciencedpg.github.io/OS-promotion/" target="_blank" rel="noopener noreferrer">Open Science DPG</a> · guide passo-passo a <a href="https://enricotoffalini.github.io/blog/posts/agenti-cli/claude-code.html" target="_blank" rel="noopener noreferrer">Claude Code</a>, <a href="https://enricotoffalini.github.io/blog/posts/agenti-cli/codex.html" target="_blank" rel="noopener noreferrer">Codex</a> e <a href="https://enricotoffalini.github.io/blog/posts/agenti-cli/app-desktop.html" target="_blank" rel="noopener noreferrer">app desktop</a></p>
-
 

@@ -7,16 +7,16 @@ Tutti i documenti, gli importi, gli indirizzi e i nominativi sono inventati. I P
 
 | Cartella | Input effettivi | Risultato verificato |
 |---|---:|---|
-| `01-ordine` | 1.200 file in 7 formati | 981 classificati, 40 duplicati, 179 da verificare; nessuna perdita |
+| `01-ordine` | slide: 1.270 file | slide: 1.051 classificati, 40 duplicati, 179 da verificare; registro di verifica (1.200/981) superato ed eliminato |
 | `02-informazione` | 350 PDF/DOCX | 24 decisioni con fonti; 4 righe discordanti, 3 condizioni mancanti |
 | `03-burocrazia` | 200 documenti + modello DOCX | 6 indicatori recuperati; 2 campi da verificare; stili e tabelle preservati |
 | `04-aggiornamento` | 240 DOCX/TXT/HTML | 150 modificati, 40 già corretti, 30 simili preservati, 20 storici segnalati |
-| `05-excel` | 600 iscritti in un XLSX + 2 moduli di pagamento | 560 attestati PDF e fascicolo stampabile; 28 non pagati e 12 da verificare |
+| `05-excel` | 600 iscritti in un XLSX + 2 moduli di pagamento | slide: 560 attestati di partecipazione (pagamenti e presenze); registro di verifica (attestati di sola iscrizione) superato ed eliminato |
 | `06-sito` | 150 sorgenti JSON | 80 pagine aggiornate, 45 link corretti, 300 link verificati, 30 storici intatti |
 
 ## File e ripetizione
 
-Ogni cartella contiene `genera.py`, `esegui-riferimento.py`, `prompt.md`, `README.md` e `verifica-eseguita.json`. Gli input effettivi, gli output e i file di lavoro sono presenti localmente ma ignorati da Git. Il modello Word e la mappa dei collegamenti ritirati sono piccoli materiali mantenuti nella repository.
+Ogni cartella contiene `genera.py`, `esegui-riferimento.py`, `prompt.md`, `README.md` e `verifica-eseguita.json` (tranne `01-ordine` e `05-excel`: le slide sono state aggiornate da Enrico e i vecchi registri, non più corrispondenti, sono stati eliminati il 7 novembre 2026; `verify.py` li ricrea solo se rieseguito). Gli input effettivi, gli output e i file di lavoro sono presenti localmente ma ignorati da Git. Il modello Word e la mappa dei collegamenti ritirati sono piccoli materiali mantenuti nella repository.
 
 `generate.py` prepara i documenti. `execute.py` esegue le trasformazioni, leggendo i file e senza accedere a `truth.json`. `verify.py` rilegge gli output e li confronta con la verità di controllo separata. Le funzioni comuni di lettura/scrittura dei formati sono in `common.py`; gli XLSX sono scritti da `workbooks.mjs` con Artifact Tool.
 

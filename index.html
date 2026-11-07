@@ -298,14 +298,14 @@ Il modello è compilato, con le stesse tabelle e gli stessi stili · 2 campi da 
 <section id="accio-r" class="slide level2">
 <h2>Accio, R!</h2>
 <p>Anche scrivendo script R un agent che opera localmente può aiutare molto…</p>
-<div class="columns">
+<div class="columns flussi">
 <div class="column" style="width:50%;">
 <h3 id="in-chat">in chat</h3>
 <div class="chat-line" style="justify-content: flex-start;">
 <p><span class="step you">prompt</span>→<span class="step you">alleghi file</span>→<span class="step">chat risponde</span>→<span class="step you">incolli in RStudio</span>→<span class="step">R esegue</span>→<span class="step">errore</span>→<span class="step you">copi l’errore in chat</span>→<span class="step">…</span>→<span class="step you">rialleghi file aggiornati</span>→<span class="step">chat risponde</span>→<span class="step">…</span></p>
 </div>
 </div><div class="column" style="width:50%;">
-<h3 id="con-un-agente">con un agente</h3>
+<h3 id="con-un-agent">con un agent</h3>
 <div class="chat-line" style="justify-content: flex-start;">
 <p><span class="step you">prompt</span>→<span class="step">legge</span>→<span class="step">scrive</span>→<span class="step">esegue</span>→<span class="step">sbaglia</span>→<span class="step">corregge</span>→<span class="step">…</span>→<span class="step you">verifichi</span></p>
 </div>
@@ -313,7 +313,7 @@ Il modello è compilato, con le stesse tabelle e gli stessi stili · 2 campi da 
 voi entrate all’inizio e alla fine, intanto vi fate un tè
 </p>
 </div></div>
-<div class="principio" style="margin-top: 1.5em;">
+<div class="principio" style="margin-top: 1.2em; font-size: 0.68em;">
 C'è lo stesso LLM della chat. Cambia che <b>lavora sui vostri file</b>, tutti, con i <b>vostri software locali</b>, ed <b>esegue direttamente</b>: lancia comandi, guarda l'errore, corregge, rilancia comandi, e lascia i risultati su disco (il risultato può essere un report, ma anche un intero sito, un'intera app, ecc.)
 </div>
 </section>
@@ -493,7 +493,7 @@ Claude Code e Codex lavorano <b>sui file del vostro computer</b>. Da terminale o
 <a class="panel-link card" href="https://enricotoffalini.github.io/blog/posts/gpt-edu/" target="_blank" rel="noopener noreferrer" title="Apri la guida in una nuova scheda">
 <h4>2 · ChatGPT Edu</h4>
 Quello che l'ateneo già vi dà: come usarlo <b>bene</b> e senza sprecarlo.<br><br>
-<span class="muted">~8.6 € l'anno, su fondi</span>
+<span class="muted">~8.6 € al mese, su fondi</span>
 </a>
 </div><div class="column" style="width:33%;">
 <a class="panel-link card" href="https://enricotoffalini.github.io/blog/posts/skills/" target="_blank" rel="noopener noreferrer" title="Apri la guida in una nuova scheda">
@@ -630,16 +630,16 @@ Codex
 </p>
 </div></div>
 </section>
-<section id="non-piace-il-terminale-stessa-cosa-dallapp-desktop" class="slide level2">
+<section id="app-desktop" class="slide level2">
 <h2>non piace il terminale? stessa cosa dall’app desktop</h2>
 <div class="columns">
 <div class="column" style="width:45%;">
-<a href="https://enricotoffalini.github.io/blog/posts/agenti-cli/app-desktop.html#la-prima-richiesta" target="_blank" rel="noopener noreferrer" class="media-link" title="Apri la sezione pertinente della guida in una nuova scheda"><img alt="app claude 02 richiesta" class="shot" src="figures/app-claude-02-richiesta.png" style="max-height: 600px;"></a>
+<a href="https://code.claude.com/docs/en/desktop" target="_blank" rel="noopener noreferrer" class="media-link" title="Documentazione e download dell'app Claude (Anthropic) in una nuova scheda"><img alt="app claude 02 richiesta" class="shot" src="figures/app-claude-02-richiesta.png" style="max-height: 600px;"></a>
 <p class="cap">
 app Claude, scheda <b>Code</b>: cartella, modalità, modello sotto la casella
 </p>
 </div><div class="column" style="width:55%;">
-<a href="https://enricotoffalini.github.io/blog/posts/agenti-cli/app-desktop.html#la-prima-richiesta-1" target="_blank" rel="noopener noreferrer" class="media-link" title="Apri la sezione pertinente della guida in una nuova scheda"><img alt="app codex 02 risultato" class="shot" src="figures/app-codex-02-risultato.png" style="max-height: 420px;"></a>
+<a href="https://learn.chatgpt.com/docs/app" target="_blank" rel="noopener noreferrer" class="media-link" title="Documentazione e download dell'app Codex (OpenAI) in una nuova scheda"><img alt="app codex 02 risultato" class="shot" src="figures/app-codex-02-risultato.png" style="max-height: 420px;"></a>
 <p class="cap">
 app ChatGPT, sezione <b>Codex</b>: stessa richiesta, stesso risultato
 </p>
@@ -686,54 +686,8 @@ Codex, <code>/plan</code> o (<code>Shift+Tab</code>): prima di decidere <b>fa do
 </div></div>
 <div class="trucco">Per qualsiasi compito non banale: <i>"Non toccare niente: proponimi solo un piano."</i> Legge, esplora, non modifica nulla. Approvate, correggete, o ripartite.</div>
 </section>
-<section id="da-sapere-n.-2-prima-di-fare-spiegami" class="slide level2">
-<h2>da sapere n.&nbsp;2: prima di fare, spiegami</h2>
-<div class="columns">
-<div class="column" style="width:40%;">
-<div class="prompt" style="font-size: 0.68em;">
-Questa è la repo di un videogioco che non conosci. Senza modificare nulla, spiegami com’è fatto e quali file dovrei toccare per aggiungere un nuovo luogo da esplorare.
-</div>
-<p class="muted small">
-35 secondi · solo lettura
-</p>
-<div class="trucco">Il modo più economico per entrare in un progetto, vostro o altrui: la tesi di uno studente, il codice di un collega, un deposito OSF.</div>
-</div><div class="column" style="width:60%;">
-<div class="term"><span class="t">● Glob</span>  game/src/**/*.gd · docs/**/*.md
-<span class="t">● Read</span>  main.gd · CURRENT_PROJECT_STATE.md · project.godot
-<span class="t">● Read</span>  forest_party_prototype.gd · .tscn
-<span class="d">  …</span>
-<span class="ok">Motore: Godot 4, GDScript. Tutto il gioco sta in game/:
-scene quasi vuote, logica in src/, episodi in JSON in content/.
-
-Non c'è un mondo unico: "modalità" separate, scelte con
---mode= in main.gd:32. I luoghi sono costruiti via codice.
-
-Per un nuovo luogo:
-1. nuovo_luogo.gd + .tscn, sul modello della foresta
-2. main.gd: preload, un caso nel match, la modalità (riga 55)
-3. nemici? CombatRules.reset(), come chiede AGENTS.md
-4. testi? un JSON in content/
-5. poi smoke test headless: godot --headless -- --mode=…</span></div>
-<p class="cap">
-Claude Code, trascrizione accorciata ? <a href="https://github.com/EnricoToffalini/mahabharata-game" target="_blank" rel="noopener noreferrer" title="Apri approfondimento in una nuova scheda">repository del videogioco ?</a>
-</p>
-</div></div>
-<aside class="notes">
-<p>Prova del 1 novembre 2026 su una copia dei soli file di testo della repo (codice, scene, documentazione), mai sull’originale. Strumenti consentiti: solo Read, Glob, Grep.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section id="da-sapere-n.-3-decidete-voi-quanta-autonomia" class="slide level2">
-<h2>da sapere n.&nbsp;3: decidete voi quanta autonomia</h2>
+<section id="da-sapere-n.-2-decidete-voi-quanta-autonomia" class="slide level2">
+<h2>da sapere n.&nbsp;2: decidete voi quanta autonomia</h2>
 <div class="columns">
 <div class="column" style="width: 48%; padding-top: 1.2em;">
 <p><a href="https://enricotoffalini.github.io/blog/posts/agenti-cli/claude-code.html#le-modalit%C3%A0-di-lavoro" target="_blank" rel="noopener noreferrer" class="media-link" title="Apri la sezione pertinente della guida in una nuova scheda"><img alt="claude 05 modalita" class="shot" src="figures/claude-05-modalita.png" style="width: 100%;"></a></p>
@@ -769,8 +723,8 @@ Codex: render riuscito, valori verificati, ma <i>“la verifica visiva resta inc
 </p>
 <div class="trucco">L'agente dice <b>cosa ha controllato o completato e cosa no</b>. Quello che non ha fatto o deciso, fatelo o decidetelo voi (es. Codex via gptEdu da terminale non ha accesso al browser, potreste dover controllare voi visivamente).</div>
 </section>
-<section id="da-sapere-n.-4-alzate-il-ragionamento-quando-serve" class="slide level2">
-<h2>da sapere n.&nbsp;4: alzate il ragionamento quando serve</h2>
+<section id="da-sapere-n.-3-alzate-il-ragionamento-quando-serve" class="slide level2">
+<h2>da sapere n.&nbsp;3: alzate il ragionamento quando serve</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
 <a href="https://enricotoffalini.github.io/blog/posts/agenti-cli/claude-code.html#scegliere-modello-ed-effort" target="_blank" rel="noopener noreferrer" class="media-link" title="Apri la sezione pertinente della guida in una nuova scheda"><img alt="claude 03 model" class="shot" src="figures/claude-03-model.png" style="max-height: 470px;"></a>
@@ -861,8 +815,8 @@ Aggiornato al 2 novembre 2026 · Modelli e livelli disponibili dipendono da pian
           display:block!important;
       }</style></aside>
 </section>
-<section id="da-sapere-n.-5-guardate-quanto-usage-vi-resta" class="slide level2">
-<h2>da sapere n.&nbsp;5: guardate quanto <em>usage</em> vi resta</h2>
+<section id="da-sapere-n.-4-guardate-quanto-usage-vi-resta" class="slide level2">
+<h2>da sapere n.&nbsp;4: guardate quanto <em>usage</em> vi resta</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
 <a href="https://enricotoffalini.github.io/blog/posts/agenti-cli/claude-code.html#controllare-lutilizzo-residuo" target="_blank" rel="noopener noreferrer" class="media-link" title="Apri la sezione pertinente della guida in una nuova scheda"><img alt="claude 04 usage" class="shot" src="figures/claude-04-usage.png" style="max-height: 480px;"></a>
@@ -879,8 +833,8 @@ Codex, <code>/status</code>: account, contesto usato, limiti
 <br><br> 
 <u>Una sessione per compito, please</u>. Cambio argomento? <code>/clear</code> (Claude) o <code>/new</code> (Codex).</div>
 </section>
-<section id="da-sapere-n.-6-resume-riprende-una-conversazione" class="slide level2">
-<h2>da sapere n.&nbsp;6: <code>resume</code> riprende una conversazione</h2>
+<section id="da-sapere-n.-5-resume-riprende-una-conversazione" class="slide level2">
+<h2>da sapere n.&nbsp;5: <code>resume</code> riprende una conversazione</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
 <a href="https://enricotoffalini.github.io/blog/posts/agenti-cli/claude-code.html#riprendere-una-conversazione" target="_blank" rel="noopener noreferrer" class="media-link" title="Apri la sezione pertinente della guida in una nuova scheda"><img alt="claude 08 resume" class="shot" src="figures/claude-08-resume.png" style="max-height: 330px;"></a>
@@ -974,8 +928,8 @@ Codex, <code>codex resume</code>: elenco, filtri e anteprima
 Digitando <code>/</code> compare l’elenco completo. Nelle app: gli stessi comandi, o i menu sotto la casella.
 </p>
 </section>
-<section id="da-sapere-n.-7-un-agents.md-sintetico-nella-cartella" class="slide level2">
-<h2>da sapere n.&nbsp;7: un <code>AGENTS.md</code> sintetico nella cartella</h2>
+<section id="da-sapere-n.-6-un-agents.md-sintetico-nella-cartella" class="slide level2">
+<h2>da sapere n.&nbsp;6: un <code>AGENTS.md</code> sintetico nella cartella</h2>
 <div class="columns">
 <div class="column" style="width:52%;">
 <div class="sourceCode" id="cb3"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href=""></a><span class="fu"># AGENTS.md</span></span>
@@ -1009,26 +963,30 @@ esempio illustrativo
 </div></div>
 <a href="https://enricotoffalini.github.io/blog/posts/agenti-cli/#il-contesto-%C3%A8-ricco-e-non-va-aggiornato-a-mano" target="_blank" rel="noopener noreferrer" title="Apri la sezione pertinente in una nuova scheda" class="panel-link trucco">Ricordate l'uso di <b><code>AGENTS.md</code></b> come mappa (quale cartella di Drive, quale calendario, cosa cercare nelle mail, chi sono i collaboratori...)</a>
 </section>
-<section id="da-sapere-n.-8-formati-aperti" class="slide level2">
-<h2>da sapere n.&nbsp;8: formati aperti</h2>
+<section id="da-sapere-n.-7-formati-aperti" class="slide level2">
+<h2>da sapere n.&nbsp;7: formati aperti</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="card">
-<h4><code>.qmd</code> · <code>.R</code> · <code>.csv</code> · <code>.bib</code></h4>
-legge → cambia una riga → fatto<br>
-<span class="muted">con Git si vede e si annulla</span>
+<h4>testo semplice, software aperto</h4>
+<code>.qmd</code> <code>.md</code> con <a href="https://quarto.org" target="_blank" rel="noopener noreferrer">Quarto</a>, al posto di Word e PowerPoint<br>
+<code>.R</code> <code>.csv</code> con <a href="https://www.r-project.org" target="_blank" rel="noopener noreferrer">R</a>, al posto di SPSS ed Excel<br>
+<code>.bib</code> con <a href="https://www.zotero.org" target="_blank" rel="noopener noreferrer">Zotero</a><br>
+<b>l'agente legge → cambia una riga → fatto</b>
 </div>
 </div><div class="column" style="width:50%;">
 <div class="card" style="border-top-color: #a1a1aa;">
 <h4><code>.docx</code> · <code>.xlsx</code> · <code>.pptx</code> · <code>.sav</code></h4>
-estrai → modifica → ricomponi → controlla<br>
+file compressi o binari, pensati per un programma specifico<br>
+l'agente deve passare da librerie e conversioni<br>
+<b>estrai → modifica → ricomponi → controlla</b><br>
 <span class="muted">più tempo, più consumo, più errori</span>
 </div>
 </div></div>
-<p class="center" style="margin-top: 1em;">
-FAIR per gli umani, FAIR per l’AI.
+<p class="center small" style="margin-top: 0.8em;">
+Preferite software aperto e formati aperti: all’inizio <b>richiede un po’ di studio</b> (e l’agente è un buon insegnante), poi ripaga. FAIR per gli umani, FAIR per l’AI.
 </p>
-<div class="trucco">E <b>Git</b>: ogni modifica dell'agente si vede e si annulla. I comandi non servono a memoria: <i>"fai un commit di queste modifiche"</i>, <i>"torna alla versione di ieri"</i>.</div>
+<div class="trucco">Scoprite <a href="https://git-scm.com" target="_blank" rel="noopener noreferrer"><b>Git</b></a> e <a href="https://github.com" target="_blank" rel="noopener noreferrer"><b>GitHub</b></a>. Git tiene la storia di ogni versione dei file: ogni modifica dell'agente diventa visibile, confrontabile e annullabile. GitHub la conserva online, per collaborare e pubblicare (anche siti, con GitHub Pages). I comandi non servono a memoria: <i>"fai un commit di queste modifiche"</i>, <i>"mostrami cosa hai cambiato"</i>, <i>"torna alla versione di ieri"</i>. Per iniziare senza terminale: <a href="https://desktop.github.com" target="_blank" rel="noopener noreferrer">GitHub Desktop</a>.</div>
 <!-- ============================ PARTE 2 ============================ -->
 </section></section>
 <section>
@@ -2671,6 +2629,246 @@ Mai fidarsi di qualcosa che pensa da solo, se non vedi dove tiene il cervello.
       aggancia();
     })();
     </script>
+    <!-- Polvere che resta nell'aria: dopo alcuni cambi di slide, di rado e senza regola fissa -->
+    <style>
+    .polvere { position: absolute; inset: 0; overflow: hidden; pointer-events: none; transition: opacity 1.2s ease; }
+    .polvere i { position: absolute; left: 0; top: 0; border-radius: 50%; background: #fff; opacity: 0; will-change: transform, opacity; }
+    #polvere-luce { position: fixed; inset: 0; pointer-events: none; z-index: 2147482990; overflow: hidden; }
+    #polvere-luce b { position: absolute; left: 0; top: 0; font-weight: 400; line-height: 1; will-change: transform, opacity; }
+    @media print { .polvere, #polvere-luce { display: none; } }
+    </style>
+    <script>
+    (function () {
+      if (!Element.prototype.animate || (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches)) return;
+      var rnd = function (a, b) { return a + Math.random() * (b - a); };
+      var ultima = Date.now(), attesa = null, prova = /[?&]polvere\b/.test(location.search);
+      var luce = document.createElement('div');
+      luce.id = 'polvere-luce'; luce.setAttribute('aria-hidden', 'true');
+      document.body.appendChild(luce);
+
+      function scura(s) { return s.classList.contains('dark'); }
+      function visibili(s, sel) {
+        return Array.prototype.filter.call(s.querySelectorAll(sel), function (el) {
+          return !el.closest('.fragment:not(.visible), pre, aside, .footer') && el.offsetWidth > 0;
+        });
+      }
+      function uno(v) { return v[Math.floor(Math.random() * v.length)]; }
+
+      // Un fremito irregolare, come una fiamma: pochi pixel, nessuna curva regolare
+      function fremito(s) {
+        var el = uno(visibili(s, 'h2, img, .prompt, blockquote, .term'));
+        if (!el) return;
+        var f = [{ translate: '0 0', opacity: 1 }], n = 5 + Math.floor(Math.random() * 5);
+        for (var i = 0; i < n; i++)
+          f.push({ translate: rnd(-3.5, 3.5).toFixed(2) + 'px ' + rnd(-2, 2).toFixed(2) + 'px', opacity: rnd(0.7, 1).toFixed(2) });
+        f.push({ translate: '0 0', opacity: 1 });
+        el.animate(f, { duration: rnd(380, 680), easing: 'linear' });
+      }
+      // Una tinta che passa per un istante, senza lampeggiare
+      function tinta(s) {
+        var el = uno(visibili(s, 'h2, img'));
+        if (!el) return;
+        var h = (Math.random() < 0.5 ? -1 : 1) * rnd(55, 130);
+        el.animate([
+          { filter: 'none' },
+          { filter: 'hue-rotate(' + h.toFixed(0) + 'deg) saturate(1.6)', offset: rnd(0.25, 0.45) },
+          { filter: 'none' }
+        ], { duration: rnd(300, 520), easing: 'ease-out' });
+      }
+      // Pochi punti di luce minuscoli sul bordo di un titolo, di un'immagine o di una riga
+      function scintillio(s) {
+        var el = uno(visibili(s, Math.random() < 0.6 ? 'h2, img' : 'li, p, .prompt, blockquote, .term, table'));
+        if (!el) return;
+        var b = el.getBoundingClientRect(), n = 2 + Math.floor(Math.random() * 4), chiara = !scura(s);
+        for (var i = 0; i < n; i++) {
+          var p = document.createElement('b');
+          p.textContent = Math.random() < 0.7 ? '✦' : '✧';
+          var z = rnd(14, 26), x = b.left + rnd(0.05, 0.95) * b.width, y = Math.random() < 0.5 ? b.top + rnd(-4, 8) : b.bottom - rnd(-4, 8);
+          p.style.fontSize = z + 'px';
+          p.style.color = chiara ? uno(['#f59e0b', '#e6237e', '#d97757']) : uno(['#fff', '#ffe9b0', '#f5d0fe']);
+          p.style.textShadow = chiara ? '0 0 6px rgba(245,158,11,0.6)' : '0 0 8px rgba(255,230,255,0.9)';
+          luce.appendChild(p);
+          var r0 = rnd(-30, 30);
+          var T = (function (x, y, z) { return function (sc, r) { return 'translate(' + (x - z / 2) + 'px,' + (y - z / 2) + 'px) scale(' + sc + ') rotate(' + r + 'deg)'; }; })(x, y, z);
+          p.animate([
+            { transform: T(0, r0), opacity: 0 },
+            { transform: T(1, r0 + 30), opacity: rnd(0.6, 0.95), offset: rnd(0.3, 0.5) },
+            { transform: T(0, r0 + 70), opacity: 0 }
+          ], { duration: rnd(750, 1250), delay: i * rnd(90, 380), easing: 'ease-in-out', fill: 'backwards' })
+            .onfinish = (function (q) { return function () { q.remove(); }; })(p);
+        }
+      }
+      // Percorso casuale che attraversa lo sfondo da un bordo all'altro, a volte con un anello
+      function traiettoria(W, H) {
+        var bordo = function () {
+          var lato = Math.floor(Math.random() * 4), t = rnd(0.1, 0.9);
+          return lato === 0 ? [-0.06, t] : lato === 1 ? [1.06, t] : lato === 2 ? [t, -0.08] : [t, 1.08];
+        };
+        var a = bordo(), z = bordo();
+        while (Math.hypot(z[0] - a[0], z[1] - a[1]) < 0.7) z = bordo();
+        var P = [a], k = 2 + Math.floor(Math.random() * 4);
+        for (var i = 1; i <= k; i++) {
+          var f = i / (k + 1);
+          P.push([a[0] + (z[0] - a[0]) * f + rnd(-0.3, 0.3), a[1] + (z[1] - a[1]) * f + rnd(-0.3, 0.3)]);
+        }
+        P.push(z);
+        P = P.map(function (p) { return [p[0] * W, p[1] * H]; });
+        function curva(u) {
+          u = Math.min(Math.max(u, 0), 1);
+          var m = P.length - 1, x = u * m, j = Math.min(Math.floor(x), m - 1), t = x - j;
+          var p0 = P[Math.max(j - 1, 0)], p1 = P[j], p2 = P[j + 1], p3 = P[Math.min(j + 2, m)];
+          var c = function (d) {
+            return 0.5 * (2 * p1[d] + (p2[d] - p0[d]) * t + (2 * p0[d] - 5 * p1[d] + 4 * p2[d] - p3[d]) * t * t + (3 * p1[d] - p0[d] - 3 * p2[d] + p3[d]) * t * t * t);
+          };
+          return [c(0), c(1)];
+        }
+        var anello = Math.random() < 0.55 ? { u0: rnd(0.2, 0.55), w: rnd(0.15, 0.3), R: rnd(50, 150) * W / 1600, g: (Math.random() < 0.5 ? 1 : -1) * (Math.random() < 0.3 ? 2 : 1), a: rnd(0, 6.28) } : null;
+        function guida(u) {
+          var p = curva(u);
+          if (anello && u > anello.u0 && u < anello.u0 + anello.w) {
+            var q = (u - anello.u0) / anello.w, q2 = q * q * (3 - 2 * q), th = anello.a + anello.g * 2 * Math.PI * q2;
+            p[0] += anello.R * (Math.cos(th) - Math.cos(anello.a));
+            p[1] += anello.R * (Math.sin(th) - Math.sin(anello.a));
+          }
+          return p;
+        }
+        return guida;
+      }
+
+      // Un piccolo alone che vaga lentamente sullo sfondo, comparendo e svanendo senza scatti
+      var aloni = 0;
+      function bagliore(s) {
+        var sf = Reveal.getSlideBackground(s);
+        if (!sf || aloni >= 2) return;
+        var W = sf.clientWidth, H = sf.clientHeight;
+        if (!W || !H) return;
+        var guida = traiettoria(W, H), c = uno(['255,90,31', '124,58,237', '230,35,126', '255,209,102', '13,148,136']);
+        var r = rnd(60, 140) * W / 1600, picco = scura(s) ? rnd(0.18, 0.3) : rnd(0.08, 0.14);
+        var box = document.createElement('div'), g = document.createElement('i');
+        box.className = 'polvere';
+        g.style.width = g.style.height = (2 * r).toFixed(0) + 'px';
+        g.style.background = 'radial-gradient(circle, rgba(' + c + ',1), rgba(' + c + ',0.35) 35%, transparent 70%)';
+        g.style.boxShadow = 'none';
+        box.appendChild(g); sf.appendChild(box); aloni++;
+        var t0 = performance.now(), D = rnd(24000, 38000), fase = rnd(0, 6.28), finito = false;
+        function chiudi() { if (!finito) { finito = true; aloni--; } }
+        function passo(ora) {
+          if (!box.isConnected) return chiudi();
+          if (Reveal.getCurrentSlide() !== s) { chiudi(); box.style.opacity = 0; setTimeout(function () { box.remove(); }, 1300); return; }
+          var t = (ora - t0) / 1000, u = (ora - t0) / D;
+          if (u >= 1) { chiudi(); return box.remove(); }
+          // entra e esce piano, e intanto "respira" un poco
+          var env = Math.min(1, u / 0.25, (1 - u) / 0.25), env2 = env * env * (3 - 2 * env);
+          var p = guida(u + 0.02 * Math.sin(u * 7 + fase)), sc = 0.85 + 0.2 * Math.sin(t * 0.6 + fase);
+          g.style.transform = 'translate(' + (p[0] - r).toFixed(1) + 'px,' + (p[1] - r).toFixed(1) + 'px) scale(' + sc.toFixed(3) + ')';
+          g.style.opacity = (picco * env2 * (0.85 + 0.15 * Math.sin(t * 0.9 + fase * 2))).toFixed(3);
+          requestAnimationFrame(passo);
+        }
+        requestAnimationFrame(passo);
+      }
+
+      // Sciame sullo sfondo: stelline sulle slide scure, puntini colorati sulle chiare.
+      // Segue una curva casuale (a volte con un anello), ognuno gira attorno alla guida a modo suo.
+      var inVolo = false;
+      function sciame(s) {
+        var sf = Reveal.getSlideBackground(s);
+        if (!sf || inVolo) return;
+        var chiara = !scura(s);
+        var tinte = ['255,90,31', '230,35,126', '124,58,237', '245,158,11', '13,148,136', '217,119,87'];
+        var tinta0 = uno(tinte), tinta1 = uno(tinte);
+        var W = sf.clientWidth, H = sf.clientHeight;
+        if (!W || !H) return;
+        var guida = traiettoria(W, H);
+        var box = document.createElement('div');
+        box.className = 'polvere';
+        var n = 16 + Math.floor(Math.random() * 26), D = rnd(8000, 14000), larghezza = rnd(22, 65) * W / 1600, stelle = [];
+        for (var i = 0; i < n; i++) {
+          var e = document.createElement('i'), d, o;
+          if (chiara) {
+            // due tinte prevalenti per sciame, qualche puntino di un altro colore
+            var c = Math.random() < 0.8 ? (Math.random() < 0.6 ? tinta0 : tinta1) : uno(tinte);
+            d = rnd(2.2, 4.6) * W / 1600 * 1.2; o = rnd(0.35, 0.75);
+            e.style.background = 'rgb(' + c + ')';
+            e.style.boxShadow = '0 0 ' + (d * 2).toFixed(1) + 'px rgba(' + c + ',0.45)';
+          } else {
+            d = rnd(1.4, 3.4) * W / 1600 * 1.3; o = rnd(0.5, 1);
+            e.style.boxShadow = '0 0 ' + (d * 4).toFixed(1) + 'px rgba(255,220,255,' + o.toFixed(2) + ')';
+          }
+          e.style.width = e.style.height = d.toFixed(1) + 'px';
+          box.appendChild(e);
+          stelle.push({ e: e, d: d, o: o, lag: rnd(0, 0.14), ax: larghezza * rnd(0.3, 1.2), ay: larghezza * rnd(0.3, 1.2),
+            fx: rnd(0.15, 0.9), fy: rnd(0.15, 0.9), px: rnd(0, 6.28), py: rnd(0, 6.28), ft: rnd(0.8, 3), pt: rnd(0, 6.28) });
+        }
+        sf.appendChild(box);
+        inVolo = true;
+        var t0 = performance.now(), respiro = rnd(0.5, 1.6), fase = rnd(0, 6.28);
+        function passo(ora) {
+          if (!box.isConnected) { inVolo = false; return; }
+          if (Reveal.getCurrentSlide() !== s) { inVolo = false; box.style.opacity = 0; setTimeout(function () { box.remove(); }, 1300); return; }
+          var t = (ora - t0) / 1000, U = (ora - t0) / D;
+          if (U > 1.2) { inVolo = false; return box.remove(); }
+          // l'andatura accelera e rallenta un poco, lo sciame si allarga e si stringe
+          var Uv = U + 0.025 * Math.sin(U * 9 + fase);
+          var apri = 0.7 + 0.5 * Math.sin(t * respiro * 0.7 + fase);
+          stelle.forEach(function (st) {
+            var u = Uv - st.lag;
+            if (u <= 0 || u >= 1) { st.e.style.opacity = 0; return; }
+            var p = guida(u), env = Math.min(1, u / 0.1, (1 - u) / 0.1);
+            var x = p[0] + apri * st.ax * Math.sin(t * st.fx * 6.28 + st.px), y = p[1] + apri * st.ay * Math.sin(t * st.fy * 6.28 + st.py);
+            st.e.style.transform = 'translate(' + (x - st.d / 2).toFixed(1) + 'px,' + (y - st.d / 2).toFixed(1) + 'px)';
+            st.e.style.opacity = (st.o * env * (0.65 + 0.35 * Math.sin(t * st.ft * 6.28 + st.pt))).toFixed(3);
+          });
+          requestAnimationFrame(passo);
+        }
+        requestAnimationFrame(passo);
+      }
+
+      function scegli(v) {
+        var tot = v.reduce(function (a, b) { return a + b[1]; }, 0), r = Math.random() * tot;
+        for (var i = 0; i < v.length; i++) { if ((r -= v[i][1]) < 0) return v[i][0]; }
+        return v[0][0];
+      }
+      function dopoCambio() {
+        clearTimeout(attesa);
+        var s = Reveal.getCurrentSlide();
+        if (!s || s.id === 'title-slide' || document.hidden || (Reveal.isScrollView && Reveal.isScrollView())) return;
+        var buio = scura(s), ora = Date.now();
+        // mai troppo vicine, e piu' probabili quanto piu' tempo e' passato dall'ultima (?polvere nell'indirizzo: sempre)
+        var p = prova ? 1 : Math.min(0.6, (buio ? 0.4 : 0.28) * (ora - ultima) / 30000);
+        if ((!prova && ora - ultima < 9000) || Math.random() > p) return;
+        ultima = ora;
+        var effetto = buio
+          ? scegli([[sciame, 5], [scintillio, 2], [fremito, 1.5], [tinta, 1], [bagliore, 1.5]])
+          : scegli([[sciame, 3], [scintillio, 3], [fremito, 2.5], [tinta, 2], [bagliore, 1.5]]);
+        var ritardo = effetto === sciame ? rnd(300, 2500) : rnd(250, 2200);
+        attesa = setTimeout(function () {
+          if (Reveal.getCurrentSlide() !== s || document.hidden) return;
+          effetto(s);
+          // di rado, un secondo segno poco dopo
+          if (Math.random() < 0.15) setTimeout(function () {
+            if (Reveal.getCurrentSlide() === s) uno([scintillio, fremito, tinta])(s);
+          }, rnd(900, 2600));
+        }, ritardo);
+      }
+      // Anche restando fermi su una slide: a intervalli irregolari, quasi sempre un brillio,
+      // di rado qualcos'altro. Nessun ritmo fisso: intervalli lunghi e corti si alternano a caso.
+      var ultimoSegno = 0;
+      function battito() {
+        setTimeout(battito, prova ? rnd(2500, 6000) : (Math.random() < 0.3 ? rnd(3500, 8000) : rnd(9000, 26000)));
+        var s = window.Reveal && Reveal.getCurrentSlide && Reveal.getCurrentSlide(), ora = Date.now();
+        if (!s || s.id === 'title-slide' || document.hidden || (Reveal.isScrollView && Reveal.isScrollView())) return;
+        if (ora - ultimoSegno < 3000 || ora - ultima < 2500 || Math.random() < 0.25) return;
+        ultimoSegno = ora;
+        scegli([[scintillio, 6], [bagliore, 1.2], [fremito, 0.8], [tinta, 0.6], [sciame, scura(s) ? 1 : 0.7]])(s);
+      }
+      function aggancia() {
+        if (!window.Reveal || !Reveal.on || !Reveal.getSlideBackground) return setTimeout(aggancia, 100);
+        Reveal.on('slidechanged', dopoCambio);
+        setTimeout(battito, rnd(6000, 15000));
+      }
+      aggancia();
+    })();
+    </script>
     <!-- Telefono in verticale: sotto activation-width (index.qmd, scroll-view) reveal impila le slide
          in una pagina da scorrere. Lì ogni slide con frammenti resterebbe ferma per un'intera schermata
          a ogni passo; meglio mostrarla già nello stato finale, così tutte le slide sono compatte. -->
@@ -2686,6 +2884,26 @@ Mai fidarsi di qualcosa che pensa da solo, se non vedi dove tiene il cervello.
           el.classList.remove('fragment');
         });
         Reveal.layout();
+      }
+      // Il passaggio da e verso lo scorrimento dipende dalla larghezza della finestra, ma solo quando
+      // questa resta stabile: reveal lo ricontrolla a ogni layout, e un restringimento momentaneo
+      // (fullscreen, finestra agganciata, schermo esterno che si ricollega) basterebbe a farlo scattare.
+      var cfg = Reveal.getConfig(), soglia = cfg.scrollActivationWidth, timer = null, ultimaL = -1;
+      function controlla() {
+        cfg.scrollActivationWidth = soglia; Reveal.layout(); cfg.scrollActivationWidth = null;
+      }
+      function stabile() {
+        clearTimeout(timer);
+        timer = setTimeout(function () {
+          var l = window.innerWidth;
+          if (l !== ultimaL) { ultimaL = l; return stabile(); }
+          controlla();
+        }, 450);
+      }
+      if (typeof soglia === 'number') {
+        Reveal.on('ready', function () { cfg.scrollActivationWidth = null; ultimaL = window.innerWidth; });
+        if (Reveal.isReady()) { cfg.scrollActivationWidth = null; ultimaL = window.innerWidth; }
+        window.addEventListener('resize', stabile);
       }
       Reveal.on('ready', completa);
       Reveal.on('resize', completa);

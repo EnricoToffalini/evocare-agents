@@ -2,6 +2,8 @@
 
 Aggiornamento dopo le modifiche di Enrico: la presentazione contiene ora cinque demo, con «Accio, Excel!» al secondo posto e senza la slide sull'aggiornamento delle email. La demo Excel è stata invertita in iscrizioni → pagamenti → attestati stampabili. `verifica-slide.json` documenta la verifica rispetto alla versione modificata da Enrico: tutte le altre slide sono preservate. I conteggi di sei demo e 63 slide riportati sotto si riferiscono alla prima consegna e non alla nuova sequenza.
 
+Aggiornamento del 7 novembre 2026: le slide «Accio, ordine!» (1.270 file, 1.051 classificati) e «Accio, PDF!» (attestati di partecipazione, con presenze) sono state modificate da Enrico. I numeri e le verifiche sotto per le demo 1 e 5 non corrispondono più alle slide; i rispettivi `verifica-eseguita.json` sono stati eliminati.
+
 Sei demo preparate, eseguite come riferimento tramite script e verificate con controlli indipendenti. I risultati e i limiti sono descritti nel README generale e nelle note delle slide.
 
 ## Verifiche superate
